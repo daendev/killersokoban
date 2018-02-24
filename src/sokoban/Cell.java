@@ -7,8 +7,9 @@ public class Cell {
 
     private Entity holding;
 
-    public Cell(){
 
+    public Cell(){
+        neighbours = new Cell[4];
     }
 
 
@@ -24,8 +25,8 @@ public class Cell {
         return neighbours[d.ordinal()];
     }
 
-    public void setNeighbours(Cell neighbours, Directions dir ) {
-        this.neighbours[dir.ordinal()] = neighbours;
+    public void setNeighbour(Cell neighbour, Directions dir ) {
+        this.neighbours[dir.ordinal()] = neighbour;
     }
 
     public void acceptEntity(Entity n, Directions dir){
@@ -34,9 +35,14 @@ public class Cell {
         holding = n;
     }
 
+    public void removeEntity(){
+        holding = null;
+    }
+
     public boolean canMoveHere(Directions dir){
         if (holding == null)
             return true;
         return holding.isMovable(dir);
     }
+
 }

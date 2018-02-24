@@ -4,8 +4,16 @@ public class Entity {
 
     private Cell place;
 
+    public Cell getPlace() {
+        return place;
+    }
+
+    public void setPlace(Cell place) {
+        this.place = place;
+    }
 
     public Entity() {
+        place = new Cell();
     }
 
     Entity(Cell p)
@@ -24,6 +32,7 @@ public class Entity {
 
     public void step(Directions dir){
         place.getNeighbour(dir).acceptEntity(this, dir);
+        place.removeEntity();
         place = place.getNeighbour(dir);
     }
 

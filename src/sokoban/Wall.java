@@ -1,7 +1,9 @@
 package sokoban;
 
 public class Wall extends Cell {
-    public Wall() {
-        setPassable(false);
+
+    @Override
+    public boolean canMoveHere(Directions dir) {
+        return false;
     }
 }
