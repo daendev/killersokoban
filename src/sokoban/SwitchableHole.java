@@ -12,11 +12,11 @@ public class SwitchableHole extends Hole{
     }
 
     @Override
-    public void acceptEntity(Entity n, Directions dir) {
-        if (open) super.acceptEntity(n,dir);
+    public void acceptEntity(Entity n, Directions dir, Owner o) {
+        if (open) super.acceptEntity(n, dir, o);
         else {
             if (getHolding() != null)
-                getHolding().step(dir);
+                getHolding().step(dir, o);
             setHolding(n);
         }
     }

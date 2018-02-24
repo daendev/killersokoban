@@ -12,7 +12,7 @@ public class Main {
 
             cells[0].setNeighbour(cells[1], Directions.left);
             cells[1].setNeighbour(cells[2], Directions.left);
-            Entity a = new Player();
+            Player a = new Player();
             a.setPlace(cells[0]);
             Entity b = new Box();
             b.setPlace(cells[1]);
@@ -20,7 +20,7 @@ public class Main {
             cells[0].setHolding(a);
             cells[1].setHolding(b);
 
-            a.move(Directions.left);
+            a.move(Directions.left, a.getName());
 
             if (cells[1].getHolding().equals(a))
                 System.out.println("nemyo");
