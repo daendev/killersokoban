@@ -18,7 +18,13 @@ public class Entity {
     }
 
     public void move(Directions dir){
+        if (place.getNeighbour(dir).canMoveHere(dir))
+            step(dir);
+    }
 
+    public void step(Directions dir){
+        place.getNeighbour(dir).acceptEntity(this, dir);
+        place = place.getNeighbour(dir);
     }
 
 }

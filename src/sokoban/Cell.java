@@ -28,8 +28,10 @@ public class Cell {
         this.neighbours[dir.ordinal()] = neighbours;
     }
 
-    public void acceptEntity(Entity n){
-
+    public void acceptEntity(Entity n, Directions dir){
+        if (holding != null)
+            holding.step(dir);
+        holding = n;
     }
 
     public boolean canMoveHere(Directions dir){
