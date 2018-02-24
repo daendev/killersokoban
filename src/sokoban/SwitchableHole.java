@@ -20,4 +20,12 @@ public class SwitchableHole extends Hole{
             setHolding(n);
         }
     }
+
+    @Override
+    public boolean canMoveHere(Directions dir) {
+        if (open) return true;
+        if (getHolding() == null)
+            return true;
+        return getHolding().isMovable(dir);
+    }
 }

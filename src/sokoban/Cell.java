@@ -44,5 +44,4 @@ public class Cell {
             return true;
         return holding.isMovable(dir);
     }
-
 }

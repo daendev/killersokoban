@@ -1,6 +1,6 @@
 package sokoban;
 
-public class Entity {
+public abstract class Entity {
 
     private Cell place;
 
@@ -35,5 +35,7 @@ public class Entity {
         place.removeEntity();
         place = place.getNeighbour(dir);
     }
+
+    public abstract boolean pressButton();
 
 }

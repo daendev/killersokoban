@@ -5,4 +5,9 @@ public class Hole extends Cell {
     public void acceptEntity(Entity n, Directions dir) {
 
     }
+
+    @Override
+    public boolean canMoveHere(Directions dir) {
+        return true;
+    }
 }
