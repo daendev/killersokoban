@@ -4,6 +4,7 @@ public class Box extends Entity{
 
     public Box()
     {
+        super();
         setOwner(Owner.none);
     }
 

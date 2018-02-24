@@ -13,6 +13,7 @@ public class Player extends Entity{
     }
 
     public Player(Owner o){
+        super();
         score = 0;
         setOwner(o);
     }
@@ -32,7 +33,10 @@ public class Player extends Entity{
         if (getPlace().getNeighbour(dir).canMoveHere(dir))
             super.step(dir, o);
         else
+        {
+            getPlace().getWarehouse().addScore(o);
             getPlace().getWarehouse().removeEntity(this);
+        }
     }
 
     public void die(){

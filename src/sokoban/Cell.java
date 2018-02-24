@@ -18,6 +18,9 @@ public class Cell {
         warehouse = w;
     }
 
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
 
     public Warehouse getWarehouse() {
         return warehouse;

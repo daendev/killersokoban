@@ -46,8 +46,11 @@ public abstract class Entity {
 
     public void step(Directions dir, Owner o){
         place.getNeighbour(dir).acceptEntity(this, dir, o);
-        place.removeEntity();
-        place = place.getNeighbour(dir);
+        if (place != null)
+        {
+            place.removeEntity();
+            place = place.getNeighbour(dir);
+        }
     }
 
     public abstract boolean pressButton();

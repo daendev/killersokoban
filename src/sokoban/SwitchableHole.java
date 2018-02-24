@@ -5,16 +5,22 @@ public class SwitchableHole extends Hole{
 
     public void setOpen(boolean open) {
         this.open = open;
+        //if (open)
+        //    getWarehouse().removeEntity(getHolding());
     }
 
     @Override
     public void acceptEntity(Entity n, Directions dir, Owner o) {
-        if (open) super.acceptEntity(n, dir, o);
-        else {
-            if (getHolding() != null)
-                getHolding().step(dir, o);
-            setHolding(n);
+        if (getHolding() != null)
+            getHolding().step(dir, o);
+        setHolding(n);
+
+
+        if (open) {
+            n.setPlace(this);
+            super.acceptEntity(n, dir, o);
         }
+
     }
 
     @Override

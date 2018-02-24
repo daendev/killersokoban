@@ -17,6 +17,14 @@ public class Warehouse {
         boxes = new ArrayList<>();
     }
 
+    public Player getPlayers(int a) {
+        return players[a];
+    }
+
+    public void addBox(Box b){
+        boxes.add(b);
+    }
+
     public void addScore(Owner o){
         players[o.ordinal()].setScore(players[o.ordinal()].getScore()+1);
         //TODO átgondolni
