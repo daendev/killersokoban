@@ -31,6 +31,12 @@ public class Player extends Entity{
     public void step(Directions dir, Owner o) {
         if (getPlace().getNeighbour(dir).canMoveHere(dir))
             super.step(dir, o);
-        else {}//TODO meghalás
+        else
+            getPlace().getWarehouse().removeEntity(this);
+    }
+
+    public void die(){
+        getPlace().setHolding(null);
+        setPlace(null);
     }
 }

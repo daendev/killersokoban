@@ -3,14 +3,9 @@ package sokoban;
 public class Hole extends Cell {
     @Override
     public void acceptEntity(Entity n, Directions dir, Owner o) {
-        //TODO ezt meg kell írni
-
-        if (!n.pressButton())
-        {
-            if (!o.equals(n.getOwner()))
-            {}
-            //TODO pont a másiknak
-        }
+        if (!n.pressButton() && !o.equals(n.getOwner()))
+            getWarehouse().addScore(o);
+        getWarehouse().removeEntity(n);
     }
 
     @Override

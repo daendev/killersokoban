@@ -1,16 +1,20 @@
 package sokoban;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Warehouse {
 
     private Cell[] map;
-    private Box[] boxes;
+    private List<Box> boxes;
     private Player[] players;
 
     public Warehouse(){
         players = new Player[2];
         players[0] = new Player(Owner.player1);
         players[1] = new Player(Owner.player2);
+        boxes = new ArrayList<>();
     }
 
     public void addScore(Owner o){
@@ -18,5 +22,10 @@ public class Warehouse {
         //TODO átgondolni
     }
 
+
+    public void removeEntity(Entity e){
+        if (boxes.contains(e)) boxes.remove(e);
+        else players[e.getOwner().ordinal()].die();
+    }
 
 }
