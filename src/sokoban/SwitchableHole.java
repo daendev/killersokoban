@@ -3,10 +3,6 @@ package sokoban;
 public class SwitchableHole extends Hole{
     private boolean open;
 
-    public boolean isOpen() {
-        return open;
-    }
-
     public void setOpen(boolean open) {
         this.open = open;
     }

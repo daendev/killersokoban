@@ -6,6 +6,12 @@ public class Goal extends Cell{
     public void acceptEntity(Entity n, Directions dir, Owner o) {
         super.acceptEntity(n, dir, o);
 
+        if (n.pressButton())
+        {
+            n.setOwner(o);
+            getWarehouse().addScore(o);
+
+        }
     }
 
     @Override

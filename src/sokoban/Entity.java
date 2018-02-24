@@ -4,6 +4,11 @@ public abstract class Entity {
 
     private Cell place;
     private Owner owner;
+    private Warehouse warehouse;
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
 
     public Owner getOwner() {
         return owner;

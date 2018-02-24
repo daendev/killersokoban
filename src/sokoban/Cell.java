@@ -7,11 +7,18 @@ public class Cell {
 
     private Entity holding;
 
+    private Warehouse warehouse;
 
-    public Cell(){
+
+    public Cell(Warehouse w){
         neighbours = new Cell[4];
+        warehouse = w;
     }
 
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
 
     public Entity getHolding() {
         return holding;
