@@ -8,7 +8,8 @@ public class Hole extends Cell {
         if (!n.pressButton())
         {
             if (!o.equals(n.getOwner()))
-                //TODO pont a másiknak
+            {}
+            //TODO pont a másiknak
         }
     }
 

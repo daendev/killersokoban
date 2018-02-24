@@ -9,6 +9,9 @@ public class Cell {
 
     private Warehouse warehouse;
 
+    public Cell(){
+        neighbours = new Cell[4];
+    }
 
     public Cell(Warehouse w){
         neighbours = new Cell[4];
