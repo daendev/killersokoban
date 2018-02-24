@@ -13,8 +13,12 @@ public class Entity {
         place = p;
     }
 
-    public boolean isMovable(Cell.Directions dir){
+    public boolean isMovable(Directions dir){
         return place.getNeighbour(dir).canMoveHere(dir);
+    }
+
+    public void move(Directions dir){
+
     }
 
 }

@@ -1,14 +1,7 @@
 package sokoban;
 
-/**
- *
- */
-
 public class Cell {
 
-    public enum Directions{
-        top, right, bottom, left;
-    }
 
     private Cell[] neighbours;
 
