@@ -27,8 +27,8 @@ public class Cell {
         this.holding = holding;
     }
 
-    public Cell[] getNeighbours() {
-        return neighbours;
+    public Cell getNeighbour(Directions d) {
+        return neighbours[d.ordinal()];
     }
 
     public void setNeighbours(Cell neighbours, Directions dir ) {
@@ -37,5 +37,11 @@ public class Cell {
 
     public void acceptEntity(Entity n){
 
+    }
+
+    public boolean canMoveHere(Directions dir){
+        if (holding == null)
+            return true;
+        return holding.isMovable(dir);
     }
 }
