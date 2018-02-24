@@ -5,28 +5,34 @@ package sokoban;
  */
 
 public class Cell {
-    private boolean passable;
+
+    public enum Directions{
+        top, right, bottom, left;
+    }
+
+    private Cell[] neighbours;
+
     private Entity holding;
 
     public Cell(){
-        passable = true;
-        holding = new Entity();
+
     }
 
-    public boolean isPassable() {
-        return passable;
-    }
 
     public Entity getHolding() {
         return holding;
     }
 
-    public void setPassable(boolean passable) {
-        this.passable = passable;
-    }
-
     public void setHolding(Entity holding) {
         this.holding = holding;
+    }
+
+    public Cell[] getNeighbours() {
+        return neighbours;
+    }
+
+    public void setNeighbours(Cell neighbours, Directions dir ) {
+        this.neighbours[dir.ordinal()] = neighbours;
     }
 
     public void acceptEntity(Entity n){
