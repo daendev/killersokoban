@@ -30,11 +30,6 @@ public class Warehouse {
         boxes.add(b);
     }
 
-    public void addScore(Entity owner){
-        owner.setScore(owner.getScore()+1);
-        //TODO átgondolni
-    }
-
 
     public void removeEntity(Entity e){
         if (boxes.contains(e)) boxes.remove(e);
