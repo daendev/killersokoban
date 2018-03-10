@@ -5,9 +5,8 @@ public class SwitchableHole extends Hole{
 
     public void setOpen(boolean open) {
         this.open = open;
-        //if (open)
-        //    getWarehouse().removeEntity(getHolding());
-        //TODO nyílik a dolog
+        if (open)
+            getWarehouse().removeEntity(getHolding());
     }
 
     @Override
