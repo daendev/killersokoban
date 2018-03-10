@@ -42,19 +42,19 @@ public class Cell {
         this.neighbours[dir.ordinal()] = neighbour;
     }
 
-    public void acceptEntity(Entity n, Directions dir, Entity owner){
-        if (holding != null)
-            holding.step(dir,owner);
-        holding = n;
+    public boolean acceptEntity(Entity n, Directions dir, Entity owner){
+        if(holding == null){
+            holding = n;
+            return true;
+        } else if (holding.move(dir, owner)){
+            holding = n;
+            return true;
+        }
+        return false;
+
     }
 
     public void removeEntity(){
         holding = null;
-    }
-
-    public boolean canMoveHere(Directions dir){
-        if (holding == null)
-            return true;
-        return holding.isMovable(dir);
     }
 }

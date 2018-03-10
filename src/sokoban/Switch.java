@@ -10,7 +10,7 @@ public class Switch extends Cell {
 
 
     @Override
-    public void acceptEntity(Entity n, Directions dir, Entity owner) {
+    public boolean acceptEntity(Entity n, Directions dir, Entity owner) {
         super.acceptEntity(n, dir, owner);
 
         if (n.pressButton())

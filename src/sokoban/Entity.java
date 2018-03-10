@@ -35,24 +35,15 @@ public abstract class Entity {
         place = p;
     }
 
-    public boolean isMovable(Directions dir){
-        return place.getNeighbour(dir).canMoveHere(dir);
-    }
-
     public abstract void addScore(int amount);
 
-    public void move(Directions dir, Entity owner){
-        if (place.getNeighbour(dir).canMoveHere(dir))
-            step(dir,owner);
-    }
-
-    public void step(Directions dir, Entity owner){
-        place.getNeighbour(dir).acceptEntity(this, dir, owner);
-        if (place != null)
-        {
+    public boolean move(Directions dir, Entity owner){
+        if (place.getNeighbour(dir).acceptEntity(this, dir, owner)){
             place.removeEntity();
             place = place.getNeighbour(dir);
+            return true;
         }
+        return false;
     }
 
     public abstract boolean pressButton();
