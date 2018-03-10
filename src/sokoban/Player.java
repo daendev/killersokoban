@@ -28,23 +28,23 @@ public class Player extends Entity{
     }
 
     @Override
-    public boolean isMovable(Directions dir) {
-        return true;
-    }
+    public void stepOnGoal(Entity mOwner) {
 
-    @Override
-    public void step(Directions dir, Entity owner) {
-        if (getPlace().getNeighbour(dir).canMoveHere(dir))
-            super.step(dir, owner);
-        else
-        {
-            owner.addScore(1);
-            getPlace().getWarehouse().removeEntity(this);
-        }
     }
 
     public void die(){
         getPlace().setHolding(null);
         setPlace(null);
+    }
+
+    @Override
+    public void stepOnHole(Entity mOwner) {
+        if(!mOwner.equals(this))
+            mOwner.addScore(1);
+    }
+
+    @Override
+    public void stepOnSwitch(SwitchableHole aSwitch) {
+
     }
 }

@@ -7,27 +7,23 @@ public class SwitchableHole extends Hole{
         this.open = open;
         //if (open)
         //    getWarehouse().removeEntity(getHolding());
+        //TODO nyílik a dolog
     }
 
     @Override
-    public void acceptEntity(Entity n, Directions dir, Entity owner) {
-        if (getHolding() != null)
-            getHolding().step(dir, owner);
-        setHolding(n);
-
-
+    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
         if (open) {
-            n.setPlace(this);
-            super.acceptEntity(n, dir, owner);
+            return super.acceptEntity(n, dir, mOwner);
+        } else {
+            if(getHolding() == null){
+                setHolding(n);
+                return true;
+            } else if (getHolding().move(dir, mOwner)){
+                setHolding(n);
+                return true;
+            }
+            return false;
         }
 
-    }
-
-    @Override
-    public boolean canMoveHere(Directions dir) {
-        if (open) return true;
-        if (getHolding() == null)
-            return true;
-        return getHolding().isMovable(dir);
     }
 }

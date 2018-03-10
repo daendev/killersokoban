@@ -33,7 +33,7 @@ public class Warehouse {
 
     public void removeEntity(Entity e){
         if (boxes.contains(e)) boxes.remove(e);
-        else if(players.contains(e)) players.remove(e);
+        else if(players.contains(e)) e.die();
     }
 
 }

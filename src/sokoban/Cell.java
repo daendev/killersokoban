@@ -51,7 +51,6 @@ public class Cell {
             return true;
         }
         return false;
-
     }
 
     public void removeEntity(){

@@ -10,11 +10,11 @@ public class Switch extends Cell {
 
 
     @Override
-    public boolean acceptEntity(Entity n, Directions dir, Entity owner) {
-        super.acceptEntity(n, dir, owner);
-
-        if (n.pressButton())
-            hole.setOpen(true);
+    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+        boolean succesful = super.acceptEntity(n, dir, mOwner);
+        if(succesful)
+            n.stepOnSwitch(hole);
+        return succesful;
     }
 
     @Override
