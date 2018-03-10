@@ -42,11 +42,11 @@ public class Cell {
         this.neighbours[dir.ordinal()] = neighbour;
     }
 
-    public boolean acceptEntity(Entity n, Directions dir, Entity owner){
+    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner){
         if(holding == null){
             holding = n;
             return true;
-        } else if (holding.move(dir, owner)){
+        } else if (holding.move(dir, mOwner)){
             holding = n;
             return true;
         }

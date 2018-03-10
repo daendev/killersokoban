@@ -29,6 +29,7 @@ public class Main {
             //w.getPlayers(1).setPlace(cells[2]);
             Box b = new Box();
             //Entity b2 = new Box();
+
             b.setPlace(cells[1]);
             //b2.setPlace(cells[3]);
 
