@@ -8,32 +8,37 @@ public class Warehouse {
 
     private Cell[] map;
     private List<Box> boxes;
-    private Player[] players;
+    private List<Player> players;
 
     public Warehouse(){
-        players = new Player[2];
-        players[0] = new Player(Owner.player1);
-        players[1] = new Player(Owner.player2);
+        players = new ArrayList<>();
+        boxes = new ArrayList<>();
+    }
+
+    public Warehouse(int playerNum){
+        players = new ArrayList<>();
+        for (int i=0; i<playerNum; i++)
+            players.add(new Player());
         boxes = new ArrayList<>();
     }
 
     public Player getPlayers(int a) {
-        return players[a];
+        return players.get(a);
     }
 
     public void addBox(Box b){
         boxes.add(b);
     }
 
-    public void addScore(Owner o){
-        players[o.ordinal()].setScore(players[o.ordinal()].getScore()+1);
+    public void addScore(Entity owner){
+        owner.setScore(owner.getScore()+1);
         //TODO átgondolni
     }
 
 
     public void removeEntity(Entity e){
         if (boxes.contains(e)) boxes.remove(e);
-        else players[e.getOwner().ordinal()].die();
+        else if(players.contains(e)) players.remove(e);
     }
 
 }

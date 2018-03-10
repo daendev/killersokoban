@@ -3,18 +3,18 @@ package sokoban;
 public abstract class Entity {
 
     private Cell place;
-    private Owner owner;
+    private Entity owner;
     private Warehouse warehouse;
 
     public Warehouse getWarehouse() {
         return warehouse;
     }
 
-    public Owner getOwner() {
+    public Entity getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
+    public void setOwner(Entity owner) {
         this.owner = owner;
     }
 
@@ -39,13 +39,15 @@ public abstract class Entity {
         return place.getNeighbour(dir).canMoveHere(dir);
     }
 
-    public void move(Directions dir, Owner o){
+    public abstract void addScore(int amount);
+
+    public void move(Directions dir, Entity owner){
         if (place.getNeighbour(dir).canMoveHere(dir))
-            step(dir,o);
+            step(dir,owner);
     }
 
-    public void step(Directions dir, Owner o){
-        place.getNeighbour(dir).acceptEntity(this, dir, o);
+    public void step(Directions dir, Entity owner){
+        place.getNeighbour(dir).acceptEntity(this, dir, owner);
         if (place != null)
         {
             place.removeEntity();

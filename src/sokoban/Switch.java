@@ -10,8 +10,8 @@ public class Switch extends Cell {
 
 
     @Override
-    public void acceptEntity(Entity n, Directions dir, Owner o) {
-        super.acceptEntity(n, dir, o);
+    public void acceptEntity(Entity n, Directions dir, Entity owner) {
+        super.acceptEntity(n, dir, owner);
 
         if (n.pressButton())
             hole.setOpen(true);

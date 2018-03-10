@@ -12,10 +12,14 @@ public class Player extends Entity{
         this.score = score;
     }
 
-    public Player(Owner o){
+    public Player(){
         super();
         score = 0;
-        setOwner(o);
+        setOwner(this);
+    }
+
+    public void addScore(int amount){
+        score+=amount;
     }
 
     @Override
@@ -29,12 +33,12 @@ public class Player extends Entity{
     }
 
     @Override
-    public void step(Directions dir, Owner o) {
+    public void step(Directions dir, Entity owner) {
         if (getPlace().getNeighbour(dir).canMoveHere(dir))
-            super.step(dir, o);
+            super.step(dir, owner);
         else
         {
-            getPlace().getWarehouse().addScore(o);
+            owner.addScore(1);
             getPlace().getWarehouse().removeEntity(this);
         }
     }

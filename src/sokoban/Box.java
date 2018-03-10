@@ -5,8 +5,10 @@ public class Box extends Entity{
     public Box()
     {
         super();
-        setOwner(Owner.none);
+        setOwner(this);
     }
+
+    public void addScore(int amount){}
 
     @Override
     public boolean pressButton() {

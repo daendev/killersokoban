@@ -42,9 +42,9 @@ public class Cell {
         this.neighbours[dir.ordinal()] = neighbour;
     }
 
-    public void acceptEntity(Entity n, Directions dir, Owner o){
+    public void acceptEntity(Entity n, Directions dir, Entity owner){
         if (holding != null)
-            holding.step(dir,o);
+            holding.step(dir,owner);
         holding = n;
     }
 
