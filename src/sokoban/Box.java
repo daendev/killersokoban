@@ -11,11 +11,6 @@ public class Box extends Entity{
     public void addScore(int amount){}
 
     @Override
-    public boolean pressButton() {
-        return true;
-    }
-
-    @Override
     public boolean move(Directions dir, Entity owner) {
         if(!owner.equals(this))
             return false;

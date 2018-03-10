@@ -50,8 +50,6 @@ public abstract class Entity {
 
 
 
-    public abstract boolean pressButton();
-
     public abstract void stepOnGoal(Entity mOwner);
 
     public abstract void stepOnHole(Entity mOwner);
