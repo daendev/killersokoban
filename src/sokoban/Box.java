@@ -28,6 +28,7 @@ public class Box extends Entity{
     @Override
     public void stepOnGoal(Entity mOwner) {
         setOwner(mOwner);
+        mOwner.addScore(1);
     }
 
     @Override
