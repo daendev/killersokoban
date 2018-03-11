@@ -39,7 +39,7 @@ public class Player extends Entity{
     }
 
     @Override
-    public void stepOnSwitch(SwitchableHole aSwitch) {
+    public void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner) {
 
     }
 }

@@ -56,5 +56,5 @@ public abstract class Entity {
 
     public abstract void die();
 
-    public abstract void stepOnSwitch(SwitchableHole aSwitch);
+    public abstract void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner);
 }

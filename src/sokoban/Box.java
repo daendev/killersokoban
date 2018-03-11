@@ -32,7 +32,7 @@ public class Box extends Entity{
     }
 
     @Override
-    public void stepOnSwitch(SwitchableHole aSwitch) {
-        aSwitch.setOpen(true);
+    public void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner) {
+        aSwitch.setOpen(true, mOwner);
     }
 }
