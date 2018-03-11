@@ -18,6 +18,20 @@ public class Player extends Entity{
         setOwner(this);
     }
 
+    @Override
+    public boolean move(Directions dir, Entity mOwner) {
+        if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
+            getPlace().removeEntity();
+            setPlace(getPlace().getNeighbour(dir));
+        } else {
+            if(!mOwner.equals(this)){
+                die();
+                mOwner.addScore(1);
+            }
+        }
+        return true;
+    }
+
     public void addScore(int amount){
         score+=amount;
     }

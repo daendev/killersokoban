@@ -6,15 +6,23 @@ public class Box extends Entity{
     {
         super();
         setOwner(this);
+        System.out.println("Box constructor");
     }
 
-    public void addScore(int amount){}
+    public void addScore(int amount){
+
+    }
 
     @Override
-    public boolean move(Directions dir, Entity owner) {
-        if(!owner.equals(this))
+    public boolean move(Directions dir, Entity mOwner) {
+        if(!getOwner().equals(this))
             return false;
-        return super.move(dir, owner);
+        if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
+            getPlace().removeEntity();
+            setPlace(getPlace().getNeighbour(dir));
+            return true;
+        }
+        return false;
     }
 
     @Override

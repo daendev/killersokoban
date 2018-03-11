@@ -37,14 +37,7 @@ public abstract class Entity {
 
     public abstract void addScore(int amount);
 
-    public boolean move(Directions dir, Entity mOwner){
-        if (place.getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            place.removeEntity();
-            place = place.getNeighbour(dir);
-            return true;
-        }
-        return false;
-    }
+    public abstract boolean move(Directions dir, Entity mOwner);
 
 
 
