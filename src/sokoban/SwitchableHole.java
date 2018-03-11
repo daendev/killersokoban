@@ -3,10 +3,12 @@ package sokoban;
 public class SwitchableHole extends Hole{
     private boolean open;
 
-    public void setOpen(boolean open) {
+    public void setOpen(boolean open, Entity mOwner) {
         this.open = open;
-        if (open)
+        if (open){
+            getHolding().stepOnHole(mOwner);
             getWarehouse().removeEntity(getHolding());
+        }
     }
 
     @Override
