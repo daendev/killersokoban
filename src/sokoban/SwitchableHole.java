@@ -5,7 +5,7 @@ public class SwitchableHole extends Hole{
 
     public void setOpen(boolean open, Entity mOwner) {
         this.open = open;
-        if (open){
+        if (open && holding != null){
             getHolding().stepOnHole(mOwner);
             getWarehouse().removeEntity(getHolding());
         }
