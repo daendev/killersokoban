@@ -50,6 +50,7 @@ public class Player extends Entity{
     public void stepOnHole(Entity mOwner) {
         if(!mOwner.equals(this))
             mOwner.addScore(1);
+        getWarehouse().removeEntity(this);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class Box extends Entity{
 
     @Override
     public void stepOnHole(Entity mOwner) {
-
+		getWarehouse().removeEntiy(this);
     }
     @Override
     public void die() {
