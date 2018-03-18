@@ -19,7 +19,7 @@ public class Main {
                     System.out.println("3: Játékos falnak ütközik");
                     System.out.println("4: Játékos lyukba esik");
                     System.out.println("5: Doboz eltolás üres mezőre");
-                    System.out.println("6: Doboz falnak tolása");
+                    System.out.println("6: Doboz falnak tolá1sa");
                     System.out.println("7: Doboz lyukba tolása");
                     System.out.println("8: Doboz kapcsolóra tolása");
                     System.out.println("9: Dobozzal másik doboz tolása");
