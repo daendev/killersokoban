@@ -81,12 +81,12 @@ public class Warehouse {
 
         for (int i=0; i<6; i++)
             for (int j=0; j<6; j++) {
-                if (i == 0 || j == 0) map[i][j] = new Wall("FalGENYO");
-                else if (i == 5 || j == 5) map[i][j] = new Wall("FalGENYO");
-                else map[i][j] = new Cell("CsempeGENYO");
+                if (i == 0 || j == 0) map[i][j] = new Wall("Fal");
+                else if (i == 5 || j == 5) map[i][j] = new Wall("Fal");
+                else map[i][j] = new Cell("Csempe");
             }
 
-        map[(new Random()).nextInt(4) + 1][(new Random()).nextInt(3) + 1] = new Hole("LyukGENYO");
+        map[(new Random()).nextInt(4) + 1][(new Random()).nextInt(3) + 1] = new Hole("Lyuk");
 
         boxes.add(new Box());
         boxes.get(0).setPlace(map[1][1]);
