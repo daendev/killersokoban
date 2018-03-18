@@ -3,6 +3,7 @@ package sokoban;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -15,7 +16,7 @@ public class Warehouse {
     /**
      * Azok a cellák, amik ebben a raktárban vannak.
      */
-    private Cell[] map;
+    private Cell[][] map;
 
     /**
      * A raktárban található dobozok.
@@ -74,6 +75,21 @@ public class Warehouse {
     public void removeEntity(Entity e){
         if (boxes.contains(e)) boxes.remove(e);
         else if(players.contains(e)) e.die();
+    }
+
+    public void generateMap(){
+
+        for (int i=0; i<6; i++)
+            for (int j=0; j<6; j++) {
+                if (i == 0 || j == 0) map[i][j] = new Wall("Fal");
+                else if (i == 5 || j == 5) map[i][j] = new Wall("Fal");
+                else map[i][j] = new Cell("Csempe");
+            }
+
+        map[(new Random()).nextInt(4) + 1][(new Random()).nextInt(3) + 1] = new Hole("Lyuk");
+
+        boxes.add(new Box());
+        boxes.get(0).setPlace(map[1][1]);
     }
 
 }
