@@ -1,4 +1,3 @@
-import sokoban.Cell;
 import sokoban.*;
 
 
@@ -49,7 +48,5 @@ public class Main {
             else
                 System.out.println("yo");
             System.out.println(w.getPlayers(0).getScore());
-
-        //} catch (Exception e){}
     }
 }
