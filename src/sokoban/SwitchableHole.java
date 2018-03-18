@@ -6,6 +6,10 @@ package sokoban;
  */
 public class SwitchableHole extends Hole{
 
+
+    public SwitchableHole(String name){
+        super(name);
+    }
     /**
      * A kapcsolható lyuk állapota. Ha igaz nyitva van, ha hamis, zárva.
      */

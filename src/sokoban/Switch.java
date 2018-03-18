@@ -19,6 +19,10 @@ public class Switch extends Cell {
     public Switch(SwitchableHole h){
         hole = h;
     }
+    public Switch(String name, SwitchableHole h){
+        hole = h;
+        this.name = name;
+    }
 
     /**
      * Befogad valamit a kapcsolóra (tolás során) és ráhelyezi.

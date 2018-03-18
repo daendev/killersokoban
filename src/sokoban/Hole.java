@@ -6,6 +6,10 @@ package sokoban;
  */
 public class Hole extends Cell {
 
+    public Hole(String name){
+        super(name);
+    }
+
     /**
      * Befogad valamit a lyukra. Ami ráérkezik, leesik.
      * @param n Amit befogad.

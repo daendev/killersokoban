@@ -7,6 +7,8 @@ package sokoban;
  */
 public abstract class Entity {
 
+    public String name;
+
     /**
      * Az a cella, amin az entitás áll.
      */
@@ -27,6 +29,11 @@ public abstract class Entity {
      */
     public Entity() {
         place = new Cell();
+    }
+
+    public Entity(String name) {
+        place = new Cell();
+        this.name=name;
     }
 
     /**

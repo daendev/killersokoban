@@ -1,5 +1,5 @@
 public class Test17 {
-    public void run(){
+    public static void run(){
 
     }
 }

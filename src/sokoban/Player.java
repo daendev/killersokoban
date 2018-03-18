@@ -20,6 +20,13 @@ public class Player extends Entity{
         setOwner(this);
     }
 
+    public Player(String name){
+        super();
+        score = 0;
+        setOwner(this);
+        this.name=name;
+    }
+
     /**
      * Megadja a játékos aktuális pontszámát.
      * @return A játékos aktuális pontszáma.

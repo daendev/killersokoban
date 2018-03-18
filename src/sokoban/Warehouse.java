@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class Warehouse {
 
+    String name;
+
     /**
      * Azok a cellák, amik ebben a raktárban vannak.
      */
