@@ -71,6 +71,11 @@ public class Warehouse {
     }
 
 
+    public void addPlayer(Player p){
+        players.add(p);
+    }
+
+
     /**
      * Kivesz egy entitást a raktárból.
      * @param e A kivevendő entitás.
