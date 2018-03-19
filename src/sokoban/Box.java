@@ -20,6 +20,7 @@ public class Box extends Entity{
         super();
         setOwner(this);
         this.name = name;
+        Logger.createObject(this, name);
     }
 
     /**
@@ -38,6 +39,7 @@ public class Box extends Entity{
                 getPlace().removeEntity();
                 setPlace(getPlace().getNeighbour(dir));
             }
+            Logger.end(this, "move", Boolean.toString(true));
             return true;
         }
         Logger.end(this, "move", Boolean.toString(false));

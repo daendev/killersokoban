@@ -34,6 +34,7 @@ public abstract class Entity {
     public Entity(String name) {
         place = new Cell();
         this.name=name;
+        Logger.createObject(this, name);
     }
 
     /**

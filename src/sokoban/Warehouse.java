@@ -17,6 +17,7 @@ public class Warehouse {
         players = new ArrayList<>();
         boxes = new ArrayList<>();
         this.name = name;
+        Logger.createObject(this, name);
     }
 
     /**

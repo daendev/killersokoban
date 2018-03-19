@@ -22,6 +22,7 @@ public class Switch extends Cell {
     public Switch(String name, SwitchableHole h){
         hole = h;
         this.name = name;
+        Logger.createObject(this, name);
     }
 
     /**

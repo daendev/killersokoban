@@ -10,6 +10,7 @@ public class Hole extends Cell {
 
     public Hole(String name){
         super(name);
+        Logger.createObject(this, name);
     }
 
     /**

@@ -32,15 +32,12 @@ public class Cell {
      */
     public Cell(){
         neighbours = new Cell[4];
-        Logger.createObject(neighbours[0], "neighbour0");
-        Logger.createObject(neighbours[1], "neighbour1");
-        Logger.createObject(neighbours[2], "neighbour2");
-        Logger.createObject(neighbours[3], "neighbour3");
     }
 
     public Cell(String name){
         neighbours = new Cell[4];
         this.name=name;
+        Logger.createObject(this, name);
     }
 
     /**
@@ -49,10 +46,6 @@ public class Cell {
      */
     public Cell(Warehouse w){
         neighbours = new Cell[4];
-        Logger.createObject(neighbours[0], "neighbour0");
-        Logger.createObject(neighbours[1], "neighbour1");
-        Logger.createObject(neighbours[2], "neighbour2");
-        Logger.createObject(neighbours[3], "neighbour3");
         warehouse = w;
     }
 

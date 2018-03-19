@@ -8,6 +8,7 @@ public class Wall extends Cell {
 
     public Wall(String name){
         super(name);
+        Logger.createObject(this, name);
     }
 
     /**

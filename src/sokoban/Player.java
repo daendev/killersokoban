@@ -25,6 +25,7 @@ public class Player extends Entity{
         score = 0;
         setOwner(this);
         this.name=name;
+        Logger.createObject(this, name);
     }
 
     /**

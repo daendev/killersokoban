@@ -8,6 +8,7 @@ public class Goal extends Cell{
 
     public Goal(String name){
         super(name);
+        Logger.createObject(this, name);
     }
 
     /**
