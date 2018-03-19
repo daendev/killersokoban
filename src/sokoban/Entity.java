@@ -61,6 +61,8 @@ public abstract class Entity {
         return owner;
     }
 
+    public void setWarehouse(Warehouse warehouse){ this.warehouse = warehouse; }
+
     /**
      * Új tulajdonost ad meg az entitásnak.
      * @param owner Az új tulajdonos.
