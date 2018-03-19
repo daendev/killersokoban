@@ -5,6 +5,8 @@ package sokoban;
  */
 public class Cell {
 
+    String name;
+
     /**
      * A cellával szomszédos cellák.
      */
@@ -34,6 +36,11 @@ public class Cell {
         Logger.createObject(neighbours[1], "neighbour1");
         Logger.createObject(neighbours[2], "neighbour2");
         Logger.createObject(neighbours[3], "neighbour3");
+    }
+
+    public Cell(String name){
+        neighbours = new Cell[4];
+        this.name=name;
     }
 
     /**

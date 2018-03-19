@@ -6,6 +6,10 @@ package sokoban;
  */
 public class Wall extends Cell {
 
+    public Wall(String name){
+        super(name);
+    }
+
     /**
      * Befogad valamit a falra. A falakon nem állhat semmi, így sose fogadja be.
      * @param n Amit befogad.

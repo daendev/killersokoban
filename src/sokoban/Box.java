@@ -15,6 +15,13 @@ public class Box extends Entity{
         setOwner(this);
     }
 
+    public Box(String name)
+    {
+        super();
+        setOwner(this);
+        this.name = name;
+    }
+
     /**
      * A doboz arrébtolása.
      * @param dir A tolás iránya
@@ -27,9 +34,10 @@ public class Box extends Entity{
         if(!getOwner().equals(this))
             return false;
         if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            getPlace().removeEntity();
-            setPlace(getPlace().getNeighbour(dir));
-            Logger.end(this, "move", Boolean.toString(true));
+            if(getPlace() != null){
+                getPlace().removeEntity();
+                setPlace(getPlace().getNeighbour(dir));
+            }
             return true;
         }
         Logger.end(this, "move", Boolean.toString(false));

@@ -3,6 +3,7 @@ package sokoban;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -10,10 +11,18 @@ import java.util.List;
  */
 public class Warehouse {
 
+    String name;
+
+    public Warehouse(String name){
+        players = new ArrayList<>();
+        boxes = new ArrayList<>();
+        this.name = name;
+    }
+
     /**
      * Azok a cellák, amik ebben a raktárban vannak.
      */
-    private Cell[] map;
+    private Cell[][] map;
 
     /**
      * A raktárban található dobozok.
@@ -69,6 +78,11 @@ public class Warehouse {
     }
 
 
+    public void addPlayer(Player p){
+        players.add(p);
+    }
+
+
     /**
      * Kivesz egy entitást a raktárból.
      * @param e A kivevendő entitás.
@@ -81,6 +95,26 @@ public class Warehouse {
         if (boxes.contains(e)) boxes.remove(e);
         else if(players.contains(e)) e.die();
         Logger.end(this, "removeEntity", "void");
+    }
+
+    public void generateMap(){
+
+        map = new Cell[6][6];
+
+        for (int i=0; i<6; i++)
+            for (int j=0; j<6; j++) {
+                if (i == 0 || j == 0) map[i][j] = new Wall("Falacska[" + i + "]-[" + j +"]");
+                else if (i == 5 || j == 5) map[i][j] = new Wall("Falacska[" + i + "]-[" + j +"]");
+                else map[i][j] = new Cell("Csempecske[" + i + "]-[" + j +"]");
+            }
+
+            int a = (new Random()).nextInt(4) + 1;
+            int b = (new Random()).nextInt(3) + 1;
+
+            map[a][b] = new Hole("Csempecske[" + a + "]-[" + b +"]");
+
+        boxes.add(new Box("Dobozka"));
+        boxes.get(0).setPlace(map[1][1]);
     }
 
 }

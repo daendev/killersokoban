@@ -6,6 +6,10 @@ package sokoban;
  */
 public class Goal extends Cell{
 
+    public Goal(String name){
+        super(name);
+    }
+
     /**
      * Befogad valamit a cellára (tolás során) és ráhelyezi.
      * @param n Amit befogad.

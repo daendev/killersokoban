@@ -1,55 +1,105 @@
 import sokoban.Cell;
 import sokoban.*;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        //try {
-            Cell cells[] = new Cell[6];
-            for (int i = 0; i < cells.length; i++)
-                cells[i] = new Cell();
-
-
-            Warehouse w = new Warehouse();
-            SwitchableHole sh = new SwitchableHole();
-
-            //cells[3] = new Wall();
-            cells[3] = sh;
-            cells[2] = new Switch(sh);
-
-            cells[0].setNeighbour(cells[1], Directions.left);
-            cells[1].setNeighbour(cells[2], Directions.left);
-            cells[2].setNeighbour(cells[3], Directions.left);
-            cells[3].setNeighbour(cells[4], Directions.left);
-            cells[4].setNeighbour(cells[5], Directions.left);
-
-
-            w.getPlayers(0).setPlace(cells[0]);
-            //w.getPlayers(1).setPlace(cells[2]);
-            Box b = new Box();
-            //Entity b2 = new Box();
-
-            b.setPlace(cells[1]);
-            //b2.setPlace(cells[3]);
-
-            cells[0].setHolding(w.getPlayers(0));
-            cells[1].setHolding(b);
-            //cells[2].setHolding(w.getPlayers(1));
-            //cells[3].setHolding(b2);
-
-            cells[3].setWarehouse(w);
-            w.addBox(b);
-
-            w.getPlayers(0).move(Directions.left,w.getPlayers(0).getOwner());
-            w.getPlayers(0).move(Directions.left,w.getPlayers(0).getOwner());
-
-            if (cells[3].getHolding()==null)
-                System.out.println("nemyo");
-            else
-                System.out.println("yo");
-            System.out.println(w.getPlayers(0).getScore());
-
-        //} catch (Exception e){}
+            boolean escape = false;
+            while(!escape)
+            try {
+                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    System.out.println("Lehetőségek:");
+                    System.out.println("0: Kilépés");
+                    System.out.println("1: Pályagenerálás");
+                    System.out.println("2: Játékos üres mezőre mozog");
+                    System.out.println("3: Játékos falnak ütközik");
+                    System.out.println("4: Játékos lyukba esik");
+                    System.out.println("5: Doboz eltolás üres mezőre");
+                    System.out.println("6: Doboz falnak tolá1sa");
+                    System.out.println("7: Doboz lyukba tolása");
+                    System.out.println("8: Doboz kapcsolóra tolása");
+                    System.out.println("9: Dobozzal másik doboz tolása");
+                    System.out.println("10: Másik játékos eltolása");
+                    System.out.println("11: Játékos falnak tolása");
+                    System.out.println("12: Játékos lyukba lökése");
+                    System.out.println("13: Játékos nem továbbtolható mezőre tolása");
+                    System.out.println("14: Játékos továbbtolható mezőre tolása");
+                    System.out.println("15: Kinyíló lyukon doboz áll");
+                    System.out.println("16: Kinyíló lyukon másik játékos áll");
+                    System.out.println("17: Kinyíló lyukon a toló játékos áll");
+                    System.out.println("18: Játékos célra lép");
+                    System.out.println("19: Dobozt célra tolják");
+                    String s = br.readLine();
+                    switch (s){
+                            case "0":
+                                    escape = true;
+                                    break;
+                            case "1":
+                                    Test1.run();
+                                    break;
+                            case "2":
+                                    Test2.run();
+                                    break;
+                            case "3":
+                                    Test3.run();
+                                    break;
+                            case "4":
+                                    Test4.run();
+                                    break;
+                            case "5":
+                                    Test5.run();
+                                    break;
+                            case "6":
+                                    Test6.run();
+                                    break;
+                            case "7":
+                                    Test7.run();
+                                    break;
+                            case "8":
+                                    Test8.run();
+                                    break;
+                            case "9":
+                                    Test9.run();
+                                    break;
+                            case "10":
+                                    Test10.run();
+                                    break;
+                            case "11":
+                                    Test11.run();
+                                    break;
+                            case "12":
+                                    Test12.run();
+                                    break;
+                            case "13":
+                                    Test13.run();
+                                    break;
+                            case "14":
+                                    Test14.run();
+                                    break;
+                            case "15":
+                                    Test15.run();
+                                    break;
+                            case "16":
+                                    Test16.run();
+                                    break;
+                            case "17":
+                                    Test17.run();
+                                    break;
+                            case "18":
+                                    Test18.run();
+                                    break;
+                            case "19":
+                                    Test19.run();
+                                    break;
+                            default:
+                                    System.out.println("Rossz input!");
+                    }
+            } catch (Exception e){
+                    System.out.println(e);
+            }
     }
 }

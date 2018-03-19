@@ -20,6 +20,13 @@ public class Player extends Entity{
         setOwner(this);
     }
 
+    public Player(String name){
+        super();
+        score = 0;
+        setOwner(this);
+        this.name=name;
+    }
+
     /**
      * Megadja a játékos aktuális pontszámát.
      * @return A játékos aktuális pontszáma.
@@ -50,8 +57,10 @@ public class Player extends Entity{
     public boolean move(Directions dir, Entity mOwner) {
         Logger.begin(this, "move");
         if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            getPlace().removeEntity();
-            setPlace(getPlace().getNeighbour(dir));
+            if(getPlace()!=null){
+                getPlace().removeEntity();
+                setPlace(getPlace().getNeighbour(dir));
+            }
         } else {
             if(!mOwner.equals(this)){
                 die();
