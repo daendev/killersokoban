@@ -5,10 +5,15 @@ public class Test19 {
         Warehouse warehouse_1 = new Warehouse("warehouse_1");
 
         Cell Cell_1 = new Cell("Cell_1");
+        Cell_1.setWarehouse(warehouse_1);
         Cell Cell_2 = new Cell("Cell_2");
+        Cell_2.setWarehouse(warehouse_1);
         Goal Goal_1 = new Goal("Goal_1");
+        Goal_1.setWarehouse(warehouse_1);
         Player Player_1 = new Player("Player_1");
+        Player_1.setWarehouse(warehouse_1);
         Box Box_1 = new Box("Box_1");
+        Box_1.setWarehouse(warehouse_1);
         Player_1.setPlace(Cell_1);
         Cell_1.setHolding(Player_1);
         Box_1.setPlace(Cell_2);
