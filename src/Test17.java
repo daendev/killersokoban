@@ -2,6 +2,9 @@ import sokoban.*;
 
 public class Test17 {
     public static void run(){
+
+        Warehouse warehouse_1 = new Warehouse("warehouse_1");
+
         Cell Cell_1 = new Cell("Cell_1");
 
         SwitchableHole SwitchableHole_1 = new SwitchableHole("SwitchableHole_1");
@@ -19,6 +22,9 @@ public class Test17 {
         SwitchableHole_1.setNeighbour(Cell_1, Directions.left);
         SwitchableHole_1.setNeighbour(Switch_1, Directions.right);
         Switch_1.setNeighbour(SwitchableHole_1, Directions.left);
+
+        warehouse_1.addPlayer(Player_1);
+        warehouse_1.addBox(Box_1);
 
         Player_1.move(Directions.right, Player_1);
     }
