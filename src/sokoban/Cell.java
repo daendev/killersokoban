@@ -124,6 +124,7 @@ public class Cell {
         Logger.begin(this, "acceptEntity");
         if(holding == null){
             holding = n;
+            Logger.end(this, "acceptEntity", Boolean.toString(true));
             return true;
         } else if (holding.move(dir, mOwner)){
             holding = n;

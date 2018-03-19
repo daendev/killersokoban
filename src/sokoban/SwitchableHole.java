@@ -45,6 +45,7 @@ public class SwitchableHole extends Hole{
         } else {
             if(getHolding() == null){
                 setHolding(n);
+                Logger.end(this, "acceptEntity", Boolean.toString(true));
                 return true;
             } else if (getHolding().move(dir, mOwner)){
                 setHolding(n);

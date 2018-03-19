@@ -6,7 +6,7 @@ public class Logger {
 
     private static HashMap<Object, String> names = new HashMap<>();
     private static int indent = 0;
-    private static String indentString = "  ";
+    private static String indentString = "   ";
 
 
     public static void createObject(Object obj, String name){
@@ -28,14 +28,14 @@ public class Logger {
 
 
     public static void end(Object obj, String methodName, String returnValue){
+        --indent;
         indentation();
         if(returnValue.equals("void"))
-            System.out.println("Method " + methodName + "() ended.");
+            System.out.println("<= Method " + methodName + "() ended.");
         else
             System.out.println(
                 "<= Method " + methodName + " ended with return value " + returnValue + "."
             );
-        --indent;
     }
 
 
@@ -43,5 +43,9 @@ public class Logger {
         for ( int i = 0; i < indent; ++i ) {
             System.out.printf(indentString);
         }
+    }
+
+    public static void reset(){
+        indent = 0;
     }
 }
