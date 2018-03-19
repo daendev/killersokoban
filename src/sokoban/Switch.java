@@ -29,9 +29,11 @@ public class Switch extends Cell {
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+        Logger.begin(this, "acceptEntity");
         boolean succesful = super.acceptEntity(n, dir, mOwner);
         if(succesful)
             n.stepOnSwitch(hole, mOwner);
+        Logger.end(this, "acceptEntity", Boolean.toString(succesful));
         return succesful;
     }
 
@@ -40,7 +42,9 @@ public class Switch extends Cell {
      */
     @Override
     public void removeEntity() {
+        Logger.begin(this, "removeEntity");
         super.removeEntity();
         hole.setOpen(false, null);
+        Logger.end(this, "removeEntity", "void");
     }
 }

@@ -17,10 +17,12 @@ public class SwitchableHole extends Hole{
      * @param mOwner Aki beállíttott a kapcsoló állapotát.
      */
     public void setOpen(boolean open, Entity mOwner) {
+        Logger.begin(this, "setOpen");
         this.open = open;
         if (open && getHolding() != null){
             getHolding().stepOnHole(mOwner);
         }
+        Logger.end(this, "setOpen", "void");
     }
 
     /**
@@ -32,6 +34,7 @@ public class SwitchableHole extends Hole{
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+        Logger.begin(this, "acceptEntity");
         if (open) {
             return super.acceptEntity(n, dir, mOwner);
         } else {
@@ -40,8 +43,10 @@ public class SwitchableHole extends Hole{
                 return true;
             } else if (getHolding().move(dir, mOwner)){
                 setHolding(n);
+                Logger.end(this, "acceptEntity", Boolean.toString(true));
                 return true;
             }
+            Logger.end(this, "acceptEntity", Boolean.toString(false));
             return false;
         }
 

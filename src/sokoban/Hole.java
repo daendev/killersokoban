@@ -1,5 +1,7 @@
 package sokoban;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 /**
  * A játékban a lyukakat megvalósító osztály.
  * @see Cell
@@ -15,7 +17,9 @@ public class Hole extends Cell {
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+        Logger.begin(this, "acceptEntity");
         n.stepOnHole(mOwner);
+        Logger.end(this, "acceptEntity", Boolean.toString(true));
         return true;
     }
 }

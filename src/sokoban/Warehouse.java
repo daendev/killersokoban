@@ -39,8 +39,11 @@ public class Warehouse {
      */
     public Warehouse(int playerNum){
         players = new ArrayList<>();
-        for (int i=0; i<playerNum; i++)
-            players.add(new Player());
+        for (int i=0; i<playerNum; i++) {
+            Player p = new Player();
+            players.add(p);
+            Logger.createObject(p, new String("player" + i));
+        }
         boxes = new ArrayList<>();
     }
 
@@ -50,6 +53,8 @@ public class Warehouse {
      * @return A kért játékos.
      */
     public Player getPlayers(int a) {
+        Logger.begin(this, "getPlayers");
+        Logger.end(this, "getPlayers", players.get(a).toString());
         return players.get(a);
     }
 
@@ -58,6 +63,8 @@ public class Warehouse {
      * @param b A hozzáadandó doboz.
      */
     public void addBox(Box b){
+        Logger.begin(this, "addBox");
+        Logger.end(this, "addBox", "void");
         boxes.add(b);
     }
 
@@ -70,8 +77,10 @@ public class Warehouse {
      * @see Player
      */
     public void removeEntity(Entity e){
+        Logger.begin(this, "removeEntity");
         if (boxes.contains(e)) boxes.remove(e);
         else if(players.contains(e)) e.die();
+        Logger.end(this, "removeEntity", "void");
     }
 
 }

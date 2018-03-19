@@ -23,13 +23,16 @@ public class Box extends Entity{
      */
     @Override
     public boolean move(Directions dir, Entity mOwner) {
+        Logger.begin(this, "move");
         if(!getOwner().equals(this))
             return false;
         if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
             getPlace().removeEntity();
             setPlace(getPlace().getNeighbour(dir));
+            Logger.end(this, "move", Boolean.toString(true));
             return true;
         }
+        Logger.end(this, "move", Boolean.toString(false));
         return false;
     }
 
@@ -40,8 +43,10 @@ public class Box extends Entity{
      */
     @Override
     public void stepOnGoal(Entity mOwner) {
+        Logger.begin(this, "stepOnGoal");
         setOwner(mOwner);
         mOwner.addScore(1);
+        Logger.end(this, "stepOnGoal", "void");
     }
 
     /**
@@ -51,7 +56,9 @@ public class Box extends Entity{
      */
     @Override
     public void stepOnHole(Entity mOwner) {
+        Logger.begin(this, "stepOnHole");
 		getWarehouse().removeEntity(this);
+        Logger.end(this, "stepOnHole", "void");
     }
 
     /**
@@ -62,7 +69,9 @@ public class Box extends Entity{
      */
     @Override
     public void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner) {
+        Logger.begin(this, "stepOnSwitch");
         aSwitch.setOpen(true, mOwner);
+        Logger.end(this, "stepOnSwitch", "void");
     }
 
     /**
@@ -72,6 +81,8 @@ public class Box extends Entity{
      */
     @Override
     public void die() {
+        Logger.begin(this, "die");
+        Logger.end(this, "die", "void");
 
     }
 
@@ -82,6 +93,7 @@ public class Box extends Entity{
      */
     @Override
     public void addScore(int amount){
-
+        Logger.begin(this, "addScore");
+        Logger.end(this, "addScore", "void");
     }
 }

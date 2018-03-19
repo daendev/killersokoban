@@ -21,7 +21,7 @@ public class Logger {
     public static void begin(Object obj, String methodName){
         indentation();
         System.out.println(
-                "=> Method " + methodName + " called on object \"" + names.get(obj) + "\"."
+                "=> Method " + methodName + "() called on object \"" + names.get(obj) + "\"."
         );
         ++indent;
     }
@@ -30,7 +30,7 @@ public class Logger {
     public static void end(Object obj, String methodName, String returnValue){
         indentation();
         if(returnValue.equals("void"))
-            System.out.println("Method " + methodName + " ended.");
+            System.out.println("Method " + methodName + "() ended.");
         else
             System.out.println(
                 "<= Method " + methodName + " ended with return value " + returnValue + "."

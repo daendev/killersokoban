@@ -15,6 +15,8 @@ public class Wall extends Cell {
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+        Logger.begin(this, "acceptEntity");
+        Logger.end(this, "acceptEntity", Boolean.toString(false));
         return false;
     }
 }

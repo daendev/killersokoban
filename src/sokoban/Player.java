@@ -25,6 +25,8 @@ public class Player extends Entity{
      * @return A játékos aktuális pontszáma.
      */
     public int getScore() {
+        Logger.begin(this, "getScore");
+        Logger.end(this, "getScore", Integer.toString(score));
         return score;
     }
 
@@ -33,7 +35,9 @@ public class Player extends Entity{
      * @param score Az új érték.
      */
     public void setScore(int score) {
+        Logger.begin(this, "setScore");
         this.score = score;
+        Logger.end(this, "setScore", "void");
     }
 
     /**
@@ -44,6 +48,7 @@ public class Player extends Entity{
      */
     @Override
     public boolean move(Directions dir, Entity mOwner) {
+        Logger.begin(this, "move");
         if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
             getPlace().removeEntity();
             setPlace(getPlace().getNeighbour(dir));
@@ -53,6 +58,7 @@ public class Player extends Entity{
                 mOwner.addScore(1);
             }
         }
+        Logger.end(this, "move", Boolean.toString(true));
         return true;
     }
 
@@ -61,7 +67,9 @@ public class Player extends Entity{
      * @param amount A pontok mennyisége.
      */
     public void addScore(int amount){
+        Logger.begin(this, "addScore");
         score+=amount;
+        Logger.end(this, "addScore", "void");
     }
 
     /**
@@ -69,8 +77,10 @@ public class Player extends Entity{
      */
     @Override
     public void die(){
+        Logger.begin(this, "die");
         getPlace().setHolding(null);
         setPlace(null);
+        Logger.end(this, "die", "void");
     }
 
     /**
@@ -79,9 +89,11 @@ public class Player extends Entity{
      */
     @Override
     public void stepOnHole(Entity mOwner) {
+        Logger.begin(this, "stepOnHole");
         if(!mOwner.equals(this))
             mOwner.addScore(1);
         getWarehouse().removeEntity(this);
+        Logger.end(this, "stepOnHole", "void");
     }
 
     /**
@@ -93,7 +105,8 @@ public class Player extends Entity{
      */
     @Override
     public void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner) {
-
+        Logger.begin(this, "stepOnSwitch");
+        Logger.end(this, "stepOnSwitch", "void");
     }
 
     /**
@@ -104,6 +117,7 @@ public class Player extends Entity{
      */
     @Override
     public void stepOnGoal(Entity mOwner) {
-
+        Logger.begin(this, "stepOnGoal");
+        Logger.end(this, "stepOnGoal", "void");
     }
 }

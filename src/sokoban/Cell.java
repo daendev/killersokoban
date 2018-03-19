@@ -30,6 +30,10 @@ public class Cell {
      */
     public Cell(){
         neighbours = new Cell[4];
+        Logger.createObject(neighbours[0], "neighbour0");
+        Logger.createObject(neighbours[1], "neighbour1");
+        Logger.createObject(neighbours[2], "neighbour2");
+        Logger.createObject(neighbours[3], "neighbour3");
     }
 
     /**
@@ -38,6 +42,10 @@ public class Cell {
      */
     public Cell(Warehouse w){
         neighbours = new Cell[4];
+        Logger.createObject(neighbours[0], "neighbour0");
+        Logger.createObject(neighbours[1], "neighbour1");
+        Logger.createObject(neighbours[2], "neighbour2");
+        Logger.createObject(neighbours[3], "neighbour3");
         warehouse = w;
     }
 
@@ -46,7 +54,9 @@ public class Cell {
      * @param warehouse A raktár, ahol a cellának lennie kell.
      */
     public void setWarehouse(Warehouse warehouse) {
+        Logger.begin(this, "setWarehouse");
         this.warehouse = warehouse;
+        Logger.end(this, "setWarehouse", "void");
     }
 
     /**
@@ -54,6 +64,8 @@ public class Cell {
      * @return A cellát tartalmazó raktár.
      */
     public Warehouse getWarehouse() {
+        Logger.begin(this, "getWarehouse");
+        Logger.end(this, "getWarehouse", warehouse.toString());
         return warehouse;
     }
 
@@ -63,6 +75,8 @@ public class Cell {
      * @see Entity
      */
     public Entity getHolding() {
+        Logger.begin(this, "getHolding");
+        Logger.end(this, "getHolding", holding.toString());
         return holding;
     }
 
@@ -72,7 +86,9 @@ public class Cell {
      * @see Entity
      */
     public void setHolding(Entity holding) {
+        Logger.begin(this, "setHolding");
         this.holding = holding;
+        Logger.end(this, "setHolding", "void");
     }
 
     /**
@@ -81,6 +97,8 @@ public class Cell {
      * @return Az adott irányban lévő szomszéd.
      */
     public Cell getNeighbour(Directions d) {
+        Logger.begin(this, "getNeighbour");
+        Logger.end(this, "getNeighbour", neighbours[d.ordinal()].toString());
         return neighbours[d.ordinal()];
     }
 
@@ -90,7 +108,9 @@ public class Cell {
      * @param dir Amelyik irányban állítja be.
      */
     public void setNeighbour(Cell neighbour, Directions dir ) {
+        Logger.begin(this, "setNeighbour");
         this.neighbours[dir.ordinal()] = neighbour;
+        Logger.end(this, "setNeighbour", "void");
     }
 
     /**
@@ -101,13 +121,16 @@ public class Cell {
      * @return Sikeresen befogadta-e az új dolgot.
      */
     public boolean acceptEntity(Entity n, Directions dir, Entity mOwner){
+        Logger.begin(this, "acceptEntity");
         if(holding == null){
             holding = n;
             return true;
         } else if (holding.move(dir, mOwner)){
             holding = n;
+            Logger.end(this, "acceptEntity", Boolean.toString(true));
             return true;
         }
+        Logger.end(this, "acceptEntity", Boolean.toString(false));
         return false;
     }
 
@@ -115,6 +138,8 @@ public class Cell {
      * Eltávolítja a cella tartalmát.
      */
     public void removeEntity(){
+        Logger.begin(this, "removeEntity");
         holding = null;
+        Logger.end(this, "removeEntity", "void");
     }
 }

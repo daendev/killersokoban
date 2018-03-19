@@ -15,10 +15,13 @@ public class Goal extends Cell{
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+        Logger.begin(this, "acceptEntity");
         if(super.acceptEntity(n, dir, mOwner)) {
             n.stepOnGoal(mOwner);
+            Logger.end(this, "acceptEntity", Boolean.toString(true));
             return true;
         }
+        Logger.end(this, "acceptEntity", Boolean.toString(false));
         return false;
     }
 }
