@@ -52,8 +52,10 @@ public class Player extends Entity{
     @Override
     public boolean move(Directions dir, Entity mOwner) {
         if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            getPlace().removeEntity();
-            setPlace(getPlace().getNeighbour(dir));
+            if(getPlace()!=null){
+                getPlace().removeEntity();
+                setPlace(getPlace().getNeighbour(dir));
+            }
         } else {
             if(!mOwner.equals(this)){
                 die();

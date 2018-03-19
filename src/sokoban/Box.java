@@ -33,8 +33,10 @@ public class Box extends Entity{
         if(!getOwner().equals(this))
             return false;
         if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            getPlace().removeEntity();
-            setPlace(getPlace().getNeighbour(dir));
+            if(getPlace() != null){
+                getPlace().removeEntity();
+                setPlace(getPlace().getNeighbour(dir));
+            }
             return true;
         }
         return false;
