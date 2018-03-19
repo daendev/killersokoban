@@ -6,12 +6,18 @@ public class Test17 {
         Warehouse warehouse_1 = new Warehouse("warehouse_1");
 
         Cell Cell_1 = new Cell("Cell_1");
+        Cell_1.setWarehouse(warehouse_1);
 
         SwitchableHole SwitchableHole_1 = new SwitchableHole("SwitchableHole_1");
+        SwitchableHole_1.setWarehouse(warehouse_1);
+
 
         Switch Switch_1 = new Switch("Switch_1", SwitchableHole_1);
+        Switch_1.setWarehouse(warehouse_1);
         Player Player_1 = new Player("Player_1");
+        Player_1.setWarehouse(warehouse_1);
         Box Box_1 = new Box("Box_1");
+        Box_1.setWarehouse(warehouse_1);
 
         Player_1.setPlace(Cell_1);
         Cell_1.setHolding(Player_1);
