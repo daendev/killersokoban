@@ -2,6 +2,8 @@ import sokoban.*;
 
 public class Test19 {
     public static void run(){
+        Warehouse warehouse_1 = new Warehouse("warehouse_1");
+
         Cell Cell_1 = new Cell("Cell_1");
         Cell Cell_2 = new Cell("Cell_2");
         Goal Goal_1 = new Goal("Goal_1");
@@ -15,6 +17,8 @@ public class Test19 {
         Cell_2.setNeighbour(Cell_1, Directions.left);
         Cell_2.setNeighbour(Goal_1, Directions.right);
         Goal_1.setNeighbour(Cell_2, Directions.left);
+
+        warehouse_1.addPlayer(Player_1);
         Player_1.move(Directions.right, Player_1);
     }
 }
