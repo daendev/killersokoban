@@ -109,6 +109,10 @@ public class Player extends Entity{
         getWarehouse().removeEntity(this);
     }
 
+    public void applyFluids(Stickyness sticky){
+        getPlace().setSticky(sticky);
+    }
+
     /**
      * A játékos kapcsolóra lépését kezeli. Kompatibilitás céljából megvalósított függvény.
      * @param aSwitch A kapcsolóhoz tartozó lyuk.
