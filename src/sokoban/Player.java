@@ -12,6 +12,11 @@ public class Player extends Entity{
     private int score;
 
     /**
+     * A munkás ereje.
+     */
+    private double strenght;
+
+    /**
      * Létrehozza a játékost. Kezdetben nincsen pontja.
      */
     public Player(){
@@ -37,23 +42,43 @@ public class Player extends Entity{
     }
 
     /**
+     * Visszaadja a munkás erejét.
+     * @return A munkás ereje.
+     */
+    public double getStrenght() {
+        return strenght;
+    }
+
+    /**
+     * Beállítja a munkás erejét.
+     * @param strenght A munkás új ereje.
+     */
+    public void setStrenght(double strenght) {
+        this.strenght = strenght;
+    }
+
+    /**
      * A játékos mozgása.
      * @param dir A mozgatás iránya.
      * @param mOwner Aki a mozgást kezdeményezte.
      * @return Sikeres volt-e a mozgás.
      */
     @Override
-    public boolean move(Directions dir, Entity mOwner) {
-        if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            getPlace().removeEntity();
-            setPlace(getPlace().getNeighbour(dir));
-        } else {
-            if(!mOwner.equals(this)){
-                die();
-                mOwner.addScore(1);
+    public boolean move(Directions dir, Player mOwner, double weight) {
+        if (weight + getFriction() >= mOwner.getStrenght()) {
+            if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
+                getPlace().removeEntity();
+                setPlace(getPlace().getNeighbour(dir));
+            } else {
+                if (!mOwner.equals(this)) {
+                    die();
+                    mOwner.addScore(1);
+                }
             }
+            return true;
         }
-        return true;
+        else
+            return false;
     }
 
     /**

@@ -25,6 +25,11 @@ public class Cell {
     private Warehouse warehouse;
 
     /**
+     * Mennyire csúszós a cella.
+     */
+    private Stickyness sticky;
+
+    /**
      * Létrehozza a cellát.
      * TESZTELÉS CÉLJÁRA
      */
@@ -94,17 +99,33 @@ public class Cell {
     }
 
     /**
+     * Megadja, hogy mennyire csúszós a cella.
+     * @return A cella csúszóssága.
+     */
+    public double getSticky() {
+        return sticky.getValue();
+    }
+
+    /**
+     * Beállítja a csúszósságát.
+     * @param sticky Mennyire legyen csúszós a cella.
+     */
+    public void setSticky(Stickyness sticky) {
+        this.sticky = sticky;
+    }
+
+    /**
      * Befogad valamit a cellára (tolás során) és ráhelyezi.
      * @param n Amit befogad.
      * @param dir Amelyik irányban tolódik a befogadott dolog.
      * @param mOwner Aki a tolást kezdeményezte, ezzel rátolva a cellára az új dolgot és letolva a régit.
      * @return Sikeresen befogadta-e az új dolgot.
      */
-    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner){
+    public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight){
         if(holding == null){
             holding = n;
             return true;
-        } else if (holding.move(dir, mOwner)){
+        } else if (holding.move(dir, mOwner, weight)){
             holding = n;
             return true;
         }

@@ -23,6 +23,11 @@ public abstract class Entity {
     private Warehouse warehouse;
 
     /**
+     * Az entitás nehézsége. Tolásnál fontos.
+     */
+    private double weight;
+
+    /**
      * Létrehozza az entitást.
      */
     public Entity() {
@@ -79,12 +84,36 @@ public abstract class Entity {
     }
 
     /**
+     * Az entitás súlyát adja vissza.
+     * @return Mennyire nehéz az entitás.
+     */
+    public double getWeight() {
+        return weight;
+    }
+
+    /**
+     * Beállítja az entitás súlyát.
+     * @param weight Mennyire legyen nehéz az entitás.
+     */
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * Mennyire nehéz eltolni az entitást a mezőről, amin áll.
+     * @return Lásd fönt.
+     */
+    public double getFriction(){
+        return getWeight()*getPlace().getSticky();
+    }
+
+    /**
      * Mozgatja az entitást
      * @param dir A mozgatás iránya.
      * @param mOwner Aki a tolást kezdeményezte.
      * @return Sikeresen mozgott-e az entitás.
      */
-    public abstract boolean move(Directions dir, Entity mOwner);
+    public abstract boolean move(Directions dir, Player mOwner, double weight);
 
     /**
      * Az entitás célra érkezését kezeli.

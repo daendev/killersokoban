@@ -14,8 +14,8 @@ public class Goal extends Cell{
      * @return Sikeresen befogadta-e az új dolgot.
      */
     @Override
-    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
-        if(super.acceptEntity(n, dir, mOwner)) {
+    public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
+        if(super.acceptEntity(n, dir, mOwner, weight)) {
             n.stepOnGoal(mOwner);
             return true;
         }

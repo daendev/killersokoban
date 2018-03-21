@@ -22,13 +22,15 @@ public class Box extends Entity{
      * @return Sikeresen arrébb tolódott-e a doboz.
      */
     @Override
-    public boolean move(Directions dir, Entity mOwner) {
-        if(!getOwner().equals(this))
-            return false;
-        if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner)){
-            getPlace().removeEntity();
-            setPlace(getPlace().getNeighbour(dir));
-            return true;
+    public boolean move(Directions dir, Player mOwner, double weight) {
+        if (weight + getFriction() >= mOwner.getStrenght()) {
+            if (!getOwner().equals(this))
+                return false;
+            if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
+                getPlace().removeEntity();
+                setPlace(getPlace().getNeighbour(dir));
+                return true;
+            }
         }
         return false;
     }

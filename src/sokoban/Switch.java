@@ -28,8 +28,8 @@ public class Switch extends Cell {
      * @return Sikeresen befogadta-e.
      */
     @Override
-    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
-        boolean succesful = super.acceptEntity(n, dir, mOwner);
+    public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
+        boolean succesful = super.acceptEntity(n, dir, mOwner, weight);
         if(succesful)
             n.stepOnSwitch(hole, mOwner);
         return succesful;
