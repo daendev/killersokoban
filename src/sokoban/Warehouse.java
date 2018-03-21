@@ -3,6 +3,7 @@ package sokoban;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -77,10 +78,42 @@ public class Warehouse {
     public void draw(){
         for (Cell c: map
              ) {
+            c.draw();
             if (c.getNeighbour(Directions.right) == null)
                 System.out.println("");
-            c.draw();
         }
+    }
+
+    public void generateMap(int dim){
+
+        map = new ArrayList<Cell>();
+
+        for (int i=0; i<dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                if (i == 0 || j == 0) map.add(new Wall());
+                else if (i == dim-1 || j == dim-1) map.add(new Wall());
+                else map.add(new Cell());
+            }
+        }
+
+        int a = (new Random()).nextInt(dim/2) + 1;
+        int b = (new Random()).nextInt(dim/3) + 1;
+
+        map.remove(a*dim+b);
+        map.add(a*dim+b, new Hole());
+
+
+        for (Cell c: map
+             ) {
+            if (map.indexOf(c) % dim != dim-1) {
+                c.setNeighbour(map.get(map.indexOf(c)+1), Directions.right);
+            }
+        }
+
+
+        boxes.add(new Box());
+        boxes.get(0).setPlace(map.get(dim+1));
+        map.get(dim+1).setHolding(boxes.get(0));
     }
 
 }
