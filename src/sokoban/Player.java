@@ -109,7 +109,7 @@ public class Player extends Entity{
         getWarehouse().removeEntity(this);
     }
 
-    public void applyFluids(Stickyness sticky){
+    public void applyFluid(Stickyness sticky){
         getPlace().setSticky(sticky);
     }
 
