@@ -145,4 +145,6 @@ public abstract class Entity {
      * Kompatibilitást szolgáló absztrakt függvény.
      */
     public abstract void die();
+
+    public abstract void draw();
 }

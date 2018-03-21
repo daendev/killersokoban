@@ -1,5 +1,7 @@
 package sokoban;
 
+import javax.xml.ws.WebServiceProvider;
+
 /**
  * A játékban a célhelyeket megvalósító osztály.
  * @see Cell
@@ -20,5 +22,10 @@ public class Goal extends Cell{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void draw(){
+        System.out.print("X");
     }
 }

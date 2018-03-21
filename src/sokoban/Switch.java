@@ -43,4 +43,9 @@ public class Switch extends Cell {
         super.removeEntity();
         hole.setOpen(false, null);
     }
+
+    @Override
+    public void draw() {
+        System.out.print("S");
+    }
 }

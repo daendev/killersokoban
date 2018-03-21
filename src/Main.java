@@ -1,4 +1,3 @@
-import sokoban.Cell;
 import sokoban.*;
 
 

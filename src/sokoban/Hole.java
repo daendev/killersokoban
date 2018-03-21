@@ -18,4 +18,9 @@ public class Hole extends Cell {
         n.stepOnHole(mOwner);
         return true;
     }
+
+    @Override
+    public void draw(){
+        System.out.print("O");
+    }
 }

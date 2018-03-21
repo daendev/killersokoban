@@ -17,4 +17,9 @@ public class Wall extends Cell {
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
         return false;
     }
+
+    @Override
+    public void draw() {
+        System.out.print("W");
+    }
 }

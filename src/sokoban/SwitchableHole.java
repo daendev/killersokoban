@@ -31,19 +31,26 @@ public class SwitchableHole extends Hole{
      * @return Sikeresen befogadta-e az új dolgot.
      */
     @Override
-    public boolean acceptEntity(Entity n, Directions dir, Entity mOwner) {
+    public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
         if (open) {
-            return super.acceptEntity(n, dir, mOwner);
+            return super.acceptEntity(n, dir, mOwner, weight);
         } else {
             if(getHolding() == null){
                 setHolding(n);
                 return true;
-            } else if (getHolding().move(dir, mOwner)){
+            } else if (getHolding().move(dir, mOwner, weight)){
                 setHolding(n);
                 return true;
             }
             return false;
         }
+    }
 
+    @Override
+    public void draw() {
+        if (open)
+            System.out.print("Q");
+        else
+            System.out.print("L");
     }
 }

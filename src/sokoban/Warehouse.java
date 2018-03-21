@@ -13,7 +13,7 @@ public class Warehouse {
     /**
      * Azok a cellák, amik ebben a raktárban vannak.
      */
-    private Cell[] map;
+    private List<Cell> map;
 
     /**
      * A raktárban található dobozok.
@@ -72,6 +72,15 @@ public class Warehouse {
     public void removeEntity(Entity e){
         if (boxes.contains(e)) boxes.remove(e);
         else if(players.contains(e)) e.die();
+    }
+
+    public void draw(){
+        for (Cell c: map
+             ) {
+            if (c.getNeighbour(Directions.right) == null)
+                System.out.println("");
+            c.draw();
+        }
     }
 
 }

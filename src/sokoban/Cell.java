@@ -138,4 +138,11 @@ public class Cell {
     public void removeEntity(){
         holding = null;
     }
+
+    public void draw(){
+        if (holding != null)
+            holding.draw();
+        else
+            System.out.print("_");
+    }
 }

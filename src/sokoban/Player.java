@@ -135,4 +135,8 @@ public class Player extends Entity{
     public void stepOnGoal(Entity mOwner) {
 
     }
+
+    public void draw(){
+        System.out.print("P");
+    }
 }

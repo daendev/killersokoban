@@ -86,4 +86,9 @@ public class Box extends Entity{
     public void addScore(int amount){
 
     }
+
+    @Override
+    public void draw() {
+        System.out.print("B");
+    }
 }
