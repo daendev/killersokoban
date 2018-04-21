@@ -140,6 +140,7 @@ public class Test {
             int width = Integer.parseInt(read.get(0));
             int height = Integer.parseInt(read.get(1));
             int switchNum = 0;
+            w.wipe();
             for (int i = 0; i < height; i++) {
                 String row = bufferedReader.readLine();
                 for (int j=0; j<row.length(); j++){

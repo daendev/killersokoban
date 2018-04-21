@@ -15,6 +15,7 @@ public class Box extends Entity{
     {
         super();
         setOwner(this);
+        setWeight(1);
     }
 
     /**

@@ -25,6 +25,8 @@ public class Player extends Entity{
     public Player(){
         super();
         score = 0;
+        strenght = 3;
+        setWeight(1);
         setOwner(this);
     }
 
@@ -68,7 +70,7 @@ public class Player extends Entity{
      */
     @Override
     public boolean move(Directions dir, Player mOwner, double weight) {
-        if (weight + getFriction() >= mOwner.getStrenght()) {
+        if (weight + getFriction() <= mOwner.getStrenght()) {
             if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
                 if(getPlace()!=null){
                     getPlace().removeEntity();

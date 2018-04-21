@@ -208,4 +208,10 @@ public class Warehouse {
     public List<Switch> getSwitches() {
         return switches;
     }
+
+    public void wipe(){
+        map.clear();
+        boxes.clear();
+        players.clear();
+    }
 }
