@@ -6,9 +6,10 @@ public class Main {
     public static void main(String[] args) {
         Warehouse w = new Warehouse();
         Test t = new Test(w);
-        while(true){
+        boolean exit = false;
+        while(!exit){
             t.readCommand();
-            t.executeCommand();
+            exit = t.executeCommand();
         }
     }
 }

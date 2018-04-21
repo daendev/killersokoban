@@ -30,7 +30,7 @@ public class Test {
         }
     }
 
-    public void executeCommand(){
+    public boolean executeCommand(){
         switch (command.get(0)) {
             case "generate":
                 if (command.size() < 2)
@@ -128,7 +128,10 @@ public class Test {
                 else
                     save(command.get(1));
                 break;
+            default:
+                return true;
         }
+        return false;
     }
 
     public void load(String fileName){
