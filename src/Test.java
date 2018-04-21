@@ -60,12 +60,17 @@ public class Test {
                 break;
 
             case "drawmap":
+                w.draw();
                 break;
 
             case "listplayers":
+                for (int i=0; i<w.getPlayers().size(); i++)
+                    System.out.println("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore());
                 break;
 
             case "listboxes":
+                for (int i=0; i<w.getBoxes().size(); i++)
+                    System.out.println("idx: " + i + " pos: " + w.getBoxes().get(i).getPlace().getX() + " " + w.getBoxes().get(i).getPlace().getY());
                 break;
 
             case "move":
