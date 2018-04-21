@@ -35,13 +35,42 @@ public class Test {
 
     public void executeCommand(){
         switch (command.get(0)) {
+            case "generate":
+                break;
 
+            case "add":
+                break;
+
+            case "remove":
+                break;
+
+            case "changecell":
+                break;
+
+            case "drawmap":
+                break;
+
+            case "listplayers":
+                break;
+
+            case "listboxes":
+                break;
+
+            case "move":
+                break;
+
+            case "put":
+                break;
+
+            case "load":
+                break;
 
             case "save":
                 if (command.size() == 1)
                     System.out.println("Hiányzó fájlnév!");
                 else
                     save(command.get(1));
+                break;
         }
     }
 
@@ -66,9 +95,6 @@ public class Test {
                 file.write( w.getSwitches().get(i).getHole().getX() + " ");
                 file.write( w.getSwitches().get(i).getHole().getY() + "\n");
             }
-
-            file.write("kapcsolók");
-
 
             file.close();
         } catch (IOException e) {
