@@ -172,6 +172,7 @@ public class Test {
                 int x = Integer.parseInt(read.get(0));
                 int y = Integer.parseInt(read.get(1));
                 w.getPlayers().add(new Player());
+                w.getPlayers().get(i).setWarehouse(w);
                 w.getPlayers().get(i).setPlace(w.getMap().get(x + y*width));
                 w.getMap().get(x + y*width).setHolding(w.getPlayers().get(i));
             }
@@ -182,6 +183,7 @@ public class Test {
                 int x = Integer.parseInt(read.get(0));
                 int y = Integer.parseInt(read.get(1));
                 w.getBoxes().add(new Box());
+                w.getBoxes().get(i).setWarehouse(w);
                 w.getBoxes().get(i).setPlace(w.getMap().get(x + y*width));
                 w.getMap().get(x + y*width).setHolding(w.getBoxes().get(i));
             }
@@ -197,6 +199,7 @@ public class Test {
 
             for (int i = 0; i<width; i++){
                 for(int j = 0; j<height; j++){
+                    w.getMap().get(i + j * width).setWarehouse(w);
                     if(j!=0)
                         w.getMap().get(i + j * width).setNeighbour(w.getMap().get(i + (j-1) * width), Directions.top);
                     if(j!=height-1)
