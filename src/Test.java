@@ -1,6 +1,4 @@
-import sokoban.Box;
-import sokoban.Player;
-import sokoban.Warehouse;
+import sokoban.*;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -71,10 +69,42 @@ public class Test {
                 break;
 
             case "move":
+                if (command.size() != 3)
+                    System.out.println("Nem megfelelő paraméterek! helyesen: move <játékos száma> <up|down|left|right>");
+                else {
+                    int player = Integer.parseInt(command.get(1));
+                    switch (command.get(2)) {
+                        case "up":
+                            w.getPlayer(player).move(Directions.top);
+                            break;
+                        case "left":
+                            w.getPlayer(player).move(Directions.left);
+                            break;
+                        case "right":
+                            w.getPlayer(player).move(Directions.right);
+                            break;
+                        case "down":
+                            w.getPlayer(player).move(Directions.bottom);
+                            break;
+                    }
+                }
                 break;
 
             case "put":
-                break;
+                if (command.size() != 3)
+                    System.out.println("Nem megfelelő paraméterek! helyesen: put <játékos száma> <honey|oil|clean>");
+                else {
+                    int player = Integer.parseInt(command.get(1));
+
+                    if (command.get(2).equals("honey"))
+                        w.getPlayer(player).applyFluid(Stickyness.Honey);
+                    else if (command.get(2).equals("oil"))
+                        w.getPlayer(player).applyFluid(Stickyness.Oil);
+                    else if (command.get(2).equals("clean"))
+                        w.getPlayer(player).applyFluid(Stickyness.Normal);
+                }
+
+                    break;
 
             case "load":
                 break;
