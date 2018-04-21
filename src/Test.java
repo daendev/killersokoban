@@ -1,3 +1,5 @@
+import sokoban.Box;
+import sokoban.Player;
 import sokoban.Warehouse;
 
 import java.io.BufferedReader;
@@ -36,12 +38,24 @@ public class Test {
     public void executeCommand(){
         switch (command.get(0)) {
             case "generate":
+                if (command.size() < 2)
+                    System.out.println("Túl kevés argumentum!");
+                else
+                    generate();
                 break;
 
             case "add":
+                if (command.size() < 4)
+                    System.out.println("Túl kevés argumentum!");
+                else
+                    add();
                 break;
 
             case "remove":
+                if (command.size() < 2)
+                    System.out.println("Túl kevés argumentum!");
+                else
+                    remove();
                 break;
 
             case "changecell":
@@ -99,6 +113,44 @@ public class Test {
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void generate(){
+        if(command.get(1).equals("rnd")) w.generateMap();
+        else if(command.size()<3) w.generateMap(Integer.parseInt(command.get(1)));
+        else w.generateMap(Integer.parseInt(command.get(1), Integer.parseInt(command.get(2))));
+    }
+
+    public void add(){
+        int x = Integer.parseInt(command.get(2));
+        int y = Integer.parseInt(command.get(3));
+        if(w.getMap().get(x + y*w.getMapWidth()).getHolding() != null)
+            System.out.println("A Cella már foglalt!");
+        else {
+            switch (command.get(1)) {
+                case "b":
+                    Box b = new Box();
+                    b.setPlace(w.getMap().get(x + y*w.getMapWidth()));
+                    w.getMap().get(x + y*w.getMapWidth()).setHolding(b);
+                    w.addBox(b);
+                    break;
+                case "p":
+                    Player p = new Player();
+                    p.setPlace(w.getMap().get(x + y*w.getMapWidth()));
+                    w.getMap().get(x + y*w.getMapWidth()).setHolding(p);
+                    w.getPlayers().add(p);
+                    break;
+                default:
+                    System.out.println("Rossz argumentum!");
+                    break;
+            }
+        }
+    }
+
+    public void remove(){
+        switch (command.get(1)){
+
         }
     }
 
