@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Test {
+
+    private List<String> command;
+
     public void readCommand(){
         BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
 
@@ -16,10 +19,16 @@ public class Test {
             e.printStackTrace();
         }
 
-        List<String> command = Arrays.asList(s.split(" "));
+        command = Arrays.asList(s.split(" "));
 
         for (int i = 0; i < command.size(); i++) {
             System.out.println(command.get(i));
+        }
+    }
+
+    public void executeCommand(){
+        switch (command.get(0)) {
+            //TODO lófasz
         }
     }
 }
