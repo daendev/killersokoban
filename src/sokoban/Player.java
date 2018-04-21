@@ -25,7 +25,7 @@ public class Player extends Entity{
     public Player(){
         super();
         score = 0;
-        strenght = 3;
+        strenght = 4;
         setWeight(1);
         setOwner(this);
     }
