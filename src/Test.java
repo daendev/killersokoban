@@ -1,3 +1,4 @@
+import sokoban.Directions;
 import sokoban.Stickyness;
 import sokoban.Warehouse;
 
@@ -58,6 +59,19 @@ public class Test {
                 break;
 
             case "move":
+                if (command.size() != 3)
+                    System.out.println("Nem megfelelő paraméterek! helyesen: move <játékos száma> <up|down|left|right>");
+                else {
+                    int player = Integer.parseInt(command.get(1));
+                    if (command.get(2).equals("up"))
+                        w.getPlayer(player).move(Directions.top);
+                    else if (command.get(2).equals("left"))
+                        w.getPlayer(player).move(Directions.left);
+                    else if (command.get(2).equals("right"))
+                        w.getPlayer(player).move(Directions.right);
+                    else if (command.get(2).equals("down"))
+                        w.getPlayer(player).move(Directions.bottom);
+                }
                 break;
 
             case "put":
