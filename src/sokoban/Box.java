@@ -26,7 +26,7 @@ public class Box extends Entity{
      */
     @Override
     public boolean move(Directions dir, Player mOwner, double weight) {
-        if (weight + getFriction() >= mOwner.getStrenght()) {
+        if (weight + getFriction() <= mOwner.getStrenght()) {
             if (!getOwner().equals(this))
                 return false;
             if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
