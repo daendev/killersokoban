@@ -64,19 +64,56 @@ public class Test {
                 break;
 
             case "drawmap":
+                w.draw();
                 break;
 
             case "listplayers":
+                for (int i=0; i<w.getPlayers().size(); i++)
+                    System.out.println("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore());
                 break;
 
             case "listboxes":
+                for (int i=0; i<w.getBoxes().size(); i++)
+                    System.out.println("idx: " + i + " pos: " + w.getBoxes().get(i).getPlace().getX() + " " + w.getBoxes().get(i).getPlace().getY());
                 break;
 
             case "move":
+                if (command.size() != 3)
+                    System.out.println("Nem megfelelő paraméterek! helyesen: move <játékos száma> <up|down|left|right>");
+                else {
+                    int player = Integer.parseInt(command.get(1));
+                    switch (command.get(2)) {
+                        case "up":
+                            w.getPlayer(player).move(Directions.top);
+                            break;
+                        case "left":
+                            w.getPlayer(player).move(Directions.left);
+                            break;
+                        case "right":
+                            w.getPlayer(player).move(Directions.right);
+                            break;
+                        case "down":
+                            w.getPlayer(player).move(Directions.bottom);
+                            break;
+                    }
+                }
                 break;
 
             case "put":
-                break;
+                if (command.size() != 3)
+                    System.out.println("Nem megfelelő paraméterek! helyesen: put <játékos száma> <honey|oil|clean>");
+                else {
+                    int player = Integer.parseInt(command.get(1));
+
+                    if (command.get(2).equals("honey"))
+                        w.getPlayer(player).applyFluid(Stickyness.Honey);
+                    else if (command.get(2).equals("oil"))
+                        w.getPlayer(player).applyFluid(Stickyness.Oil);
+                    else if (command.get(2).equals("clean"))
+                        w.getPlayer(player).applyFluid(Stickyness.Normal);
+                }
+
+                    break;
 
             case "load":
                 break;
