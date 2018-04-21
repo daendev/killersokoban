@@ -53,6 +53,8 @@ public class SwitchableHole extends Hole{
     public void draw() {
         if (open)
             System.out.print("H");
+        else if (getHolding() != null)
+            getHolding().draw();
         else
             System.out.print("-");
     }
@@ -60,6 +62,8 @@ public class SwitchableHole extends Hole{
     public void draw(FileWriter f) throws IOException {
         if (open)
             f.write("H");
+        else if (getHolding() != null)
+            getHolding().draw(f);
         else
             f.write("-");
     }
