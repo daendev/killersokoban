@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a lyukakat megvalósító osztály.
  * @see Cell
@@ -17,6 +20,11 @@ public class Hole extends Cell {
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
         n.stepOnHole(mOwner);
         return true;
+    }
+
+    @Override
+    public void draw(FileWriter f) throws IOException {
+        f.write("H");
     }
 
     @Override

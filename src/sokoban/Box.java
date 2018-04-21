@@ -1,5 +1,11 @@
 package sokoban;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a dobozokat megvalósító osztály.
  * @see Entity
@@ -90,5 +96,10 @@ public class Box extends Entity{
     @Override
     public void draw() {
         System.out.print("B");
+    }
+
+    @Override
+    public void draw(FileWriter f) throws IOException {
+        f.write("B");
     }
 }

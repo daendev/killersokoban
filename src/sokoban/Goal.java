@@ -1,6 +1,8 @@
 package sokoban;
 
 import javax.xml.ws.WebServiceProvider;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * A játékban a célhelyeket megvalósító osztály.
@@ -27,5 +29,8 @@ public class Goal extends Cell{
     @Override
     public void draw(){
         System.out.print("G");
+    }
+    public void draw(FileWriter f) throws IOException {
+        f.write("G");
     }
 }

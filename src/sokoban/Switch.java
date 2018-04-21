@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a kapcsolókat megvalósító osztály.
  * @see Cell
@@ -47,5 +50,8 @@ public class Switch extends Cell {
     @Override
     public void draw() {
         System.out.print("S");
+    }
+    public void draw(FileWriter f) throws IOException {
+        f.write("S");
     }
 }

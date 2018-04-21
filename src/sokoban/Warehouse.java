@@ -1,6 +1,8 @@
 package sokoban;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +17,7 @@ public class Warehouse {
      * Azok a cellák, amik ebben a raktárban vannak.
      */
     private List<Cell> map;
+    private List<Switch> switches;
 
     /**
      * A raktárban található dobozok.
@@ -50,7 +53,7 @@ public class Warehouse {
      * @param a A játékos sorszáma.
      * @return A kért játékos.
      */
-    public Player getPlayers(int a) {
+    public Player getPlayer(int a) {
         return players.get(a);
     }
 
@@ -95,7 +98,14 @@ public class Warehouse {
                 System.out.println("");
         }
     }
-
+    public void draw(FileWriter f) throws IOException {
+        for (Cell c: map
+                ) {
+            c.draw(f);
+            if (c.getNeighbour(Directions.right) == null)
+                f.write("\n");
+        }
+    }
     public void generateMap() {
         int width = new Random().nextInt() % 15 + 5;
         int height = new Random().nextInt() % 15 + 5;
@@ -137,8 +147,24 @@ public class Warehouse {
         }
     }
 
-    public void generateMap(int dim) {
-        generateMap(dim, dim);
+    public void generateMap(int dim){
+
+        map = new ArrayList<Cell>();
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                if (i == 0 || j == 0) map.add(new Wall());
+                else if (i == dim - 1 || j == dim - 1) map.add(new Wall());
+                else map.add(new Cell());
+            }
+        }
+        for (int i = 0; i<dim; i++){
+            for(int j = 0; j<dim; j++){
+                if(i!=0) map.get(i + j*dim).setNeighbour(map.get(i + (j-1)*dim), Directions.top);
+                if(i!=dim-1) map.get(i + j*dim).setNeighbour(map.get(i + (j+1)*dim), Directions.bottom);
+                if(j!=0) map.get(i + j*dim).setNeighbour(map.get(i - 1 + j*dim), Directions.left);
+                if(j!=dim-1) map.get(i + j*dim).setNeighbour(map.get(i + 1 + j*dim), Directions.right);
+            }
+        }
     }
 
     public void generateMap(int width, int height){
@@ -176,5 +202,17 @@ public class Warehouse {
             c = c.getNeighbour(Directions.bottom);
         }
         return i;
+    }
+
+    public List<Cell> getMap() {
+        return map;
+    }
+
+    public List<Box> getBoxes() {
+        return boxes;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 }
