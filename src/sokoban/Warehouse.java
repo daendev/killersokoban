@@ -96,36 +96,84 @@ public class Warehouse {
         }
     }
 
-    public void generateMap(int dim){
+    public void generateMap() {
+        int width = new Random().nextInt() % 15 + 5;
+        int height = new Random().nextInt() % 15 + 5;
+        generateMap(width, height);
+        int playerNum = new Random().nextInt() % 5 + 2;
+        for(int i = 0; i < playerNum; i++){
+            int x = new Random().nextInt() % (height-1) + 1;
+            int y = new Random().nextInt() % (width-1) + 1;
+            while(map.get(x + y * width).getHolding() != null) {
+                x = new Random().nextInt() % (height-1) + 1;
+                y = new Random().nextInt() % (width-1) + 1;
+            }
+            players.add(new Player());
+            players.get(i).setPlace(map.get(x + y*width));
+            map.get(x + y * width).setHolding(players.get(i));
+        }
 
+        int boxNum = new Random().nextInt() % 10 + 2;
+        for(int i = 0; i < boxNum; i++){
+            int x = new Random().nextInt() % (height-1) + 1;
+            int y = new Random().nextInt() % (width-1) + 1;
+            while(map.get(x + y * width).getHolding() != null) {
+                x = new Random().nextInt() % (height-1) + 1;
+                y = new Random().nextInt() % (width-1) + 1;
+            }
+            boxes.add(new Box());
+            boxes.get(i).setPlace(map.get(x + y*width));
+            map.get(x + y * width).setHolding(boxes.get(i));
+        }
+        for(int i = 0; i < boxNum; i++){
+            int x = new Random().nextInt() % (height-1) + 1;
+            int y = new Random().nextInt() % (width-1) + 1;
+            while(map.get(x + y * width).getHolding() != null) {
+                x = new Random().nextInt() % (height-1) + 1;
+                y = new Random().nextInt() % (width-1) + 1;
+            }
+            map.remove(x + y * width);
+            map.add(x + y * width, new Goal());
+        }
+    }
+
+    public void generateMap(int dim) {
         map = new ArrayList<Cell>();
-
-        for (int i=0; i<dim; i++) {
+        for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 if (i == 0 || j == 0) map.add(new Wall());
-                else if (i == dim-1 || j == dim-1) map.add(new Wall());
+                else if (i == dim - 1 || j == dim - 1) map.add(new Wall());
+                else map.add(new Cell());
+            }
+        }
+        for (int i = 0; i<dim; i++){
+            for(int j = 0; j<dim; j++){
+                if(i!=0) map.get(i + j*dim).setNeighbour(map.get(i + (j-1)*dim), Directions.top);
+                if(i!=dim-1) map.get(i + j*dim).setNeighbour(map.get(i + (j+1)*dim), Directions.bottom);
+                if(j!=0) map.get(i + j*dim).setNeighbour(map.get(i - 1 + j*dim), Directions.left);
+                if(j!=dim-1) map.get(i + j*dim).setNeighbour(map.get(i + 1 + j*dim), Directions.right);
+            }
+        }
+    }
+
+    public void generateMap(int width, int height){
+        map = new ArrayList<Cell>();
+        for (int i=0; i<width; i++) {
+            for (int j = 0; j < height; j++) {
+                if (i == 0 || j == 0) map.add(new Wall());
+                else if (i == width-1 || j == height-1) map.add(new Wall());
                 else map.add(new Cell());
             }
         }
 
-        int a = (new Random()).nextInt(dim/2) + 1;
-        int b = (new Random()).nextInt(dim/3) + 1;
-
-        map.remove(a*dim+b);
-        map.add(a*dim+b, new Hole());
-
-
-        for (Cell c: map
-             ) {
-            if (map.indexOf(c) % dim != dim-1) {
-                c.setNeighbour(map.get(map.indexOf(c)+1), Directions.right);
+        for (int i = 0; i<width; i++){
+            for(int j = 0; j<height; j++){
+                if(i!=0) map.get(i + j * width).setNeighbour(map.get(i + (j-1) * width), Directions.top);
+                if(i!=width-1) map.get(i + j * width).setNeighbour(map.get(i + (j+1) * width), Directions.bottom);
+                if(j!=0) map.get(i + j * width).setNeighbour(map.get(i - 1 + j * width), Directions.left);
+                if(j!=height-1) map.get(i + j * width).setNeighbour(map.get(i +1 + j * width), Directions.right);
             }
         }
-
-
-        boxes.add(new Box());
-        boxes.get(0).setPlace(map.get(dim+1));
-        map.get(dim+1).setHolding(boxes.get(0));
     }
 
 }

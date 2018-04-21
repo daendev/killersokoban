@@ -28,7 +28,13 @@ public class Test {
 
     public void executeCommand(){
         switch (command.get(0)) {
-            //TODO lófasz
+            case "generate":
+                if(command.size()<2) System.out.println("Not enough arguments");
+                else
+                    switch (command.get(1)){
+                        case "rnd":
+
+                    }
         }
     }
 }
