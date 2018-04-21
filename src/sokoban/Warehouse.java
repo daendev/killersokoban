@@ -176,4 +176,20 @@ public class Warehouse {
         }
     }
 
+    public int getMapWidth() {
+        int i = 0;
+        while (map.get(i).getNeighbour(Directions.right) != null)
+            i++;
+        return ++i;
+    }
+
+    public int getMapHeight(){
+        int i=1;
+        Cell c = map.get(0);
+        while (c.getNeighbour(Directions.bottom) != null){
+            i++;
+            c = c.getNeighbour(Directions.bottom);
+        }
+        return i;
+    }
 }
