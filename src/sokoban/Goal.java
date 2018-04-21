@@ -26,7 +26,9 @@ public class Goal extends Cell{
 
     @Override
     public void draw(){
-        System.out.print("G");
+        if(getHolding()!=null)
+            getHolding().draw();
+        else System.out.println("G");
     }
     public void draw(FileWriter f) throws IOException {
         if(getHolding()!=null)
