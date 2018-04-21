@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a cellákat (játéktér mezői) megvalósító osztály.
  */
@@ -139,10 +142,36 @@ public class Cell {
         holding = null;
     }
 
+    public int getX(){
+        Cell cell = this;
+        int ret = 0;
+        while (cell.getNeighbour(Directions.left) != null){
+            ret++;
+            cell = cell.getNeighbour(Directions.left);
+        }
+        return ret;
+    }
+    public int getY(){
+        Cell cell = this;
+        int ret = 0;
+        while (cell.getNeighbour(Directions.top) != null){
+            ret++;
+            cell = cell.getNeighbour(Directions.top);
+        }
+        return ret;
+    }
+
     public void draw(){
         if (holding != null)
             holding.draw();
         else
             System.out.print("-");
+    }
+
+    public void draw(FileWriter f) throws IOException {
+        if (holding != null)
+            holding.draw(f);
+        else
+            f.write("-");
     }
 }

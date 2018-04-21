@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a cellákon álló dolgokat megvalósító osztály.
  * @see Box
@@ -147,4 +150,5 @@ public abstract class Entity {
     public abstract void die();
 
     public abstract void draw();
+    public abstract void draw(FileWriter f) throws IOException;
 }

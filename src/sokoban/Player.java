@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a játékosokat megvalósító osztály.
  * @see Entity
@@ -138,5 +141,8 @@ public class Player extends Entity{
 
     public void draw(){
         System.out.print("P");
+    }
+    public void draw(FileWriter f) throws IOException {
+        f.write("P");
     }
 }

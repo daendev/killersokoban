@@ -1,7 +1,9 @@
 import sokoban.Warehouse;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
@@ -47,6 +49,21 @@ public class Test {
         try {
             FileWriter file = new FileWriter(fileName);
             file.write(w.getMapWidth() + " " + w.getMapHeight() + "\n");
+            w.draw(file);
+            file.write(w.getPlayers().size() + "\n");
+            for (int i=0; i<w.getPlayers().size(); i++) {
+                file.write(w.getPlayers().get(i).getPlace().getX() + " ");
+                file.write(w.getPlayers().get(i).getPlace().getY() + "\n");
+            }
+
+            file.write(w.getBoxes().size() + "\n");
+            for (int i=0; i<w.getBoxes().size(); i++) {
+                file.write(w.getBoxes().get(i).getPlace().getX() + " ");
+                file.write(w.getBoxes().get(i).getPlace().getY() + "\n");
+            }
+
+            file.write("kapcsolók");
+
 
             file.close();
         } catch (IOException e) {

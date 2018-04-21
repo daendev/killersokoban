@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a cellákat (játéktér mezői) megvalósító osztály.
  * @see Cell
@@ -16,6 +19,12 @@ public class Wall extends Cell {
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
         return false;
+    }
+
+
+    @Override
+    public void draw(FileWriter f) throws IOException {
+        f.write("W");
     }
 
     @Override

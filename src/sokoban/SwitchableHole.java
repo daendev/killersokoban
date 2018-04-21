@@ -1,5 +1,8 @@
 package sokoban;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * A játékban a kapcsolható lyukakat megvalósító osztály.
  * @see Hole
@@ -49,8 +52,15 @@ public class SwitchableHole extends Hole{
     @Override
     public void draw() {
         if (open)
-            System.out.print("Q");
+            System.out.print("H");
         else
-            System.out.print("L");
+            System.out.print("-");
+    }
+
+    public void draw(FileWriter f) throws IOException {
+        if (open)
+            f.write("H");
+        else
+            f.write("-");
     }
 }
