@@ -233,6 +233,7 @@ public class Test {
                 w.getMap().remove(x2 + y2 * w.getMapWidth());
                 SwitchableHole sh = new SwitchableHole();
                 w.getMap().add(x2 + y2 * w.getMapWidth(), sh);
+                linkCell(x2, y2);
                 w.getMap().add(x + y * w.getMapWidth(),new Switch(sh));
                 break;
             default:
