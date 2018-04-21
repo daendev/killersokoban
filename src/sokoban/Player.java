@@ -84,6 +84,10 @@ public class Player extends Entity{
             return false;
     }
 
+    public void move(Directions dir){
+        move(dir,this,0);
+    }
+
     /**
      * Pontot ad a játékosnak.
      * @param amount A pontok mennyisége.

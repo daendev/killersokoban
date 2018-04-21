@@ -1,6 +1,6 @@
 package sokoban;
 
-enum Stickyness {
+public enum Stickyness {
     Oil(0.5),
     Normal(1),
     Honey(2);
