@@ -75,6 +75,18 @@ public class Warehouse {
         else if(players.contains(e)) e.die();
     }
 
+    /**
+     * Kirajzolja a map-et a kimenetre
+     * Cell : "-"
+     * Wall : "W"
+     * Goal : "G"
+     * Hole : "H"
+     * Switch : "S"
+     * SwichableHole : "H" vagy "-" állapotfüggő
+     * Box : "B"
+     * Player : "P"
+     *
+     */
     public void draw(){
         for (Cell c: map
              ) {
