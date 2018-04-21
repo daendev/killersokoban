@@ -174,6 +174,7 @@ public class Test {
                 }
             }
 
+
             int playerNum = Integer.parseInt(bufferedReader.readLine());
             for (int i=0; i<playerNum; i++) {
                 read = Arrays.asList(bufferedReader.readLine().split(" "));
@@ -201,8 +202,11 @@ public class Test {
                 int x = Integer.parseInt(read.get(0));
                 int y = Integer.parseInt(read.get(1));
                 w.getSwitches().get(i).setWarehouse(w);
+                SwitchableHole sh = new SwitchableHole();
+                if (w.getMap().get(x + y*width).getHolding() != null)
+                    sh.setHolding(w.getMap().get(x + y*width).getHolding());
                 w.getMap().remove(x + y*width);
-                w.getMap().add(x + y*width, new SwitchableHole());
+                w.getMap().add(x + y*width, sh);
                 w.getSwitches().get(i).setHole((SwitchableHole) w.getMap().get(x + y*width));
             }
 
