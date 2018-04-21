@@ -35,6 +35,7 @@ public class Warehouse {
     public Warehouse(){
         players = new ArrayList<>();
         boxes = new ArrayList<>();
+        map = new ArrayList<Cell>();
     }
 
     /**
@@ -46,6 +47,7 @@ public class Warehouse {
         for (int i=0; i<playerNum; i++)
             players.add(new Player());
         boxes = new ArrayList<>();
+        map = new ArrayList<Cell>();
     }
 
     /**
@@ -152,7 +154,6 @@ public class Warehouse {
     }
 
     public void generateMap(int width, int height){
-        map = new ArrayList<Cell>();
         for (int i=0; i<width; i++) {
             for (int j = 0; j < height; j++) {
                 if (i == 0 || j == 0) map.add(new Wall());

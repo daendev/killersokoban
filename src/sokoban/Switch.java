@@ -58,4 +58,8 @@ public class Switch extends Cell {
     public SwitchableHole getHole() {
         return hole;
     }
+
+    public void setHole(SwitchableHole hole) {
+        this.hole = hole;
+    }
 }

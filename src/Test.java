@@ -1,9 +1,6 @@
 import sokoban.*;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +9,7 @@ public class Test {
     private List<String> command;
     private Warehouse w;
 
-    Test(Warehouse w){
+    public Test(Warehouse w) {
         this.w = w;
     }
 
@@ -125,6 +122,94 @@ public class Test {
                     save(command.get(1));
                 break;
         }
+    }
+
+    public void load(String fileName){
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            List<String> read = Arrays.asList(bufferedReader.readLine().split(" "));
+            int width = Integer.parseInt(read.get(0));
+            int height = Integer.parseInt(read.get(1));
+            int switchNum = 0;
+            for (int i = 0; i < height; i++) {
+                String row = bufferedReader.readLine();
+                for (int j=0; j<row.length(); j++){
+                    switch (row.charAt(j)){
+                        case 'W':
+                            w.getMap().add(new Wall());
+                                    break;
+                        case '-':
+                            w.getMap().add(new Cell());
+                            break;
+                        case 'B':
+                            w.getMap().add(new Cell());
+                            break;
+                        case 'S':
+                            w.getSwitches().add(new Switch(new SwitchableHole()));
+                            w.getMap().add(w.getSwitches().get(switchNum++));
+                            break;
+                        case 'H':
+                            w.getMap().add(new Hole());
+                            break;
+                        case 'G':
+                            w.getMap().add(new Goal());
+                        case 'P':
+                            w.getMap().add(new Cell());
+                            break;
+                    }
+
+                }
+            }
+
+            int playerNum = Integer.parseInt(bufferedReader.readLine());
+            for (int i=0; i<playerNum; i++) {
+                read = Arrays.asList(bufferedReader.readLine().split(" "));
+                int x = Integer.parseInt(read.get(0));
+                int y = Integer.parseInt(read.get(1));
+                w.getPlayers().add(new Player());
+                w.getPlayers().get(i).setPlace(w.getMap().get(x + y*width));
+                w.getMap().get(x + y*width).setHolding(w.getPlayers().get(i));
+            }
+
+            int boxNum = Integer.parseInt(bufferedReader.readLine());
+            for (int i = 0; i < boxNum; i++) {
+                read = Arrays.asList(bufferedReader.readLine().split(" "));
+                int x = Integer.parseInt(read.get(0));
+                int y = Integer.parseInt(read.get(1));
+                w.getBoxes().add(new Box());
+                w.getBoxes().get(i).setPlace(w.getMap().get(x + y*width));
+                w.getMap().get(x + y*width).setHolding(w.getBoxes().get(i));
+            }
+
+            for (int i = 0; i < switchNum; i++) {
+                read = Arrays.asList(bufferedReader.readLine().split(" "));
+                int x = Integer.parseInt(read.get(0));
+                int y = Integer.parseInt(read.get(1));
+                w.getSwitches().get(i).setWarehouse(w);
+                w.getMap().add(x + y*width, new SwitchableHole());
+                w.getSwitches().get(i).setHole((SwitchableHole) w.getMap().get(x + y*width));
+            }
+
+            for (int i = 0; i<width; i++){
+                for(int j = 0; j<height; j++){
+                    if(j!=0)
+                        w.getMap().get(i + j * width).setNeighbour(w.getMap().get(i + (j-1) * width), Directions.top);
+                    if(j!=height-1)
+                        w.getMap().get(i + j * width).setNeighbour(w.getMap().get(i + (j+1) * width), Directions.bottom);
+                    if(i!=0)
+                        w.getMap().get(i + j * width).setNeighbour(w.getMap().get(i - 1 + j * width), Directions.left);
+                    if(i!=width-1)
+                        w.getMap().get(i + j * width).setNeighbour(w.getMap().get(i +1 + j * width), Directions.right);
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void save(String fileName){
