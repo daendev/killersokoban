@@ -116,6 +116,10 @@ public class Test {
                     break;
 
             case "load":
+                if (command.size() == 1)
+                    System.out.println("Hiányzó fájlnév!");
+                else
+                    load(command.get(1));
                 break;
 
             case "save":
