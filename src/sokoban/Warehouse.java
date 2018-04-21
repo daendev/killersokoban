@@ -35,7 +35,8 @@ public class Warehouse {
     public Warehouse(){
         players = new ArrayList<>();
         boxes = new ArrayList<>();
-        map = new ArrayList<Cell>();
+        map = new ArrayList<>();
+        switches = new ArrayList<>();
     }
 
     /**
