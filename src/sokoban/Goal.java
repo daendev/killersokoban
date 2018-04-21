@@ -1,6 +1,4 @@
 package sokoban;
-
-import javax.xml.ws.WebServiceProvider;
 import java.io.FileWriter;
 import java.io.IOException;
 

@@ -13,7 +13,7 @@ public class Test {
     private Warehouse w;
 
     Test(Warehouse w){
-        w=this.w;
+        this.w = w;
     }
 
     public void readCommand(){

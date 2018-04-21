@@ -163,10 +163,14 @@ public class Warehouse {
 
         for (int i = 0; i<width; i++){
             for(int j = 0; j<height; j++){
-                if(i!=0) map.get(i + j * width).setNeighbour(map.get(i + (j-1) * width), Directions.top);
-                if(i!=width-1) map.get(i + j * width).setNeighbour(map.get(i + (j+1) * width), Directions.bottom);
-                if(j!=0) map.get(i + j * width).setNeighbour(map.get(i - 1 + j * width), Directions.left);
-                if(j!=height-1) map.get(i + j * width).setNeighbour(map.get(i +1 + j * width), Directions.right);
+                if(j!=0)
+                    map.get(i + j * width).setNeighbour(map.get(i + (j-1) * width), Directions.top);
+                if(j!=height-1)
+                    map.get(i + j * width).setNeighbour(map.get(i + (j+1) * width), Directions.bottom);
+                if(i!=0)
+                    map.get(i + j * width).setNeighbour(map.get(i - 1 + j * width), Directions.left);
+                if(i!=width-1)
+                    map.get(i + j * width).setNeighbour(map.get(i +1 + j * width), Directions.right);
             }
         }
     }
