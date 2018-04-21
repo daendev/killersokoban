@@ -62,6 +62,11 @@ public class Test {
                 file.write(w.getBoxes().get(i).getPlace().getY() + "\n");
             }
 
+            for (int i = 0; i < w.getSwitches().size(); i++) {
+                file.write( w.getSwitches().get(i).getHole().getX() + " ");
+                file.write( w.getSwitches().get(i).getHole().getY() + "\n");
+            }
+
             file.write("kapcsolók");
 
 

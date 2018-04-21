@@ -199,4 +199,8 @@ public class Warehouse {
     public List<Player> getPlayers() {
         return players;
     }
+
+    public List<Switch> getSwitches() {
+        return switches;
+    }
 }

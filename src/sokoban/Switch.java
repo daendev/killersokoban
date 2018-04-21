@@ -51,7 +51,11 @@ public class Switch extends Cell {
     public void draw() {
         System.out.print("S");
     }
+
     public void draw(FileWriter f) throws IOException {
         f.write("S");
+    }
+    public SwitchableHole getHole() {
+        return hole;
     }
 }
