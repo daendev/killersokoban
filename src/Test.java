@@ -1,3 +1,4 @@
+import sokoban.Stickyness;
 import sokoban.Warehouse;
 
 import java.io.BufferedReader;
@@ -60,7 +61,20 @@ public class Test {
                 break;
 
             case "put":
-                break;
+                if (command.size() != 3)
+                    System.out.println("Nem megfelelő paraméterek! helyesen: put <játékos száma> <honey|oil|clean>");
+                else {
+                    int player = Integer.parseInt(command.get(1));
+
+                    if (command.get(2).equals("honey"))
+                        w.getPlayer(player).applyFluid(Stickyness.Honey);
+                    else if (command.get(2).equals("oil"))
+                        w.getPlayer(player).applyFluid(Stickyness.Oil);
+                    else if (command.get(2).equals("clean"))
+                        w.getPlayer(player).applyFluid(Stickyness.Normal);
+                }
+
+                    break;
 
             case "load":
                 break;
