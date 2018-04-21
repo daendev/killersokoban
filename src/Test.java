@@ -201,6 +201,7 @@ public class Test {
                 int x = Integer.parseInt(read.get(0));
                 int y = Integer.parseInt(read.get(1));
                 w.getSwitches().get(i).setWarehouse(w);
+                w.getMap().remove(x + y*width);
                 w.getMap().add(x + y*width, new SwitchableHole());
                 w.getSwitches().get(i).setHole((SwitchableHole) w.getMap().get(x + y*width));
             }
