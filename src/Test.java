@@ -1,6 +1,4 @@
-import sokoban.Box;
-import sokoban.Player;
-import sokoban.Warehouse;
+import sokoban.*;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -59,6 +57,10 @@ public class Test {
                 break;
 
             case "changecell":
+                if (command.size() < 4)
+                    System.out.println("Túl kevés argumentum!");
+                else
+                    changecell();
                 break;
 
             case "drawmap":
@@ -150,8 +152,55 @@ public class Test {
 
     public void remove(){
         switch (command.get(1)){
-
+            case "b":
+                w.removeEntity(w.getBoxes().get(Integer.parseInt(command.get(2))));
+                break;
+            case "p":
+                w.removeEntity(w.getPlayers().get(Integer.parseInt(command.get(2))));
+                break;
+            default:
+                System.out.println("Rossz argumentum!");
+                break;
         }
     }
 
+    public void changecell(){
+        int x = Integer.parseInt(command.get(2));
+        int y = Integer.parseInt(command.get(3));
+        int x2 = Integer.parseInt(command.get(4));
+        int y2 = Integer.parseInt(command.get(4));
+        w.getMap().remove(x + y * w.getMapWidth());
+        switch (command.get(1)){
+            case "cell":
+                w.getMap().add(x + y * w.getMapWidth(),new Cell());
+                break;
+            case "hole":
+                w.getMap().add(x + y * w.getMapWidth(),new Hole());
+                break;
+            case "goal":
+                w.getMap().add(x + y * w.getMapWidth(),new Goal());
+                break;
+            case "wall":
+                w.getMap().add(x + y * w.getMapWidth(),new Wall());
+                break;
+            case "switch":
+                w.getMap().remove(x2 + y2 * w.getMapWidth());
+                SwitchableHole sh = new SwitchableHole();
+                w.getMap().add(x2 + y2 * w.getMapWidth(), sh);
+                w.getMap().add(x + y * w.getMapWidth(),new Switch(sh));
+                break;
+            default:
+                System.out.println("Rossz argumentum!");
+                break;
+
+        }
+        linkCell(x, y);
+    }
+
+    public void linkCell(int x, int y){
+        if(x != 0) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x - 1 + y * w.getMapWidth()), Directions.left);
+        if(x != w.getMapWidth() - 1) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + 1 + y * w.getMapWidth()), Directions.right);
+        if(y != 0) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x  + (y - 1) * w.getMapWidth()), Directions.top);
+        if(y != w.getMapHeight() - 1) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + (y - 1) * w.getMapWidth()), Directions.bottom);
+    }
 }
