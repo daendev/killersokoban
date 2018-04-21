@@ -9,5 +9,7 @@ public class Main {
         //w.draw();
         Test t = new Test();
         t.readCommand();
+        t.executeCommand();
+
     }
 }
