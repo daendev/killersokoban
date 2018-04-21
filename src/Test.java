@@ -166,6 +166,7 @@ public class Test {
                             break;
                         case 'G':
                             w.getMap().add(new Goal());
+                            break;
                         case 'P':
                             w.getMap().add(new Cell());
                             break;
