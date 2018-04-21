@@ -70,8 +70,10 @@ public class Player extends Entity{
     public boolean move(Directions dir, Player mOwner, double weight) {
         if (weight + getFriction() >= mOwner.getStrenght()) {
             if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
-                getPlace().removeEntity();
-                setPlace(getPlace().getNeighbour(dir));
+                if(getPlace()!=null){
+                    getPlace().removeEntity();
+                    setPlace(getPlace().getNeighbour(dir));
+                }
             } else {
                 if (!mOwner.equals(this)) {
                     die();

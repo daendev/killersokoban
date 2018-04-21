@@ -69,7 +69,10 @@ public class Test {
 
             case "listplayers":
                 for (int i=0; i<w.getPlayers().size(); i++)
-                    System.out.println("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore());
+                    if(w.getPlayers().get(i).getPlace()!=null)
+                        System.out.println("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore());
+                    else
+                        System.out.println("idx: " + i + " pos: dead  points: " + w.getPlayers().get(i).getScore());
                 break;
 
             case "listboxes":
@@ -158,7 +161,7 @@ public class Test {
     public void generate(){
         if(command.get(1).equals("rnd")) w.generateMap();
         else if(command.size()<3) w.generateMap(Integer.parseInt(command.get(1)));
-        else w.generateMap(Integer.parseInt(command.get(1), Integer.parseInt(command.get(2))));
+        else w.generateMap(Integer.parseInt(command.get(1)), Integer.parseInt(command.get(2)));
     }
 
     public void add(){
@@ -173,12 +176,14 @@ public class Test {
                     b.setPlace(w.getMap().get(x + y*w.getMapWidth()));
                     w.getMap().get(x + y*w.getMapWidth()).setHolding(b);
                     w.addBox(b);
+                    b.setWarehouse(w);
                     break;
                 case "p":
                     Player p = new Player();
                     p.setPlace(w.getMap().get(x + y*w.getMapWidth()));
                     w.getMap().get(x + y*w.getMapWidth()).setHolding(p);
                     w.getPlayers().add(p);
+                    p.setWarehouse(w);
                     break;
                 default:
                     System.out.println("Rossz argumentum!");
@@ -204,8 +209,12 @@ public class Test {
     public void changecell(){
         int x = Integer.parseInt(command.get(2));
         int y = Integer.parseInt(command.get(3));
-        int x2 = Integer.parseInt(command.get(4));
-        int y2 = Integer.parseInt(command.get(4));
+        int x2 = 0;
+        int y2 = 0;
+        if(command.size()>4) {
+            x2 = Integer.parseInt(command.get(4));
+            y2 = Integer.parseInt(command.get(5));
+        }
         w.getMap().remove(x + y * w.getMapWidth());
         switch (command.get(1)){
             case "cell":
@@ -235,9 +244,21 @@ public class Test {
     }
 
     public void linkCell(int x, int y){
-        if(x != 0) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x - 1 + y * w.getMapWidth()), Directions.left);
-        if(x != w.getMapWidth() - 1) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + 1 + y * w.getMapWidth()), Directions.right);
-        if(y != 0) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x  + (y - 1) * w.getMapWidth()), Directions.top);
-        if(y != w.getMapHeight() - 1) w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + (y - 1) * w.getMapWidth()), Directions.bottom);
+        if(x != 0){
+            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x - 1 + y * w.getMapWidth()), Directions.left);
+            w.getMap().get(x - 1 + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.right);
+        }
+        if(x != w.getMapWidth() - 1){
+            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + 1 + y * w.getMapWidth()), Directions.right);
+            w.getMap().get(x + 1 + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.left);
+        }
+        if(y != 0){
+            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x  + (y - 1) * w.getMapWidth()), Directions.top);
+            w.getMap().get(x + (y - 1) * w.getMapWidth()).setNeighbour(w.getMap().get(x  + y * w.getMapWidth()), Directions.bottom);
+        }
+        if(y != w.getMapHeight() - 1){
+            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + (y + 1) * w.getMapWidth()), Directions.bottom);
+            w.getMap().get(x + (y + 1) * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.top);
+        }
     }
 }

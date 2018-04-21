@@ -38,6 +38,7 @@ public class Cell {
      */
     public Cell(){
         neighbours = new Cell[4];
+        sticky = Stickyness.Normal;
     }
 
     /**
