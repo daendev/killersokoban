@@ -49,11 +49,17 @@ public class Switch extends Cell {
 
     @Override
     public void draw() {
-        System.out.print("S");
+        if (getHolding() != null)
+            getHolding().draw();
+        else
+            System.out.print("S");
     }
 
     public void draw(FileWriter f) throws IOException {
-        f.write("S");
+        if (getHolding() != null)
+            getHolding().draw();
+        else
+            f.write("S");
     }
     public SwitchableHole getHole() {
         return hole;
