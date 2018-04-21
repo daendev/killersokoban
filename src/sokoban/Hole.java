@@ -21,6 +21,6 @@ public class Hole extends Cell {
 
     @Override
     public void draw(){
-        System.out.print("O");
+        System.out.print("H");
     }
 }

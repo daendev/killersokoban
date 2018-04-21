@@ -143,6 +143,6 @@ public class Cell {
         if (holding != null)
             holding.draw();
         else
-            System.out.print("_");
+            System.out.print("-");
     }
 }

@@ -26,6 +26,6 @@ public class Goal extends Cell{
 
     @Override
     public void draw(){
-        System.out.print("X");
+        System.out.print("G");
     }
 }
