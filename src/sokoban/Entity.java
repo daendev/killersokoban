@@ -54,6 +54,8 @@ public abstract class Entity {
         return warehouse;
     }
 
+    public void setWarehouse(Warehouse w){warehouse = w;}
+
     /**
      * Megadja, hogy ki az entitás tulajdonosa.
      * @return Az entitás tulajdonosa.
