@@ -148,23 +148,7 @@ public class Warehouse {
     }
 
     public void generateMap(int dim){
-
-        map = new ArrayList<Cell>();
-        for (int i = 0; i < dim; i++) {
-            for (int j = 0; j < dim; j++) {
-                if (i == 0 || j == 0) map.add(new Wall());
-                else if (i == dim - 1 || j == dim - 1) map.add(new Wall());
-                else map.add(new Cell());
-            }
-        }
-        for (int i = 0; i<dim; i++){
-            for(int j = 0; j<dim; j++){
-                if(i!=0) map.get(i + j*dim).setNeighbour(map.get(i + (j-1)*dim), Directions.top);
-                if(i!=dim-1) map.get(i + j*dim).setNeighbour(map.get(i + (j+1)*dim), Directions.bottom);
-                if(j!=0) map.get(i + j*dim).setNeighbour(map.get(i - 1 + j*dim), Directions.left);
-                if(j!=dim-1) map.get(i + j*dim).setNeighbour(map.get(i + 1 + j*dim), Directions.right);
-            }
-        }
+        generateMap(dim, dim);
     }
 
     public void generateMap(int width, int height){
