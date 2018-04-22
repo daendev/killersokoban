@@ -25,9 +25,9 @@ public class Test {
 
         command = Arrays.asList(s.split(" "));
 
-        for (int i = 0; i < command.size(); i++) {
-            System.out.println(command.get(i));
-        }
+//        for (int i = 0; i < command.size(); i++) {
+//            System.out.println(command.get(i));
+//        }
     }
 
     public boolean executeCommand(){
@@ -128,8 +128,10 @@ public class Test {
                 else
                     save(command.get(1));
                 break;
-            default:
+            case "exit":
                 return true;
+            default:
+                System.out.println("Hibás parancs!");
         }
         return false;
     }
