@@ -226,8 +226,10 @@ public class Test {
                 int y = Integer.parseInt(read.get(1));
                 w.getSwitches().get(i).setWarehouse(w);
                 SwitchableHole sh = new SwitchableHole();
-                if (w.getMap().get(x + y*width).getHolding() != null)
-                    sh.setHolding(w.getMap().get(x + y*width).getHolding());
+                if (w.getMap().get(x + y*width).getHolding() != null) {
+                    sh.setHolding(w.getMap().get(x + y * width).getHolding());
+                    sh.getHolding().setPlace(sh);
+                }
                 w.getMap().remove(x + y*width);
                 w.getMap().add(x + y*width, sh);
                 w.getSwitches().get(i).setHole((SwitchableHole) w.getMap().get(x + y*width));
@@ -357,7 +359,7 @@ public class Test {
                 w.getMap().remove(x2 + y2 * w.getMapWidth());
                 SwitchableHole sh = new SwitchableHole();
                 w.getMap().add(x2 + y2 * w.getMapWidth(), sh);
-                linkCell(x2, y2);
+                w.linkCell(x2, y2);
                 w.getMap().add(x + y * w.getMapWidth(),new Switch(sh));
                 break;
             default:
@@ -365,27 +367,9 @@ public class Test {
                 break;
 
         }
-        linkCell(x, y);
+        w.linkCell(x, y);
     }
 
-    public void linkCell(int x, int y){
-        if(x != 0){
-            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x - 1 + y * w.getMapWidth()), Directions.left);
-            w.getMap().get(x - 1 + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.right);
-        }
-        if(x != w.getMapWidth() - 1){
-            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + 1 + y * w.getMapWidth()), Directions.right);
-            w.getMap().get(x + 1 + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.left);
-        }
-        if(y != 0){
-            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x  + (y - 1) * w.getMapWidth()), Directions.top);
-            w.getMap().get(x + (y - 1) * w.getMapWidth()).setNeighbour(w.getMap().get(x  + y * w.getMapWidth()), Directions.bottom);
-        }
-        if(y != w.getMapHeight() - 1){
-            w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + (y + 1) * w.getMapWidth()), Directions.bottom);
-            w.getMap().get(x + (y + 1) * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.top);
-        }
-    }
 
     public void listplayers(){
         for (int i=0; i<w.getPlayers().size(); i++)
