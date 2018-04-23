@@ -5,8 +5,8 @@ import java.io.IOException;
 
 public class Logger {
 
-    static FileWriter fw;
-    static boolean toFile;
+    public static FileWriter fw;
+    public static boolean toFile;
 
     public Logger(FileWriter fw) {
         Logger.fw = fw;

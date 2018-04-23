@@ -1,5 +1,6 @@
-import test.Test;
 import sokoban.*;
+import test.Logger;
+import test.Test;
 
 import java.io.FileWriter;
 import java.io.IOException;

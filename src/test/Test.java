@@ -1,14 +1,12 @@
+package test;
 import sokoban.*;
-
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-
 public class Test {
 
     private List<String> command;
     private Warehouse w;
-    static public Logger logger = new Logger();
     private boolean file;
     private FileWriter fw;
 
@@ -73,20 +71,28 @@ public class Test {
                 break;
 
             case "drawmap":
-                w.draw();
+                if(file) {
+                    try {
+                        w.draw(fw);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else
+                    w.draw();
                 break;
 
             case "listplayers":
-                for (int i=0; i<w.getPlayers().size(); i++)
-                    if(w.getPlayers().get(i).getPlace()!=null)
-                        System.out.println("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore());
-                    else
-                        System.out.println("idx: " + i + " pos: dead  points: " + w.getPlayers().get(i).getScore());
+                if(file)
+                    listplayers(fw);
+                else
+                    listplayers();
                 break;
 
             case "listboxes":
-                for (int i=0; i<w.getBoxes().size(); i++)
-                    System.out.println("idx: " + i + " pos: " + w.getBoxes().get(i).getPlace().getX() + " " + w.getBoxes().get(i).getPlace().getY());
+                if(file)
+                    listboxes(fw);
+                else
+                    listboxes();
                 break;
 
             case "move":
@@ -376,6 +382,40 @@ public class Test {
         if(y != w.getMapHeight() - 1){
             w.getMap().get(x + y * w.getMapWidth()).setNeighbour(w.getMap().get(x + (y + 1) * w.getMapWidth()), Directions.bottom);
             w.getMap().get(x + (y + 1) * w.getMapWidth()).setNeighbour(w.getMap().get(x + y * w.getMapWidth()), Directions.top);
+        }
+    }
+
+    public void listplayers(){
+        for (int i=0; i<w.getPlayers().size(); i++)
+            if(w.getPlayers().get(i).getPlace()!=null)
+                System.out.println("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore());
+            else
+                System.out.println("idx: " + i + " pos: dead  points: " + w.getPlayers().get(i).getScore());
+    }
+
+    public void listplayers(FileWriter fw){
+        try {
+            for (int i = 0; i < w.getPlayers().size(); i++)
+                if (w.getPlayers().get(i).getPlace() != null)
+                    fw.write("idx: " + i + " pos: " + w.getPlayers().get(i).getPlace().getX() + " " + w.getPlayers().get(i).getPlace().getY() + " points: " + w.getPlayers().get(i).getScore() + "\n");
+                else
+                    fw.write("idx: " + i + " pos: dead  points: " + w.getPlayers().get(i).getScore()+"\n");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void listboxes(){
+        for (int i=0; i<w.getBoxes().size(); i++)
+            System.out.println("idx: " + i + " pos: " + w.getBoxes().get(i).getPlace().getX() + " " + w.getBoxes().get(i).getPlace().getY());
+    }
+
+    public void listboxes(FileWriter fw){
+        try {
+            for (int i = 0; i < w.getBoxes().size(); i++)
+                fw.write("idx: " + i + " pos: " + w.getBoxes().get(i).getPlace().getX() + " " + w.getBoxes().get(i).getPlace().getY() + "\n");
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 }
