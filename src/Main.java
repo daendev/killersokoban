@@ -19,7 +19,10 @@ public class Main {
             }
         }
         Warehouse w = new Warehouse();
-        Test t = new Test(w);
+
+
+
+        Test t = new Test(w, new Logger());  // paraméter teszt
         boolean exit = false;
         if(!load.equals("")) t.load(load);
         while(!exit){
