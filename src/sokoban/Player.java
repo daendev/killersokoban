@@ -1,5 +1,7 @@
 package sokoban;
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -24,6 +26,7 @@ public class Player extends Entity{
      */
     public Player(){
         super();
+        Test.logger.w("Player.constructor()");
         score = 0;
         strenght = 4;
         setWeight(1);
@@ -35,6 +38,7 @@ public class Player extends Entity{
      * @return A játékos aktuális pontszáma.
      */
     public int getScore() {
+        Test.logger.w("Player.getScore()");
         return score;
     }
 
@@ -43,6 +47,7 @@ public class Player extends Entity{
      * @param score Az új érték.
      */
     public void setScore(int score) {
+        Test.logger.w("Player.setScore()");
         this.score = score;
     }
 
@@ -51,6 +56,7 @@ public class Player extends Entity{
      * @return A munkás ereje.
      */
     public double getStrenght() {
+        Test.logger.w("Player.getStrength()");
         return strenght;
     }
 
@@ -59,6 +65,7 @@ public class Player extends Entity{
      * @param strenght A munkás új ereje.
      */
     public void setStrenght(double strenght) {
+        Test.logger.w("Player.setStrength(double)");
         this.strenght = strenght;
     }
 
@@ -70,6 +77,7 @@ public class Player extends Entity{
      */
     @Override
     public boolean move(Directions dir, Player mOwner, double weight) {
+        Test.logger.w("Player.move(Directions, Player, double)");
         if (weight + getFriction() <= mOwner.getStrenght()) {
             if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
                 if(getPlace()!=null){
@@ -89,6 +97,7 @@ public class Player extends Entity{
     }
 
     public void move(Directions dir){
+        Test.logger.w("Player.move(Directions)");
         move(dir,this,0);
     }
 
@@ -97,6 +106,7 @@ public class Player extends Entity{
      * @param amount A pontok mennyisége.
      */
     public void addScore(int amount){
+        Test.logger.w("Player.addScore(int)");
         score+=amount;
     }
 
@@ -105,6 +115,7 @@ public class Player extends Entity{
      */
     @Override
     public void die(){
+        Test.logger.w("Player.die()");
         getPlace().setHolding(null);
         setPlace(null);
     }
@@ -115,12 +126,14 @@ public class Player extends Entity{
      */
     @Override
     public void stepOnHole(Entity mOwner) {
+        Test.logger.w("Player.stepOnHole(Entity)");
         if(!mOwner.equals(this))
             mOwner.addScore(1);
         getWarehouse().removeEntity(this);
     }
 
     public void applyFluid(Stickyness sticky){
+        Test.logger.w("Player.applyFluid(Stickyness)");
         getPlace().setSticky(sticky);
     }
 
@@ -133,7 +146,7 @@ public class Player extends Entity{
      */
     @Override
     public void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner) {
-
+        Test.logger.w("Player.stepOnSwitch(SwitchableHole, Entity)");
     }
 
     /**
@@ -144,13 +157,15 @@ public class Player extends Entity{
      */
     @Override
     public void stepOnGoal(Entity mOwner) {
-
+        Test.logger.w("Player.stepOnGoal(Entity)");
     }
 
     public void draw(){
+        Test.logger.w("Player.draw()");
         System.out.print("P");
     }
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Player.draw(FileWriter)");
         f.write("P");
     }
 }
