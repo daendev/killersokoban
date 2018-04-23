@@ -68,6 +68,13 @@ public class Switch extends Cell {
         else
             f.write("S");
     }
+
+    @Override
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("Switch.drawForSave(FileWriter");
+        f.write("S");
+    }
+
     public SwitchableHole getHole()
     {
         Test.logger.w("Switch.getHole()");

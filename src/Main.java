@@ -1,5 +1,4 @@
-import sokoban.*;
-import sun.util.resources.cldr.fa.LocaleNames_fa;
+import sokoban.Warehouse;
 import test.Logger;
 import test.Test;
 

@@ -193,4 +193,9 @@ public class Cell {
         else
             f.write("-");
     }
+
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("Cell.drawForSave(FileWriter)");
+        f.write("-");
+    }
 }
