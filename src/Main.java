@@ -1,3 +1,4 @@
+import test.Test;
 import sokoban.*;
 
 import java.io.FileWriter;
