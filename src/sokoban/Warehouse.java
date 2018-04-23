@@ -131,40 +131,41 @@ public class Warehouse {
 
     public void generateMap() {
         Test.logger.w("Warehouse.generateMap()");
-        int width = new Random().nextInt(15) + 5;
-        int height = new Random().nextInt(15) + 5;
+        int width = new Random().nextInt(15) + 7;
+        int height = new Random().nextInt(15) + 7;
         generateMap(width, height);
         int playerNum = new Random().nextInt(3) + 2;
         for(int i = 0; i < playerNum; i++){
-            int x = new Random().nextInt(height-1);
-            int y = new Random().nextInt(width-1);
+            int x = new Random().nextInt(height-2)+1;
+            int y = new Random().nextInt(width-2)+1;
             while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt(height-1);
-                y = new Random().nextInt(width-1);
+                x = new Random().nextInt(height-2)+1;
+                y = new Random().nextInt(width-2)+1;
             }
             players.add(new Player());
             players.get(i).setPlace(map.get(x + y*width));
             map.get(x + y * width).setHolding(players.get(i));
         }
 
-        int boxNum = new Random().nextInt() % 10 + 2;
+        int boxNum = new Random().nextInt(9) + 2;
         for(int i = 0; i < boxNum; i++){
-            int x = new Random().nextInt(height-1);
-            int y = new Random().nextInt(width-1);
+            int x = new Random().nextInt(height-2)+1;
+            int y = new Random().nextInt(width-2)+1;
             while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt(height-1);
-                y = new Random().nextInt(width-1);
+                x = new Random().nextInt(height-2)+1;
+                y = new Random().nextInt(width-2)+1;
             }
             boxes.add(new Box());
             boxes.get(i).setPlace(map.get(x + y*width));
             map.get(x + y * width).setHolding(boxes.get(i));
         }
+
         for(int i = 0; i < boxNum; i++){
-            int x = new Random().nextInt(height-1);
-            int y = new Random().nextInt(width-1);
+            int x = new Random().nextInt(height-2)+1;
+            int y = new Random().nextInt(width-2)+1;
             while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt(height-1);
-                y = new Random().nextInt(width-1);
+                x = new Random().nextInt(height-2)+1;
+                y = new Random().nextInt(width-2)+1;
             }
             map.remove(x + y * width);
             map.add(x + y * width, new Goal());
