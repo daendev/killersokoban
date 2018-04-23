@@ -8,11 +8,10 @@ public class Test {
 
     private List<String> command;
     private Warehouse w;
-    public Logger logger;
+    static public Logger logger = new Logger();
 
-    public Test(Warehouse w, Logger l) {
+    public Test(Warehouse w) {
         this.w = w;
-        logger = l;
     }
 
     public void readCommand(){
