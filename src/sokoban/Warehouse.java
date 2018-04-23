@@ -120,16 +120,16 @@ public class Warehouse {
     }
     public void generateMap() {
         Test.logger.w("Warehouse.generateMap()");
-        int width = new Random().nextInt() % 15 + 5;
-        int height = new Random().nextInt() % 15 + 5;
+        int width = new Random().nextInt(15) + 5;
+        int height = new Random().nextInt(15) + 5;
         generateMap(width, height);
-        int playerNum = new Random().nextInt() % 5 + 2;
+        int playerNum = new Random().nextInt(3) + 2;
         for(int i = 0; i < playerNum; i++){
-            int x = new Random().nextInt() % (height-1) + 1;
-            int y = new Random().nextInt() % (width-1) + 1;
+            int x = new Random().nextInt(height-1);
+            int y = new Random().nextInt(width-1);
             while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt() % (height-1) + 1;
-                y = new Random().nextInt() % (width-1) + 1;
+                x = new Random().nextInt(height-1);
+                y = new Random().nextInt(width-1);
             }
             players.add(new Player());
             players.get(i).setPlace(map.get(x + y*width));
@@ -138,32 +138,26 @@ public class Warehouse {
 
         int boxNum = new Random().nextInt() % 10 + 2;
         for(int i = 0; i < boxNum; i++){
-            int x = new Random().nextInt() % (height-1) + 1;
-            int y = new Random().nextInt() % (width-1) + 1;
+            int x = new Random().nextInt(height-1);
+            int y = new Random().nextInt(width-1);
             while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt() % (height-1) + 1;
-                y = new Random().nextInt() % (width-1) + 1;
+                x = new Random().nextInt(height-1);
+                y = new Random().nextInt(width-1);
             }
             boxes.add(new Box());
             boxes.get(i).setPlace(map.get(x + y*width));
             map.get(x + y * width).setHolding(boxes.get(i));
         }
         for(int i = 0; i < boxNum; i++){
-            int x = new Random().nextInt() % (height-1) + 1;
-            int y = new Random().nextInt() % (width-1) + 1;
+            int x = new Random().nextInt(height-1);
+            int y = new Random().nextInt(width-1);
             while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt() % (height-1) + 1;
-                y = new Random().nextInt() % (width-1) + 1;
+                x = new Random().nextInt(height-1);
+                y = new Random().nextInt(width-1);
             }
             map.remove(x + y * width);
             map.add(x + y * width, new Goal());
-        }
-
-        for(Cell c : map){
-            if(new Random().nextInt() % 10 == 1){
-                map.remove(c);
-                map.add(new Wall());
-            }
+            linkCell(x,y);
         }
     }
 
@@ -181,7 +175,6 @@ public class Warehouse {
                 else map.add(new Cell());
             }
         }
-
         for (int i = 0; i<width; i++){
             for(int j = 0; j<height; j++){
                 if(j!=0)
@@ -193,6 +186,25 @@ public class Warehouse {
                 if(i!=width-1)
                     map.get(i + j * width).setNeighbour(map.get(i +1 + j * width), Directions.right);
             }
+        }
+    }
+
+    public void linkCell(int x, int y){
+        if(x != 0){
+            map.get(x + y * getMapWidth()).setNeighbour(map.get(x - 1 + y * getMapWidth()), Directions.left);
+            map.get(x - 1 + y * getMapWidth()).setNeighbour(map.get(x + y * getMapWidth()), Directions.right);
+        }
+        if(x != getMapWidth() - 1){
+            map.get(x + y * getMapWidth()).setNeighbour(map.get(x + 1 + y * getMapWidth()), Directions.right);
+            map.get(x + 1 + y * getMapWidth()).setNeighbour(map.get(x + y * getMapWidth()), Directions.left);
+        }
+        if(y != 0){
+            map.get(x + y * getMapWidth()).setNeighbour(map.get(x  + (y - 1) * getMapWidth()), Directions.top);
+            map.get(x + (y - 1) * getMapWidth()).setNeighbour(map.get(x  + y * getMapWidth()), Directions.bottom);
+        }
+        if(y != getMapHeight() - 1){
+            map.get(x + y * getMapWidth()).setNeighbour(map.get(x + (y + 1) * getMapWidth()), Directions.bottom);
+            map.get(x + (y + 1) * getMapWidth()).setNeighbour(map.get(x + y * getMapWidth()), Directions.top);
         }
     }
 
