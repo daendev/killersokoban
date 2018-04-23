@@ -78,22 +78,23 @@ public class Player extends Entity{
     @Override
     public boolean move(Directions dir, Player mOwner, double weight) {
         Test.logger.w("Player.move(Directions, Player, double)");
-        if (weight + getFriction() <= mOwner.getStrenght()) {
-            if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
-                if(getPlace()!=null){
-                    getPlace().removeEntity();
-                    setPlace(getPlace().getNeighbour(dir));
+        if(getPlace()!=null) {
+            if (weight + getFriction() <= mOwner.getStrenght()) {
+                if (getPlace().getNeighbour(dir).acceptEntity(this, dir, mOwner, getFriction() + weight)) {
+                    if (getPlace() != null) {
+                        getPlace().removeEntity();
+                        setPlace(getPlace().getNeighbour(dir));
+                    }
+                } else {
+                    if (!mOwner.equals(this)) {
+                        die();
+                        mOwner.addScore(1);
+                    }
                 }
-            } else {
-                if (!mOwner.equals(this)) {
-                    die();
-                    mOwner.addScore(1);
-                }
-            }
-            return true;
-        }
-        else
-            return false;
+                return true;
+            } else
+                return false;
+        } else return false;
     }
 
     public void move(Directions dir){
@@ -134,7 +135,8 @@ public class Player extends Entity{
 
     public void applyFluid(Stickyness sticky){
         Test.logger.w("Player.applyFluid(Stickyness)");
-        getPlace().setSticky(sticky);
+        if(getPlace()!=null)
+            getPlace().setSticky(sticky);
     }
 
     /**
