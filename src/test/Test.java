@@ -45,8 +45,10 @@ public class Test {
             case "generate":
                 if (command.size() < 2)
                     System.out.println("Túl kevés argumentum!");
-                else
+                else {
+                    w.wipe();
                     generate();
+                }
                 break;
 
             case "add":

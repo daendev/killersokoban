@@ -23,7 +23,7 @@ public class Logger {
                 e.printStackTrace();
             }
         }
-        else System.out.println(msg);
+        //else System.out.println(msg);
     }
 }
 
