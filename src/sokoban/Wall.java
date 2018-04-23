@@ -36,4 +36,10 @@ public class Wall extends Cell {
         Test.logger.w("Wall.draw()");
         System.out.print("W");
     }
+
+    @Override
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("Wall.drawForSave(FileWriter)");
+        f.write("W");
+    }
 }

@@ -118,6 +118,17 @@ public class Warehouse {
                 f.write("\n");
         }
     }
+
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("Warehouse.drawForSave(FileWriter)");
+        for (Cell c: map
+                ) {
+            c.drawForSave(f);
+            if (c.getNeighbour(Directions.right) == null)
+                f.write("\n");
+        }
+    }
+
     public void generateMap() {
         Test.logger.w("Warehouse.generateMap()");
         int width = new Random().nextInt(15) + 5;

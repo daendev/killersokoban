@@ -34,10 +34,18 @@ public class Goal extends Cell{
             getHolding().draw();
         else System.out.print("G");
     }
+
+    @Override
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Goal.draw(FileWriter)");
         if(getHolding()!=null)
             getHolding().draw();
         else f.write("G");
+    }
+
+    @Override
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("Goal.drawForSave(FileWriter)");
+        f.write("G");
     }
 }

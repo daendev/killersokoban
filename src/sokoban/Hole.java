@@ -36,4 +36,10 @@ public class Hole extends Cell {
         Test.logger.w("Hole.draw()");
         System.out.print("H");
     }
+
+    @Override
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("Hole.drawForSave(FileWriter)");
+        f.write("H");
+    }
 }

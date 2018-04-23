@@ -1,4 +1,4 @@
-import sokoban.*;
+import sokoban.Warehouse;
 import test.Logger;
 import test.Test;
 
@@ -45,5 +45,14 @@ public class Main {
             t.readCommand();
             exit = t.executeCommand();
         }
+
+        if (Logger.fw != null){
+            try {
+                Logger.fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

@@ -73,4 +73,13 @@ public class SwitchableHole extends Hole{
         else
             f.write("-");
     }
+
+    @Override
+    public void drawForSave(FileWriter f) throws IOException {
+        Test.logger.w("SwitchabelHole.drawForSave(FileWriter");
+        if (open)
+            f.write("H");
+        else
+            f.write("-");
+    }
 }
