@@ -258,7 +258,7 @@ public class Test {
         try {
             FileWriter file = new FileWriter(fileName);
             file.write(w.getMapWidth() + " " + w.getMapHeight() + "\n");
-            w.draw(file);
+            w.drawForSave(file);
             file.write(w.getPlayers().size() + "\n");
             for (int i=0; i<w.getPlayers().size(); i++) {
                 file.write(w.getPlayers().get(i).getPlace().getX() + " ");
