@@ -9,6 +9,17 @@ public class Test {
     private List<String> command;
     private Warehouse w;
     static public Logger logger = new Logger();
+    private boolean file;
+    private FileWriter fw;
+
+
+    public void setFile(boolean file) {
+        this.file = file;
+    }
+
+    public void setFw(FileWriter fw) {
+        this.fw = fw;
+    }
 
     public Test(Warehouse w) {
         this.w = w;
