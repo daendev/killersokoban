@@ -1,5 +1,7 @@
 package sokoban;
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -51,16 +53,20 @@ public abstract class Entity {
      * @return Az entitást tartalmazó raktár.
      */
     public Warehouse getWarehouse() {
+        Test.logger.w("Entity.getWarehouse()");
         return warehouse;
     }
 
-    public void setWarehouse(Warehouse w){warehouse = w;}
+    public void setWarehouse(Warehouse w){
+        Test.logger.w("Entity.setWarehouse(Warehouse)");
+        warehouse = w;}
 
     /**
      * Megadja, hogy ki az entitás tulajdonosa.
      * @return Az entitás tulajdonosa.
      */
     public Entity getOwner() {
+        Test.logger.w("Entity.getOwner()");
         return owner;
     }
 
@@ -69,6 +75,7 @@ public abstract class Entity {
      * @param owner Az új tulajdonos.
      */
     public void setOwner(Entity owner) {
+        Test.logger.w("Entity.setOwner(Entity)");
         this.owner = owner;
     }
 
@@ -77,6 +84,7 @@ public abstract class Entity {
      * @return Ahol az entitás áll.
      */
     public Cell getPlace() {
+        Test.logger.w("Entity.getPlaye()");
         return place;
     }
 
@@ -85,6 +93,7 @@ public abstract class Entity {
      * @param place Ahova az entitást helyezzük.
      */
     public void setPlace(Cell place) {
+        Test.logger.w("Entity.setPlace(Cell)");
         this.place = place;
     }
 
@@ -93,6 +102,7 @@ public abstract class Entity {
      * @return Mennyire nehéz az entitás.
      */
     public double getWeight() {
+        Test.logger.w("Entity.getWeight()");
         return weight;
     }
 
@@ -101,6 +111,7 @@ public abstract class Entity {
      * @param weight Mennyire legyen nehéz az entitás.
      */
     public void setWeight(double weight) {
+        Test.logger.w("Entity.setWeight(double)");
         this.weight = weight;
     }
 
@@ -109,6 +120,7 @@ public abstract class Entity {
      * @return Lásd fönt.
      */
     public double getFriction(){
+        Test.logger.w("Entity.getFriction()");
         return getWeight()*getPlace().getSticky();
     }
 
