@@ -158,6 +158,13 @@ public class Warehouse {
             map.remove(x + y * width);
             map.add(x + y * width, new Goal());
         }
+
+        for(Cell c : map){
+            if(new Random().nextInt() % 10 == 1){
+                map.remove(c);
+                map.add(new Wall());
+            }
+        }
     }
 
     public void generateMap(int dim){

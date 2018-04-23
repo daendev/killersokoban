@@ -20,13 +20,18 @@ public class Main {
                 case "-out":
                     t.setFile(true);
                     try {
-                        Logger.fw = new FileWriter(args[++i]);
+                        t.setFw(new FileWriter(args[++i]));
                     } catch (IOException e){
                         e.printStackTrace();
                     }
                     break;
                 case "-log":
                     Logger.toFile=true;
+                    try {
+                        Logger.fw = new FileWriter(args[++i]);
+                    } catch (IOException e){
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     System.out.println("Wrong argument: " + args[i]);
