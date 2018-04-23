@@ -180,10 +180,10 @@ public class Warehouse {
 
     public void generateMap(int width, int height){
         Test.logger.w("Warehouse.generateMap(int, int)");
-        for (int i=0; i<width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i=0; i<height; i++) {
+            for (int j = 0; j < width; j++) {
                 if (i == 0 || j == 0) map.add(new Wall());
-                else if (i == width-1 || j == height-1) map.add(new Wall());
+                else if (i == height-1 || j == width-1) map.add(new Wall());
                 else map.add(new Cell());
             }
         }
