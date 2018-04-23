@@ -9,7 +9,7 @@ public class Test {
     private Warehouse w;
     private boolean file;
     private FileWriter fw;
-
+    public static Logger logger = new Logger();
 
     public void setFile(boolean file) {
         this.file = file;
