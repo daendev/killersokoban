@@ -1,5 +1,7 @@
 package sokoban;
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -20,6 +22,7 @@ public class Switch extends Cell {
      * @param h Az a lyuk, amit kapcsolnia kell majd a kapcsolónak.
      */
     public Switch(SwitchableHole h){
+        Test.logger.w("Switch()");
         hole = h;
     }
 
@@ -32,6 +35,7 @@ public class Switch extends Cell {
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
+        Test.logger.w("Switch.acceptEntity(Entity, Directions, Player, double)");
         boolean succesful = super.acceptEntity(n, dir, mOwner, weight);
         if(succesful)
             n.stepOnSwitch(hole, mOwner);
@@ -43,12 +47,14 @@ public class Switch extends Cell {
      */
     @Override
     public void removeEntity() {
+        Test.logger.w("Switch.removeEntity()");
         super.removeEntity();
         hole.setOpen(false, null);
     }
 
     @Override
     public void draw() {
+        Test.logger.w("Switch.draw()");
         if (getHolding() != null)
             getHolding().draw();
         else
@@ -56,16 +62,21 @@ public class Switch extends Cell {
     }
 
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Switch.draw(FileWriter");
         if (getHolding() != null)
             getHolding().draw();
         else
             f.write("S");
     }
-    public SwitchableHole getHole() {
+    public SwitchableHole getHole()
+    {
+        Test.logger.w("Switch.getHole()");
         return hole;
     }
 
-    public void setHole(SwitchableHole hole) {
+    public void setHole(SwitchableHole hole)
+    {
+        Test.logger.w("Switch.setHole(SwitchableHole");
         this.hole = hole;
     }
 }

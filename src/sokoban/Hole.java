@@ -1,5 +1,7 @@
 package sokoban;
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -18,17 +20,20 @@ public class Hole extends Cell {
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
+        Test.logger.w("Hole.acceptEntity(Entity, Directions, Player, weight)");
         n.stepOnHole(mOwner);
         return true;
     }
 
     @Override
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Hole.draw(FileWriter)");
         f.write("H");
     }
 
     @Override
     public void draw(){
+        Test.logger.w("Hole.draw()");
         System.out.print("H");
     }
 }
