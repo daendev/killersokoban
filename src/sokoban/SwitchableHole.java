@@ -1,5 +1,7 @@
 package sokoban;
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -20,6 +22,7 @@ public class SwitchableHole extends Hole{
      * @param mOwner Aki beállíttott a kapcsoló állapotát.
      */
     public void setOpen(boolean open, Entity mOwner) {
+        Test.logger.w("SwitchabelHole.setOpen(boolean, Entity)");
         this.open = open;
         if (open && getHolding() != null){
             getHolding().stepOnHole(mOwner);
@@ -35,6 +38,7 @@ public class SwitchableHole extends Hole{
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
+        Test.logger.w("SwitchabelHole.acceptEntity(Entity, Directions, Player, double");
         if (open) {
             return super.acceptEntity(n, dir, mOwner, weight);
         } else {
@@ -51,6 +55,7 @@ public class SwitchableHole extends Hole{
 
     @Override
     public void draw() {
+        Test.logger.w("SwitchabelHole.draw()");
         if (open)
             System.out.print("H");
         else if (getHolding() != null)
@@ -60,6 +65,7 @@ public class SwitchableHole extends Hole{
     }
 
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("SwitchabelHole.draw(FileWriter");
         if (open)
             f.write("H");
         else if (getHolding() != null)
