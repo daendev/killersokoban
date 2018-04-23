@@ -1,5 +1,3 @@
-package test;
-
 import sokoban.*;
 
 import java.io.*;
@@ -10,7 +8,18 @@ public class Test {
 
     private List<String> command;
     private Warehouse w;
-    public static Logger logger = new Logger();
+    static public Logger logger = new Logger();
+    private boolean file;
+    private FileWriter fw;
+
+
+    public void setFile(boolean file) {
+        this.file = file;
+    }
+
+    public void setFw(FileWriter fw) {
+        this.fw = fw;
+    }
 
     public Test(Warehouse w) {
         this.w = w;
