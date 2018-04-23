@@ -187,8 +187,8 @@ public class Warehouse {
                 else map.add(new Cell());
             }
         }
-        for (int i = 0; i<width; i++){
-            for(int j = 0; j<height; j++){
+        for (int j = 0; j<height; j++){
+            for(int i = 0; i<width; i++){
                 if(j!=0)
                     map.get(i + j * width).setNeighbour(map.get(i + (j-1) * width), Directions.top);
                 if(j!=height-1)
