@@ -1,5 +1,7 @@
 package sokoban;
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -37,6 +39,7 @@ public class Cell {
      * TESZTELÉS CÉLJÁRA
      */
     public Cell(){
+        Test.logger.w("Cell.constructor()");
         neighbours = new Cell[4];
         sticky = Stickyness.Normal;
     }
@@ -46,6 +49,7 @@ public class Cell {
      * @param w Az a raktár, amiben a cella lesz.
      */
     public Cell(Warehouse w){
+        Test.logger.w("Cell.constructor(Warehouse)");
         neighbours = new Cell[4];
         warehouse = w;
     }
@@ -55,6 +59,7 @@ public class Cell {
      * @param warehouse A raktár, ahol a cellának lennie kell.
      */
     public void setWarehouse(Warehouse warehouse) {
+        Test.logger.w("Cell.setWarehouse(Warehouse)");
         this.warehouse = warehouse;
     }
 
@@ -63,6 +68,7 @@ public class Cell {
      * @return A cellát tartalmazó raktár.
      */
     public Warehouse getWarehouse() {
+        Test.logger.w("Cell.getWarehouse()");
         return warehouse;
     }
 
@@ -72,6 +78,7 @@ public class Cell {
      * @see Entity
      */
     public Entity getHolding() {
+        Test.logger.w("Cell.getHolding()");
         return holding;
     }
 
@@ -81,6 +88,7 @@ public class Cell {
      * @see Entity
      */
     public void setHolding(Entity holding) {
+        Test.logger.w("Cell.setHolding()");
         this.holding = holding;
     }
 
@@ -90,6 +98,7 @@ public class Cell {
      * @return Az adott irányban lévő szomszéd.
      */
     public Cell getNeighbour(Directions d) {
+        Test.logger.w("Cell.getNeighbour(Direction)");
         return neighbours[d.ordinal()];
     }
 
@@ -99,6 +108,7 @@ public class Cell {
      * @param dir Amelyik irányban állítja be.
      */
     public void setNeighbour(Cell neighbour, Directions dir ) {
+        Test.logger.w("Cell.setNeighbour(Cell, Direction)");
         this.neighbours[dir.ordinal()] = neighbour;
     }
 
@@ -107,6 +117,7 @@ public class Cell {
      * @return A cella csúszóssága.
      */
     public double getSticky() {
+        Test.logger.w("Cell.getSticky()");
         return sticky.getValue();
     }
 
@@ -115,6 +126,7 @@ public class Cell {
      * @param sticky Mennyire legyen csúszós a cella.
      */
     public void setSticky(Stickyness sticky) {
+        Test.logger.w("Cell.setSticky(Stickyness)");
         this.sticky = sticky;
     }
 
@@ -126,6 +138,7 @@ public class Cell {
      * @return Sikeresen befogadta-e az új dolgot.
      */
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight){
+        Test.logger.w("Cell.acceptEntity(Entity, Directions, Player, double)");
         if(holding == null){
             holding = n;
             return true;
@@ -140,10 +153,12 @@ public class Cell {
      * Eltávolítja a cella tartalmát.
      */
     public void removeEntity(){
+        Test.logger.w("Cell.removeEntity()");
         holding = null;
     }
 
     public int getX(){
+        Test.logger.w("Cell.getX()");
         Cell cell = this;
         int ret = 0;
         while (cell.getNeighbour(Directions.left) != null){
@@ -153,6 +168,7 @@ public class Cell {
         return ret;
     }
     public int getY(){
+        Test.logger.w("Cell.getY()");
         Cell cell = this;
         int ret = 0;
         while (cell.getNeighbour(Directions.top) != null){
@@ -163,6 +179,7 @@ public class Cell {
     }
 
     public void draw(){
+        Test.logger.w("Cell.draw()");
         if (holding != null)
             holding.draw();
         else
@@ -170,6 +187,7 @@ public class Cell {
     }
 
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Cell.draw(FileWriter)");
         if (holding != null)
             holding.draw(f);
         else

@@ -1,6 +1,8 @@
 package sokoban;
 
 
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class Warehouse {
      * Létrehozza a raktárat.
      */
     public Warehouse(){
+        Test.logger.w("Warehouse.constructor()");
         players = new ArrayList<>();
         boxes = new ArrayList<>();
         map = new ArrayList<>();
@@ -44,6 +47,7 @@ public class Warehouse {
      * @param playerNum Ahány játékos legyen.
      */
     public Warehouse(int playerNum){
+        Test.logger.w("Warehouse.constructor(int)");
         players = new ArrayList<>();
         for (int i=0; i<playerNum; i++)
             players.add(new Player());
@@ -57,6 +61,7 @@ public class Warehouse {
      * @return A kért játékos.
      */
     public Player getPlayer(int a) {
+        Test.logger.w("Warehouse.getPlayer()");
         return players.get(a);
     }
 
@@ -65,6 +70,7 @@ public class Warehouse {
      * @param b A hozzáadandó doboz.
      */
     public void addBox(Box b){
+        Test.logger.w("Warehouse.addBox(Box)");
         boxes.add(b);
     }
 
@@ -77,6 +83,7 @@ public class Warehouse {
      * @see Player
      */
     public void removeEntity(Entity e){
+        Test.logger.w("Warehouse.removeEntity(Entity)");
         if (boxes.contains(e)) boxes.remove(e);
         else if(players.contains(e)) e.die();
     }
@@ -94,6 +101,7 @@ public class Warehouse {
      *
      */
     public void draw(){
+        Test.logger.w("Warehouse.draw()");
         for (Cell c: map
              ) {
             c.draw();
@@ -102,6 +110,7 @@ public class Warehouse {
         }
     }
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Warehouse.draw(FileWriter)");
         for (Cell c: map
                 ) {
             c.draw(f);
@@ -110,6 +119,7 @@ public class Warehouse {
         }
     }
     public void generateMap() {
+        Test.logger.w("Warehouse.generateMap()");
         int width = new Random().nextInt() % 15 + 5;
         int height = new Random().nextInt() % 15 + 5;
         generateMap(width, height);
@@ -151,10 +161,12 @@ public class Warehouse {
     }
 
     public void generateMap(int dim){
+        Test.logger.w("Warehouse.generateMap(int)");
         generateMap(dim, dim);
     }
 
     public void generateMap(int width, int height){
+        Test.logger.w("Warehouse.generateMap(int, int)");
         for (int i=0; i<width; i++) {
             for (int j = 0; j < height; j++) {
                 if (i == 0 || j == 0) map.add(new Wall());
@@ -178,6 +190,7 @@ public class Warehouse {
     }
 
     public int getMapWidth() {
+        Test.logger.w("Warehouse.getMapWidth()");
         int i = 0;
         while (map.get(i).getNeighbour(Directions.right) != null)
             i++;
@@ -185,6 +198,7 @@ public class Warehouse {
     }
 
     public int getMapHeight(){
+        Test.logger.w("Warehouse.getMapHeight()");
         int i=1;
         Cell c = map.get(0);
         while (c.getNeighbour(Directions.bottom) != null){
@@ -195,22 +209,27 @@ public class Warehouse {
     }
 
     public List<Cell> getMap() {
+        Test.logger.w("Warehouse.getMap()");
         return map;
     }
 
     public List<Box> getBoxes() {
+        Test.logger.w("Warehouse.getBoxes()");
         return boxes;
     }
 
     public List<Player> getPlayers() {
+        Test.logger.w("Warehouse.getPlayers()");
         return players;
     }
 
     public List<Switch> getSwitches() {
+        Test.logger.w("Warehouse.getSwitches()");
         return switches;
     }
 
     public void wipe(){
+        Test.logger.w("Warehouse.wipe()");
         map.clear();
         boxes.clear();
         players.clear();
