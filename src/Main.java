@@ -1,4 +1,5 @@
 import sokoban.*;
+import sun.util.resources.cldr.fa.LocaleNames_fa;
 import test.Logger;
 import test.Test;
 
@@ -45,5 +46,14 @@ public class Main {
             t.readCommand();
             exit = t.executeCommand();
         }
+
+        if (Logger.fw != null){
+            try {
+                Logger.fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
