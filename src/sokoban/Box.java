@@ -1,4 +1,6 @@
 package sokoban;
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -13,8 +15,8 @@ public class Box extends Entity{
      */
     public Box()
     {
-
         super();
+        Test.logger.w("Box.constructor()");
         setOwner(this);
         setWeight(1);
     }
@@ -27,6 +29,7 @@ public class Box extends Entity{
      */
     @Override
     public boolean move(Directions dir, Player mOwner, double weight) {
+        Test.logger.w("Box.move(Directions, Player, double)");
         if (weight + getFriction() <= mOwner.getStrenght()) {
             if (!getOwner().equals(this))
                 return false;
@@ -46,6 +49,7 @@ public class Box extends Entity{
      */
     @Override
     public void stepOnGoal(Entity mOwner) {
+        Test.logger.w("Box.stepOnGoal(Entity)");
         setOwner(mOwner);
         mOwner.addScore(1);
     }
@@ -57,7 +61,8 @@ public class Box extends Entity{
      */
     @Override
     public void stepOnHole(Entity mOwner) {
-		getWarehouse().removeEntity(this);
+        Test.logger.w("Box.stepOnHole(Entity)");
+        getWarehouse().removeEntity(this);
     }
 
     /**
@@ -68,6 +73,7 @@ public class Box extends Entity{
      */
     @Override
     public void stepOnSwitch(SwitchableHole aSwitch, Entity mOwner) {
+        Test.logger.w("Box.stepOnSwitch(SwichableHole, Entity)");
         aSwitch.setOpen(true, mOwner);
     }
 
@@ -78,6 +84,7 @@ public class Box extends Entity{
      */
     @Override
     public void die() {
+        Test.logger.w("Box.die()");
 
     }
 
@@ -88,16 +95,18 @@ public class Box extends Entity{
      */
     @Override
     public void addScore(int amount){
-
+        Test.logger.w("Box.addScore(int)");
     }
 
     @Override
     public void draw() {
+        Test.logger.w("Box.draw()");
         System.out.print("B");
     }
 
     @Override
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Box.draw(FileWriter)");
         f.write("B");
     }
 }

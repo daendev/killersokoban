@@ -1,4 +1,6 @@
 package sokoban;
+import test.Test;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -17,6 +19,7 @@ public class Goal extends Cell{
      */
     @Override
     public boolean acceptEntity(Entity n, Directions dir, Player mOwner, double weight) {
+        Test.logger.w("Goal.acceptEntity(Entity, Directions, Player, double)");
         if(super.acceptEntity(n, dir, mOwner, weight)) {
             n.stepOnGoal(mOwner);
             return true;
@@ -26,11 +29,13 @@ public class Goal extends Cell{
 
     @Override
     public void draw(){
+        Test.logger.w("Goal.draw()");
         if(getHolding()!=null)
             getHolding().draw();
         else System.out.print("G");
     }
     public void draw(FileWriter f) throws IOException {
+        Test.logger.w("Goal.draw(FileWriter)");
         if(getHolding()!=null)
             getHolding().draw();
         else f.write("G");
