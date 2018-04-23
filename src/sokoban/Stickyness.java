@@ -3,9 +3,9 @@ package sokoban;
 import test.Test;
 
 public enum Stickyness {
-    Oil(0.5),
+    Oil(0.1),
     Normal(1),
-    Honey(2);
+    Honey(5);
 
     private double value;
 

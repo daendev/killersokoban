@@ -28,7 +28,7 @@ public class Player extends Entity{
         super();
         Test.logger.w("Player.constructor()");
         score = 0;
-        strenght = 4;
+        strenght = 9 + getWeight();
         setWeight(1);
         setOwner(this);
     }

@@ -18,7 +18,7 @@ public class Box extends Entity{
         super();
         Test.logger.w("Box.constructor()");
         setOwner(this);
-        setWeight(1);
+        setWeight(2);
     }
 
     /**
