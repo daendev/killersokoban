@@ -1,3 +1,5 @@
+package test;
+
 import sokoban.*;
 
 import java.io.*;
@@ -8,7 +10,7 @@ public class Test {
 
     private List<String> command;
     private Warehouse w;
-    static public Logger logger = new Logger();
+    public static Logger logger = new Logger();
 
     public Test(Warehouse w) {
         this.w = w;
