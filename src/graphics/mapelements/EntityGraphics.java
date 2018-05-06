@@ -11,7 +11,6 @@ public abstract class EntityGraphics extends ObjectGraphics {
     }
 
     public void update(){
-        x = transformCoords(reference.getPlace().getX());
-        y = transformCoords(reference.getPlace().getY());
+        shape.relocate(transformCoords(reference.getPlace().getX()), transformCoords(reference.getPlace().getY()));
     }
 }

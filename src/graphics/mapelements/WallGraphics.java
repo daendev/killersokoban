@@ -1,7 +1,6 @@
 package graphics.mapelements;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import sokoban.Wall;
 
 public class WallGraphics extends CellGraphics {

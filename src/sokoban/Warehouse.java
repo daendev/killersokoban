@@ -71,7 +71,7 @@ public class Warehouse {
      * Hozzáad egy dobozt a raktárhoz.
      * @param b A hozzáadandó doboz.
      */
-    private void addBox(Box b){
+    public void addBox(Box b){
         Test.logger.w("Warehouse.addBox(Box)");
         add(b);
     }

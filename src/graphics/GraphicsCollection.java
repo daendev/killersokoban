@@ -1,7 +1,7 @@
 package graphics;
 
 import graphics.mapelements.ObjectGraphics;
-import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ public class GraphicsCollection {
 
     private static List<ObjectGraphics> objects = new ArrayList<>();
 
-    private Group canvas;
+    private Pane canvas;
 
-    public GraphicsCollection(Group canvas){
+    public GraphicsCollection(Pane canvas){
         this.canvas = canvas;
     }
 
@@ -26,6 +26,8 @@ public class GraphicsCollection {
 
     public void drawAll(){
         for (ObjectGraphics g : objects){
+            g.update();
+            System.out.println("drawing shape " + g.toString() + " at " + g.getX() + "," + g.getY());
             canvas.getChildren().add(g.getShape());
         }
     }

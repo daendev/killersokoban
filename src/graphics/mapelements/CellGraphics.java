@@ -17,7 +17,6 @@ public class CellGraphics extends ObjectGraphics {
     }
 
     public void update(){
-        x = transformCoords(reference.getX());
-        y = transformCoords(reference.getY());
+        shape.relocate(transformCoords(reference.getX()), transformCoords(reference.getY()));
     }
 }
