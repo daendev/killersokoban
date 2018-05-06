@@ -9,4 +9,9 @@ public abstract class EntityGraphics extends ObjectGraphics {
     public EntityGraphics(Entity e){
         reference = e;
     }
+
+    public void update(){
+        x = transformCoords(reference.getPlace().getX());
+        y = transformCoords(reference.getPlace().getY());
+    }
 }
