@@ -1,5 +1,6 @@
 package sokoban;
 
+import graphics.Drawable;
 import test.Test;
 
 import java.io.FileWriter;
@@ -10,7 +11,7 @@ import java.io.IOException;
  * @see Box
  * @see Player
  */
-public abstract class Entity {
+public abstract class Entity implements Drawable {
 
     /**
      * Az a cella, amin az entitás áll.

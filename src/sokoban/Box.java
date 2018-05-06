@@ -1,4 +1,6 @@
 package sokoban;
+import graphics.mapelements.BoxGraphics;
+import graphics.mapelements.ObjectGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -108,5 +110,10 @@ public class Box extends Entity{
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Box.draw(FileWriter)");
         f.write("B");
+    }
+
+    @Override
+    public ObjectGraphics getGraphics() {
+        return new BoxGraphics(this);
     }
 }

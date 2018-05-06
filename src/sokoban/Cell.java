@@ -1,5 +1,8 @@
 package sokoban;
 
+import graphics.mapelements.CellGraphics;
+import graphics.Drawable;
+import graphics.mapelements.ObjectGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -8,7 +11,7 @@ import java.io.IOException;
 /**
  * A játékban a cellákat (játéktér mezői) megvalósító osztály.
  */
-public class Cell {
+public class Cell implements Drawable{
 
     /**
      * A cellával szomszédos cellák.
@@ -197,5 +200,10 @@ public class Cell {
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Cell.drawForSave(FileWriter)");
         f.write("-");
+    }
+
+    @Override
+    public ObjectGraphics getGraphics() {
+        return new CellGraphics(this);
     }
 }

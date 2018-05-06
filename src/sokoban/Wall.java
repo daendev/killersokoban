@@ -1,5 +1,7 @@
 package sokoban;
 
+import graphics.mapelements.ObjectGraphics;
+import graphics.mapelements.WallGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -9,7 +11,7 @@ import java.io.IOException;
  * A játékban a cellákat (játéktér mezői) megvalósító osztály.
  * @see Cell
  */
-public class Wall extends Cell {
+public class Wall extends Cell{
 
     /**
      * Befogad valamit a falra. A falakon nem állhat semmi, így sose fogadja be.
@@ -41,5 +43,10 @@ public class Wall extends Cell {
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Wall.drawForSave(FileWriter)");
         f.write("W");
+    }
+
+    @Override
+    public ObjectGraphics getGraphics() {
+        return new WallGraphics(this);
     }
 }
