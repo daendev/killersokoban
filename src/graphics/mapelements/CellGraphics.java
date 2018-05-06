@@ -4,7 +4,9 @@ import sokoban.Cell;
 
 public class CellGraphics extends ObjectGraphics {
 
-    public CellGraphics(Cell c){
+    protected Cell reference;
 
+    public CellGraphics(Cell c){
+        reference = c;
     }
 }

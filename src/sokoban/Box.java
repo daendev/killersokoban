@@ -1,4 +1,5 @@
 package sokoban;
+import graphics.Drawable;
 import graphics.mapelements.BoxGraphics;
 import graphics.mapelements.ObjectGraphics;
 import test.Test;
@@ -10,7 +11,7 @@ import java.io.IOException;
  * A játékban a dobozokat megvalósító osztály.
  * @see Entity
  */
-public class Box extends Entity{
+public class Box extends Entity implements Drawable{
     /**
      * Létrehozza a dobozt.
      * Kezdetben a doboz tulajdonosa saját maga, mivel még senki nem tolta egy cél cellára.

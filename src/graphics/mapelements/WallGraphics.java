@@ -2,9 +2,10 @@ package graphics.mapelements;
 
 import sokoban.Wall;
 
-public class WallGraphics extends ObjectGraphics {
+public class WallGraphics extends CellGraphics {
 
-    public WallGraphics(Wall w){
 
+    public WallGraphics(Wall c) {
+        super(c);
     }
 }

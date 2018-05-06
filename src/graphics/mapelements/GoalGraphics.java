@@ -2,9 +2,10 @@ package graphics.mapelements;
 
 import sokoban.Goal;
 
-public class GoalGraphics {
+public class GoalGraphics extends CellGraphics {
 
-    public void GoalGraphics(Goal g){
-
+    public GoalGraphics(Goal c) {
+        super(c);
     }
+
 }
