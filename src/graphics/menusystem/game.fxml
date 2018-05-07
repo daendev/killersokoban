@@ -14,7 +14,6 @@
       alignment="CENTER">
 
     <AnchorPane prefHeight="100">
-        <padding><Insets top="20" right="20" left="20" bottom="20" /></padding>
         <Button text="Exit" prefHeight="80" prefWidth="80" onAction="#exitButton"
                 AnchorPane.rightAnchor="10"
                 AnchorPane.topAnchor="10"

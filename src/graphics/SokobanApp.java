@@ -1,5 +1,6 @@
 package graphics;
 
+import graphics.menusystem.GameController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,11 +20,18 @@ public class SokobanApp extends Application {
 
         Scene mainMenu = new Scene(FXMLLoader.load(getClass().getResource("menusystem/mainmenu.fxml")), 500, 600);
         Scene settingsMenu = new Scene(FXMLLoader.load(getClass().getResource("menusystem/settingsmenu.fxml")), 500, 600);
-        Scene game = new Scene(FXMLLoader.load(getClass().getResource("menusystem/game.fxml")), 500, 600);
+        // Scene game = new Scene(FXMLLoader.load(getClass().getResource("menusystem/game.fxml")), 500, 600);
+
+        FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("menusystem/game.fxml"));
+        Scene game = new Scene(gameLoader.load());
 
         scenes.put("main", mainMenu);
         scenes.put("settings", settingsMenu);
         scenes.put("game", game);
+
+        game.setOnKeyPressed(e -> {
+            gameLoader.<GameController>getController().handleKeyPress(e);
+        });
 
         stage.setScene(mainMenu);
         stage.setTitle("Killer Sokoban");
@@ -32,6 +40,10 @@ public class SokobanApp extends Application {
 
     public static void switchScenes(String s){
         stage.setScene(scenes.get(s));
+    }
+
+    public static Scene getScene(String s){
+        return scenes.get(s);
     }
 
     public static void main(String[] args){

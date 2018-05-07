@@ -25,6 +25,7 @@ public class GraphicsCollection {
     }
 
     public void drawAll(){
+        canvas.getChildren().clear();
         for (ObjectGraphics g : objects){
             g.update();
             System.out.println("drawing shape " + g.toString() + " at " + g.getX() + "," + g.getY());
