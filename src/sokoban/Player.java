@@ -1,5 +1,6 @@
 package sokoban;
 
+import graphics.GraphicsCollection;
 import graphics.mapelements.ObjectGraphics;
 import graphics.mapelements.PlayerGraphics;
 import test.Test;

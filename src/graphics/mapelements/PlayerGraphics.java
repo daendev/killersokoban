@@ -6,13 +6,26 @@ import sokoban.Player;
 
 public class PlayerGraphics extends EntityGraphics {
 
-    public static final int radius = 25;
+    private static final int radius = 25;
+    private static int playerCount = 1;
 
     public PlayerGraphics(Player p) {
         super(p);
+        z = 1;
         shape = new Circle();
         ((Circle) shape).setRadius(radius);
-        shape.setFill(Color.web("2196F3"));
+        shape.setFill(Color.web(chooseColor()));
+        ++playerCount;
+    }
+
+    private String chooseColor(){
+        switch(playerCount){
+            case 1: return "2196F3";
+            case 2: return "F44336";
+            case 3: return "4CAF50";
+            case 4: return "FFEB3B";
+        }
+        return "9C27B0"; // default lila csak ugy random xd
     }
 
 }

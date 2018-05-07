@@ -4,6 +4,7 @@ import graphics.mapelements.ObjectGraphics;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GraphicsCollection {
@@ -26,11 +27,18 @@ public class GraphicsCollection {
 
     public void drawAll(){
         canvas.getChildren().clear();
+        Collections.sort(objects);
+        List<ObjectGraphics> deprecated = new ArrayList<>();
         for (ObjectGraphics g : objects){
+            if(!g.isPresent()){
+                deprecated.add(g);
+                continue;
+            }
             g.update();
-            System.out.println("drawing shape " + g.toString() + " at " + g.getX() + "," + g.getY());
+            // System.out.println("drawing shape " + g.toString() + " at " + g.getX() + "," + g.getY());
             canvas.getChildren().add(g.getShape());
         }
+        objects.removeAll(deprecated);
     }
 
 }

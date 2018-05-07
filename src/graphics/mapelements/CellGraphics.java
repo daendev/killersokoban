@@ -10,6 +10,7 @@ public class CellGraphics extends ObjectGraphics {
 
     public CellGraphics(Cell c){
         reference = c;
+        z = 0;
         shape = new Rectangle();
         ((Rectangle) shape).setWidth(cellSize);
         ((Rectangle) shape).setHeight(cellSize);
@@ -18,5 +19,10 @@ public class CellGraphics extends ObjectGraphics {
 
     public void update(){
         shape.relocate(transformCoords(reference.getX()), transformCoords(reference.getY()));
+    }
+
+    @Override
+    public boolean isPresent() {
+        return true;
     }
 }
