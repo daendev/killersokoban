@@ -18,4 +18,7 @@ public class MainMenuController {
     public void exitButton(ActionEvent actionEvent) {
         Platform.exit();
     }
+
+    public void loadButton(ActionEvent actionEvent) {
+    }
 }

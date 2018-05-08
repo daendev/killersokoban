@@ -13,10 +13,18 @@
       alignment="CENTER">
 
     <AnchorPane prefHeight="100">
-        <Button text="Exit" prefHeight="80" prefWidth="80" onAction="#exitButton"
-                AnchorPane.rightAnchor="10"
-                AnchorPane.topAnchor="10"
-                AnchorPane.bottomAnchor="10" />
+        <VBox AnchorPane.rightAnchor="10"
+              AnchorPane.topAnchor="10"
+              AnchorPane.bottomAnchor="10"
+              spacing="10">
+            <Button text="Save" prefWidth="100" onAction="#saveButton" />
+            <Button text="Quit" prefWidth="100" onAction="#exitButton" />
+        </VBox>
+        <GridPane AnchorPane.leftAnchor="10"
+                  AnchorPane.topAnchor="10"
+                  AnchorPane.bottomAnchor="10"
+                  fx:id="scorePane">
+        </GridPane>
     </AnchorPane>
 
     <Pane fx:id="canvas" />

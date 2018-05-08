@@ -13,7 +13,8 @@
             alignment="CENTER" spacing="20">
 
     <Label text="Killer Sokoban" />
-    <Button text="Start" onAction="#startButton" />
-    <Button text="Settings" onAction="#settingsButton" />
-    <Button text="Exit" onAction="#exitButton" />
+    <Button text="New Game" onAction="#startButton" prefWidth="150" />
+    <Button text="Load Game" onAction="#loadButton" prefWidth="150" />
+    <Button text="Settings" onAction="#settingsButton" prefWidth="150" />
+    <Button text="Exit" onAction="#exitButton" prefWidth="150" />
 </VBox>
