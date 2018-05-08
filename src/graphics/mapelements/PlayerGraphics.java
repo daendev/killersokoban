@@ -1,12 +1,13 @@
 package graphics.mapelements;
 
+import graphics.menusystem.GameController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import sokoban.Player;
 
 public class PlayerGraphics extends EntityGraphics {
 
-    private static final int radius = 25;
+    private static final int radius = GameController.cellSize / 2;
     private static int playerCount = 1;
 
     public PlayerGraphics(Player p) {

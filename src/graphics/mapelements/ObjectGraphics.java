@@ -1,12 +1,11 @@
 package graphics.mapelements;
 
+import graphics.menusystem.GameController;
 import javafx.scene.Group;
 
 public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
 
     protected Group graphics = new Group();
-
-    protected static final int cellSize = 50;
 
     protected int z;
 
@@ -17,7 +16,7 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
     }
 
     protected int transformCoords(int x){
-        return x*cellSize;
+        return x* GameController.cellSize;
     }
 
     public int getX(){

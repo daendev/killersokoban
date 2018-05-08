@@ -1,5 +1,6 @@
 package graphics.mapelements;
 
+import graphics.menusystem.GameController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import sokoban.Box;
@@ -10,8 +11,8 @@ public class BoxGraphics extends EntityGraphics {
         super(b);
         z = 2;
         Rectangle r = new Rectangle();
-        r.setWidth(cellSize);
-        r.setHeight(cellSize);
+        r.setWidth(GameController.cellSize);
+        r.setHeight(GameController.cellSize);
         r.setFill(Color.web("FF9800"));
         graphics.getChildren().add(r);
     }

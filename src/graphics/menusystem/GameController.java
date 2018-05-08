@@ -4,6 +4,7 @@ import graphics.GraphicsCollection;
 import graphics.SokobanApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,37 +26,42 @@ public class GameController {
 
     private Warehouse warehouse;
 
+    public static int cellSize;
+
+    private static final int canvasSize = 500;
+
 
     public void initialize(){
-        canvas.setPrefSize(500,500);
-        drawables = new GraphicsCollection(canvas);
         warehouse = new Warehouse();
-        warehouse.generateMap(10,10);
+        warehouse.generateMap();
+        cellSize = Math.min(canvasSize / warehouse.getMapWidth(), canvasSize /warehouse.getMapHeight());
+        drawables = new GraphicsCollection(canvas);
+        canvas.setMaxSize(cellSize*warehouse.getMapWidth(),cellSize*warehouse.getMapHeight());
 
-        int x,y;
-        x = 4;
-        y = 4;
-        Player p = new Player();
-        p.setPlace(warehouse.getMap().get(x + y*warehouse.getMapWidth()));
-        warehouse.getMap().get(x + y*warehouse.getMapWidth()).setHolding(p);
-        warehouse.getPlayers().add(p);
-        p.setWarehouse(warehouse);
-
-        x = 5;
-        y = 5;
-        Box b = new Box();
-        b.setPlace(warehouse.getMap().get(x + y*warehouse.getMapWidth()));
-        warehouse.getMap().get(x + y*warehouse.getMapWidth()).setHolding(b);
-        warehouse.addBox(b);
-        b.setWarehouse(warehouse);
-
-        x = 5;
-        y = 6;
-        Player p2 = new Player();
-        p2.setPlace(warehouse.getMap().get(x + y*warehouse.getMapWidth()));
-        warehouse.getMap().get(x + y*warehouse.getMapWidth()).setHolding(p2);
-        warehouse.getPlayers().add(p2);
-        p2.setWarehouse(warehouse);
+//        int x,y;
+//        x = 4;
+//        y = 4;
+//        Player p = new Player();
+//        p.setPlace(warehouse.getMap().get(x + y*warehouse.getMapWidth()));
+//        warehouse.getMap().get(x + y*warehouse.getMapWidth()).setHolding(p);
+//        warehouse.getPlayers().add(p);
+//        p.setWarehouse(warehouse);
+//
+//        x = 5;
+//        y = 5;
+//        Box b = new Box();
+//        b.setPlace(warehouse.getMap().get(x + y*warehouse.getMapWidth()));
+//        warehouse.getMap().get(x + y*warehouse.getMapWidth()).setHolding(b);
+//        warehouse.addBox(b);
+//        b.setWarehouse(warehouse);
+//
+//        x = 5;
+//        y = 6;
+//        Player p2 = new Player();
+//        p2.setPlace(warehouse.getMap().get(x + y*warehouse.getMapWidth()));
+//        warehouse.getMap().get(x + y*warehouse.getMapWidth()).setHolding(p2);
+//        warehouse.getPlayers().add(p2);
+//        p2.setWarehouse(warehouse);
 
         drawables.initFrom(warehouse);
         drawables.drawAll();
