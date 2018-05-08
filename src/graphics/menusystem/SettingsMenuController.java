@@ -8,4 +8,7 @@ public class SettingsMenuController {
     public void backButton(ActionEvent actionEvent) {
         SokobanApp.switchScenes("main");
     }
+
+    public void saveButton(ActionEvent actionEvent) {
+    }
 }
