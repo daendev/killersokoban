@@ -12,6 +12,7 @@ public class SokobanApp extends Application {
 
     private static HashMap<String, Scene> scenes = new HashMap<>();
     private static Stage stage;
+    private static FXMLLoader gameLoader;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -22,7 +23,7 @@ public class SokobanApp extends Application {
         Scene settingsMenu = new Scene(FXMLLoader.load(getClass().getResource("menusystem/settingsmenu.fxml")), 500, 600);
         // Scene game = new Scene(FXMLLoader.load(getClass().getResource("menusystem/game.fxml")), 500, 600);
 
-        FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("menusystem/game.fxml"));
+        gameLoader = new FXMLLoader(getClass().getResource("menusystem/game.fxml"));
         Scene game = new Scene(gameLoader.load());
 
         scenes.put("main", mainMenu);
@@ -39,6 +40,7 @@ public class SokobanApp extends Application {
     }
 
     public static void switchScenes(String s){
+        if(s.equals("game")) gameLoader.<GameController>getController().newGame();
         stage.setScene(scenes.get(s));
     }
 

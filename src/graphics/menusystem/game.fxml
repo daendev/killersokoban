@@ -10,7 +10,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="graphics.menusystem.GameController"
       prefHeight="600.0" prefWidth="500.0"
-      alignment="CENTER">
+      alignment="TOP_CENTER">
 
     <AnchorPane prefHeight="100">
         <VBox AnchorPane.rightAnchor="10"
@@ -23,7 +23,8 @@
         <GridPane AnchorPane.leftAnchor="10"
                   AnchorPane.topAnchor="10"
                   AnchorPane.bottomAnchor="10"
-                  fx:id="scorePane">
+                  fx:id="scorePane" vgap="3" hgap="20">
+            <Label text="Score" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" alignment="CENTER" />
         </GridPane>
     </AnchorPane>
 

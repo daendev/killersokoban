@@ -7,12 +7,13 @@ import sokoban.Player;
 
 public class PlayerGraphics extends EntityGraphics {
 
-    private static final int radius = GameController.cellSize / 2;
-    private static int playerCount = 1;
+    private static int radius;
+    public static int playerCount = 1;
 
     public PlayerGraphics(Player p) {
         super(p);
         z = 1;
+        radius = GameController.cellSize / 2;
         Circle c = new Circle();
         c.setRadius(radius);
         c.setFill(Color.web(chooseColor()));
