@@ -79,6 +79,18 @@ public class GameController {
             case S:
                 warehouse.getPlayer(0).move(Directions.bottom);
                 break;
+            case LEFT:
+                warehouse.getPlayer(1).move(Directions.left);
+                break;
+            case RIGHT:
+                warehouse.getPlayer(1).move(Directions.right);
+                break;
+            case UP:
+                warehouse.getPlayer(1).move(Directions.top);
+                break;
+            case DOWN:
+                warehouse.getPlayer(1).move(Directions.bottom);
+                break;
         }
         drawables.drawAll();
         updateScore();
