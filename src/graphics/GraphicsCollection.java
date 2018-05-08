@@ -2,6 +2,7 @@ package graphics;
 
 import graphics.mapelements.ObjectGraphics;
 import javafx.scene.layout.Pane;
+import sokoban.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class GraphicsCollection {
 
-    private static List<ObjectGraphics> objects = new ArrayList<>();
+    private List<ObjectGraphics> objects = new ArrayList<>();
 
     private Pane canvas;
 
@@ -17,12 +18,23 @@ public class GraphicsCollection {
         this.canvas = canvas;
     }
 
-    public static void add(ObjectGraphics g){
+    public void add(ObjectGraphics g){
         objects.add(g);
     }
 
-    public static void remove(ObjectGraphics g){
+    public void remove(ObjectGraphics g){
         objects.remove(g);
+    }
+
+    public void initFrom(Warehouse w){
+        List<Drawable> mapElements = new ArrayList<>();
+        mapElements.addAll(w.getMap());
+        mapElements.addAll(w.getPlayers());
+        mapElements.addAll(w.getBoxes());
+        mapElements.addAll(w.getSwitches());
+        for(Drawable d : mapElements){
+            add(d.getGraphics());
+        }
     }
 
     public void drawAll(){
@@ -30,13 +42,12 @@ public class GraphicsCollection {
         Collections.sort(objects);
         List<ObjectGraphics> deprecated = new ArrayList<>();
         for (ObjectGraphics g : objects){
-            if(!g.isPresent()){
+            if(!g.ping()){
                 deprecated.add(g);
                 continue;
             }
-            g.update();
             // System.out.println("drawing shape " + g.toString() + " at " + g.getX() + "," + g.getY());
-            canvas.getChildren().add(g.getShape());
+            canvas.getChildren().add(g.getGraphics());
         }
         objects.removeAll(deprecated);
     }

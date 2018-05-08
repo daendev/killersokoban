@@ -1,8 +1,6 @@
 package sokoban;
 
 
-import graphics.GraphicsCollection;
-import javafx.scene.canvas.GraphicsContext;
 import test.Test;
 
 import java.io.FileWriter;
@@ -52,7 +50,7 @@ public class Warehouse {
         Test.logger.w("Warehouse.constructor(int)");
         players = new ArrayList<>();
         for (int i=0; i<playerNum; i++)
-            add(new Player());
+            players.add(new Player());
         boxes = new ArrayList<>();
         map = new ArrayList<Cell>();
     }
@@ -73,47 +71,7 @@ public class Warehouse {
      */
     public void addBox(Box b){
         Test.logger.w("Warehouse.addBox(Box)");
-        add(b);
-    }
-
-    public void add(Box b) {
         boxes.add(b);
-        GraphicsCollection.add(b.getGraphics());
-    }
-
-    public void add(Player p) {
-        players.add(p);
-        GraphicsCollection.add(p.getGraphics());
-    }
-
-    public void add(Cell c) {
-        map.add(c);
-        GraphicsCollection.add(c.getGraphics());
-    }
-
-    public void add(int i, Cell c){
-        map.add(i, c);
-        GraphicsCollection.add(c.getGraphics());
-    }
-
-    public void add(Switch s) {
-        switches.add(s);
-        GraphicsCollection.add(s.getGraphics());
-    }
-
-    public void remove(Box b){
-        boxes.remove(b);
-        GraphicsCollection.remove(b.getGraphics()); // ez meg lehet rossz, equals() fuggvenytol fugg
-    }
-
-    public void remove(Cell c){
-        map.remove(c);
-        GraphicsCollection.remove(c.getGraphics());
-    }
-
-    public void remove(int i){
-        GraphicsCollection.remove(map.get(i).getGraphics());
-        map.remove(i);
     }
 
 
@@ -126,7 +84,7 @@ public class Warehouse {
      */
     public void removeEntity(Entity e){
         Test.logger.w("Warehouse.removeEntity(Entity)");
-        if (boxes.contains(e)) remove((Box)e);
+        if (boxes.contains(e)) boxes.remove(e);
         else if(players.contains(e)) e.die();
     }
 
@@ -184,7 +142,7 @@ public class Warehouse {
                 x = new Random().nextInt(width-2)+1;
                 y = new Random().nextInt(height-2)+1;
             }
-            add(new Player());
+            players.add(new Player());
             players.get(i).setPlace(map.get(x + y*width));
             map.get(x + y * width).setHolding(players.get(i));
         }
@@ -197,7 +155,7 @@ public class Warehouse {
                 x = new Random().nextInt(width-2)+1;
                 y = new Random().nextInt(height-2)+1;
             }
-            add(new Box());
+            boxes.add(new Box());
             boxes.get(i).setPlace(map.get(x + y*width));
             map.get(x + y * width).setHolding(boxes.get(i));
         }
@@ -209,8 +167,8 @@ public class Warehouse {
                 x = new Random().nextInt(width-2)+1;
                 y = new Random().nextInt(height-2)+1;
             }
-            remove(x + y * width);
-            add(x + y * width, new Goal());
+            map.remove(x + y * width);
+            map.add(x + y * width, new Goal());
             linkCell(x,y);
         }
     }
@@ -224,9 +182,9 @@ public class Warehouse {
         Test.logger.w("Warehouse.generateMap(int, int)");
         for (int i=0; i<height; i++) {
             for (int j = 0; j < width; j++) {
-                if (i == 0 || j == 0) add(new Wall());
-                else if (i == height-1 || j == width-1) add(new Wall());
-                else add(new Cell());
+                if (i == 0 || j == 0) map.add(new Wall());
+                else if (i == height-1 || j == width-1) map.add(new Wall());
+                else map.add(new Cell());
             }
         }
         for (int j = 0; j<height; j++){

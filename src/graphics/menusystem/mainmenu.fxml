@@ -12,6 +12,7 @@
             prefHeight="600.0" prefWidth="400.0"
             alignment="CENTER" spacing="20">
 
+    <Label text="Killer Sokoban" />
     <Button text="Start" onAction="#startButton" />
     <Button text="Settings" onAction="#settingsButton" />
     <Button text="Exit" onAction="#exitButton" />

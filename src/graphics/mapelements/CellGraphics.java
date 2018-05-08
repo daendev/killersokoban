@@ -11,18 +11,16 @@ public class CellGraphics extends ObjectGraphics {
     public CellGraphics(Cell c){
         reference = c;
         z = 0;
-        shape = new Rectangle();
-        ((Rectangle) shape).setWidth(cellSize);
-        ((Rectangle) shape).setHeight(cellSize);
-        shape.setFill(Color.web("E0E0E0"));
+        Rectangle r = new Rectangle();
+        r.setWidth(cellSize);
+        r.setHeight(cellSize);
+        r.setFill(Color.web("E0E0E0"));
+        graphics.getChildren().add(r);
     }
 
-    public void update(){
-        shape.relocate(transformCoords(reference.getX()), transformCoords(reference.getY()));
-    }
-
-    @Override
-    public boolean isPresent() {
+    public boolean ping(){
+        graphics.relocate(transformCoords(reference.getX()), transformCoords(reference.getY()));
         return true;
     }
+
 }

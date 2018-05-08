@@ -12,10 +12,11 @@ public class PlayerGraphics extends EntityGraphics {
     public PlayerGraphics(Player p) {
         super(p);
         z = 1;
-        shape = new Circle();
-        ((Circle) shape).setRadius(radius);
-        shape.setFill(Color.web(chooseColor()));
+        Circle c = new Circle();
+        c.setRadius(radius);
+        c.setFill(Color.web(chooseColor()));
         ++playerCount;
+        graphics.getChildren().add(c);
     }
 
     private String chooseColor(){

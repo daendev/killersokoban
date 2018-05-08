@@ -1,12 +1,10 @@
 package graphics.mapelements;
 
-import javafx.scene.shape.Shape;
-
-import java.awt.*;
+import javafx.scene.Group;
 
 public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
 
-    protected Shape shape;
+    protected Group graphics = new Group();
 
     protected static final int cellSize = 50;
 
@@ -14,15 +12,13 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
 
     int x, y;
 
-    public Shape getShape(){
-        return shape;
+    public Group getGraphics(){
+        return graphics;
     }
 
     protected int transformCoords(int x){
         return x*cellSize;
     }
-
-    public abstract void update();
 
     public int getX(){
         return x;
@@ -40,5 +36,5 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
         return z - o.getZ();
     }
 
-    public abstract boolean isPresent();
+    public abstract boolean ping();
 }
