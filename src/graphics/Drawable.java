@@ -4,6 +4,6 @@ import graphics.mapelements.ObjectGraphics;
 
 public interface Drawable {
 
-    public ObjectGraphics getGraphics();
+    ObjectGraphics createGraphics();
 
 }

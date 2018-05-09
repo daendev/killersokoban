@@ -91,7 +91,7 @@ public class Switch extends Cell {
     }
 
     @Override
-    public ObjectGraphics getGraphics(){
+    public ObjectGraphics createGraphics(){
         return new SwitchGraphics(this);
     }
 }

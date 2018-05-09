@@ -24,7 +24,6 @@
                   AnchorPane.topAnchor="10"
                   AnchorPane.bottomAnchor="10"
                   fx:id="scorePane" vgap="3" hgap="20">
-            <Label text="Score" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" alignment="CENTER" />
         </GridPane>
     </AnchorPane>
 

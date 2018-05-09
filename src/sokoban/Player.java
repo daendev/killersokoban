@@ -175,7 +175,7 @@ public class Player extends Entity{
     }
 
     @Override
-    public ObjectGraphics getGraphics() {
+    public ObjectGraphics createGraphics() {
         return new PlayerGraphics(this);
     }
 }

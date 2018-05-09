@@ -114,7 +114,7 @@ public class Box extends Entity implements Drawable{
     }
 
     @Override
-    public ObjectGraphics getGraphics() {
+    public ObjectGraphics createGraphics() {
         return new BoxGraphics(this);
     }
 }

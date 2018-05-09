@@ -33,7 +33,7 @@ public class GraphicsCollection {
         mapElements.addAll(w.getBoxes());
         mapElements.addAll(w.getSwitches());
         for(Drawable d : mapElements){
-            add(d.getGraphics());
+            add(d.createGraphics());
         }
     }
 

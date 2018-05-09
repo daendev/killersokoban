@@ -203,7 +203,7 @@ public class Cell implements Drawable{
     }
 
     @Override
-    public ObjectGraphics getGraphics() {
+    public ObjectGraphics createGraphics() {
         return new CellGraphics(this);
     }
 }

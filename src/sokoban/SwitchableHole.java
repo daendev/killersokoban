@@ -86,7 +86,7 @@ public class SwitchableHole extends Hole{
     }
 
     @Override
-    public ObjectGraphics getGraphics(){
+    public ObjectGraphics createGraphics(){
         return new SwitchableHoleGraphics(this);
     }
 }

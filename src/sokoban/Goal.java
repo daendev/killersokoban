@@ -53,7 +53,7 @@ public class Goal extends Cell {
     }
 
     @Override
-    public ObjectGraphics getGraphics(){
+    public ObjectGraphics createGraphics(){
         return new GoalGraphics(this);
     }
 }

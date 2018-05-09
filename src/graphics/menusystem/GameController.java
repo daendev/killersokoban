@@ -39,7 +39,7 @@ public class GameController {
     private void initScoreboard(int players){
         scorePane.getChildren().clear();
         Label scoreLabel = new Label("Score");
-        scoreLabel.setId("scoreLabel");
+        scoreLabel.setId("score");
         scoreLabel.setAlignment(Pos.CENTER);
         scorePane.add(scoreLabel, 0, 0, 2, 1);
         for(int i = 1; i <= players; ++i){

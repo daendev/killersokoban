@@ -26,6 +26,10 @@ public class SokobanApp extends Application {
         gameLoader = new FXMLLoader(getClass().getResource("menusystem/game.fxml"));
         Scene game = new Scene(gameLoader.load());
 
+        mainMenu.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        settingsMenu.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        game.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         scenes.put("main", mainMenu);
         scenes.put("settings", settingsMenu);
         scenes.put("game", game);
