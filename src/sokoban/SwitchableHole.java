@@ -1,5 +1,7 @@
 package sokoban;
 
+import graphics.mapelements.ObjectGraphics;
+import graphics.mapelements.SwitchableHoleGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -81,5 +83,10 @@ public class SwitchableHole extends Hole{
             f.write("H");
         else
             f.write("-");
+    }
+
+    @Override
+    public ObjectGraphics createGraphics(){
+        return new SwitchableHoleGraphics(this);
     }
 }

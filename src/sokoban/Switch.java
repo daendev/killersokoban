@@ -1,5 +1,8 @@
 package sokoban;
 
+import graphics.mapelements.HoleGraphics;
+import graphics.mapelements.ObjectGraphics;
+import graphics.mapelements.SwitchGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -85,5 +88,10 @@ public class Switch extends Cell {
     {
         Test.logger.w("Switch.setHole(SwitchableHole");
         this.hole = hole;
+    }
+
+    @Override
+    public ObjectGraphics createGraphics(){
+        return new SwitchGraphics(this);
     }
 }

@@ -1,4 +1,7 @@
 package sokoban;
+import graphics.Drawable;
+import graphics.mapelements.GoalGraphics;
+import graphics.mapelements.ObjectGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -8,7 +11,7 @@ import java.io.IOException;
  * A játékban a célhelyeket megvalósító osztály.
  * @see Cell
  */
-public class Goal extends Cell{
+public class Goal extends Cell {
 
     /**
      * Befogad valamit a cellára (tolás során) és ráhelyezi.
@@ -47,5 +50,10 @@ public class Goal extends Cell{
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Goal.drawForSave(FileWriter)");
         f.write("G");
+    }
+
+    @Override
+    public ObjectGraphics createGraphics(){
+        return new GoalGraphics(this);
     }
 }

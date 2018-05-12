@@ -1,5 +1,9 @@
 package sokoban;
 
+import graphics.Drawable;
+import graphics.mapelements.GoalGraphics;
+import graphics.mapelements.HoleGraphics;
+import graphics.mapelements.ObjectGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -41,5 +45,10 @@ public class Hole extends Cell {
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Hole.drawForSave(FileWriter)");
         f.write("H");
+    }
+
+    @Override
+    public ObjectGraphics createGraphics(){
+        return new HoleGraphics(this);
     }
 }

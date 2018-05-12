@@ -1,0 +1,44 @@
+.scene {
+    -fx-background-color: #9E9E9E;
+}
+
+.vbox {
+    -fx-background-color: #9E9E9E;
+}
+
+.button {
+    -fx-background-color: #BDBDBD;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-color: #757575;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #9E9E9E;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas", monospace;
+}
+
+#title {
+    -fx-font-size: 30px;
+}
+
+#settings {
+    -fx-font-size: 20px;
+}
+
+.text-field {
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-color: #757575;
+}
+
+#score {
+    -fx-font-size: 20px;
+}
+
+

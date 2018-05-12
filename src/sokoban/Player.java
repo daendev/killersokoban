@@ -1,5 +1,8 @@
 package sokoban;
 
+import graphics.GraphicsCollection;
+import graphics.mapelements.ObjectGraphics;
+import graphics.mapelements.PlayerGraphics;
 import test.Test;
 
 import java.io.FileWriter;
@@ -169,5 +172,10 @@ public class Player extends Entity{
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Player.draw(FileWriter)");
         f.write("P");
+    }
+
+    @Override
+    public ObjectGraphics createGraphics() {
+        return new PlayerGraphics(this);
     }
 }
