@@ -265,4 +265,35 @@ public class Warehouse {
         boxes.clear();
         players.clear();
     }
+
+    public boolean endGame(){
+        boolean players = true;
+
+        double maxStrength=0;
+
+        for(int i=0; i<getPlayers().size(); i++){
+            if (getPlayers().get(i).canInitMove(Directions.right) ||
+                    getPlayers().get(i).canInitMove(Directions.left) ||
+                    getPlayers().get(i).canInitMove(Directions.top) ||
+                    getPlayers().get(i).canInitMove(Directions.bottom ))
+                players = false;
+            if (getPlayers().get(i).getStrenght() > maxStrength)
+                maxStrength = getPlayers().get(i).getStrenght();
+        }
+
+        if (!players) return true;
+
+        for (int i = 0; i < getBoxes().size(); i++) {
+            if ((getBoxes().get(i).canMove(Directions.right, 0, maxStrength) ||
+                    getBoxes().get(i).canMove(Directions.left, 0, maxStrength)) &&
+                    (
+                    getBoxes().get(i).canMove(Directions.top, 0, maxStrength) ||
+                    getBoxes().get(i).canMove(Directions.bottom, 0, maxStrength)
+                    )
+                )
+                return false;
+        }
+
+        return true;
+    }
 }
