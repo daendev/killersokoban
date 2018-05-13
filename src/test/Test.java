@@ -117,6 +117,8 @@ public class Test {
                             break;
                     }
                 }
+
+                if (w.endGame()) return true;
                 break;
 
             case "put":
