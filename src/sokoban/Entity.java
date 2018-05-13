@@ -133,6 +133,11 @@ public abstract class Entity implements Drawable {
      */
     public abstract boolean move(Directions dir, Player mOwner, double weight);
 
+    public boolean canMove(Directions dir){
+        Test.logger.w("Entity.move(Directions)");
+        return getPlace().getNeighbour(dir).canMoveHere(dir);
+    }
+
     /**
      * Az entitás célra érkezését kezeli.
      * @param mOwner A mozgást kezdeményező entitás.

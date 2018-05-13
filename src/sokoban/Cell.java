@@ -152,6 +152,13 @@ public class Cell implements Drawable{
         return false;
     }
 
+    public boolean canMoveHere(Directions dir){
+        if(holding == null)
+            return true;
+        else
+            return holding.canMove(dir);
+    }
+
     /**
      * Eltávolítja a cella tartalmát.
      */
