@@ -32,7 +32,7 @@ public class Goal extends Cell {
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
         if (getHolding().getOwner() == getHolding()){
-            return super.canMoveHere(dir, weight, weight);
+            return super.canMoveHere(dir, weight, strength);
         }
         else return false;
     }

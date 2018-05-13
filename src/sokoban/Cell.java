@@ -156,7 +156,7 @@ public class Cell implements Drawable{
         if(holding == null)
             return true;
         else
-            return holding.canMove(dir, weight);
+            return holding.canMove(dir, weight, strength);
     }
 
     /**
