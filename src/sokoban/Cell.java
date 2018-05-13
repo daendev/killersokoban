@@ -152,7 +152,16 @@ public class Cell implements Drawable{
         return false;
     }
 
+
+    /**
+     * Lehet-e az adott mezőre mozogni. A játék befejezésének tesztelésére.
+     * @param dir Az irány, amerre tesztelünk.
+     * @param weight A tesztelési lánc össz súllya.
+     * @param strength A tesztelési erő.
+     * @return Lehet-e erre a mezőre mozogni.
+     */
     public boolean canMoveHere(Directions dir, double weight, double strength){
+        Test.logger.w("Cell.canMoveHere(Directions, weight, strength");
         if(holding == null)
             return true;
         else
@@ -167,6 +176,11 @@ public class Cell implements Drawable{
         holding = null;
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     public int getX(){
         Test.logger.w("Cell.getX()");
         Cell cell = this;
@@ -177,6 +191,12 @@ public class Cell implements Drawable{
         }
         return ret;
     }
+
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     public int getY(){
         Test.logger.w("Cell.getY()");
         Cell cell = this;
@@ -188,6 +208,9 @@ public class Cell implements Drawable{
         return ret;
     }
 
+    /**
+     * Commandline-ra rajzolja a cellát.
+     */
     public void draw(){
         Test.logger.w("Cell.draw()");
         if (holding != null)
@@ -196,6 +219,11 @@ public class Cell implements Drawable{
             System.out.print("-");
     }
 
+    /**
+     * Fájlba rajzolja a cellát.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Cell.draw(FileWriter)");
         if (holding != null)
@@ -204,11 +232,21 @@ public class Cell implements Drawable{
             f.write("-");
     }
 
+    /**
+     * Mentésre fájlba rajzolja a cellát.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Cell.drawForSave(FileWriter)");
         f.write("-");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics() {
         return new CellGraphics(this);

@@ -29,6 +29,13 @@ public class Goal extends Cell {
         return false;
     }
 
+    /**
+     * Lehet-e az adott mezőre mozogni. A játék befejezésének tesztelésére.
+     * @param dir Az irány, amerre tesztelünk.
+     * @param weight A tesztelési lánc össz súllya.
+     * @param strength A tesztelési erő.
+     * @return Lehet-e erre a mezőre mozogni.
+     */
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
         if (getHolding().getOwner() == getHolding()){
@@ -37,6 +44,9 @@ public class Goal extends Cell {
         else return false;
     }
 
+    /**
+     * Commandline-ra rajzolás.
+     */
     @Override
     public void draw(){
         Test.logger.w("Goal.draw()");
@@ -45,6 +55,11 @@ public class Goal extends Cell {
         else System.out.print("G");
     }
 
+    /**
+     * Fájlba rajzolás.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     @Override
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Goal.draw(FileWriter)");
@@ -53,12 +68,22 @@ public class Goal extends Cell {
         else f.write("G");
     }
 
+    /**
+     * Fájlba rajzolás mentésre
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     @Override
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Goal.drawForSave(FileWriter)");
         f.write("G");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics(){
         return new GoalGraphics(this);

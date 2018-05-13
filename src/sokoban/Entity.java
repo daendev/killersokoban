@@ -133,6 +133,13 @@ public abstract class Entity implements Drawable {
      */
     public abstract boolean move(Directions dir, Player mOwner, double weight);
 
+    /**
+     * Tud-e mozogni. A játék végének tesztelésére
+     * @param dir Az irány, amibe tesztelünk.
+     * @param weight A teszelési lánc teljes súlya.
+     * @param strength A tesztelési erő.
+     * @return Tud-e mozogni.
+     */
     public abstract boolean canMove(Directions dir, double weight, double strength);
 
     /**
@@ -166,6 +173,15 @@ public abstract class Entity implements Drawable {
      */
     public abstract void die();
 
+    /**
+     * Kirajzolás commandline-ra.
+     */
     public abstract void draw();
+
+    /**
+     * Kirajzolás fájlba.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     public abstract void draw(FileWriter f) throws IOException;
 }
