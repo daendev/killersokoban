@@ -47,7 +47,7 @@ public class Box extends Entity implements Drawable{
 
     @Override
     public boolean canMove(Directions dir, double weight, double strength) {
-        if(strength > weight + getFriction())
+        if(strength >= weight + getFriction())
             return getPlace().getNeighbour(dir).canMoveHere(dir, weight, strength);
         return false;
     }
