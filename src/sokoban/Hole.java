@@ -30,6 +30,11 @@ public class Hole extends Cell {
     }
 
     @Override
+    public boolean canMoveHere(Directions dir, double strength) {
+        return true;
+    }
+
+    @Override
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Hole.draw(FileWriter)");
         f.write("H");
