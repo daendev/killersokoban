@@ -105,6 +105,11 @@ public class Player extends Entity{
         move(dir,this,0);
     }
 
+    @Override
+    public boolean canMove(Directions dir, double strength) {
+
+    }
+
     /**
      * Pontot ad a játékosnak.
      * @param amount A pontok mennyisége.
