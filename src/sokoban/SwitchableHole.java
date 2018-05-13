@@ -62,7 +62,7 @@ public class SwitchableHole extends Hole{
         } else if(getHolding() == null) {
             return true;
         } else {
-            return getHolding().canMove(dir, weight);
+            return getHolding().canMove(dir, weight, strength);
         }
     }
 
