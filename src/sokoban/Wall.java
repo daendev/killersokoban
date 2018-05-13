@@ -26,30 +26,55 @@ public class Wall extends Cell{
         return false;
     }
 
+    /**
+     * Lehet-e ide mozogni.
+     * @param dir Az irány, amerre tesztelünk.
+     * @param weight A tesztelési lánc össz súllya.
+     * @param strength A tesztelési erő.
+     * @return Lehet-e ide mozogni.
+     */
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
         Test.logger.w("Wall.canMoveHere(Directions, double");
         return false;
     }
 
+    /**
+     * Fájlba rajzolás.
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     @Override
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Wall.draw(FileWriter)");
         f.write("W");
     }
 
+    /**
+     * Commandline-ra rajzolás.
+     */
     @Override
     public void draw() {
         Test.logger.w("Wall.draw()");
         System.out.print("W");
     }
 
+    /**
+     * Fájlba rajzolás mentésre.
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     @Override
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Wall.drawForSave(FileWriter)");
         f.write("W");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics() {
         return new WallGraphics(this);

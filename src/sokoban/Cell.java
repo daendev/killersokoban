@@ -222,7 +222,7 @@ public class Cell implements Drawable{
     /**
      * Fájlba rajzolja a cellát.
      * @param f A kimeneti fájl.
-     * @throws IOException Fájlkezelési hiba.
+     * @throws IOException
      */
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Cell.draw(FileWriter)");
@@ -235,7 +235,7 @@ public class Cell implements Drawable{
     /**
      * Mentésre fájlba rajzolja a cellát.
      * @param f A kimeneti fájl.
-     * @throws IOException Fájlkezelési hiba.
+     * @throws IOException
      */
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Cell.drawForSave(FileWriter)");

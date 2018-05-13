@@ -55,6 +55,13 @@ public class SwitchableHole extends Hole{
         }
     }
 
+    /**
+     * Lehet-e ide mozogni.
+     * @param dir Az irány, amerre tesztelünk.
+     * @param weight A tesztelési lánc össz súllya.
+     * @param strength A tesztelési erő.
+     * @return Lehet-e ide mozogni.
+     */
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
         if(open) {
@@ -66,6 +73,9 @@ public class SwitchableHole extends Hole{
         }
     }
 
+    /**
+     * Commandline-ra rajzolás.
+     */
     @Override
     public void draw() {
         Test.logger.w("SwitchabelHole.draw()");
@@ -77,6 +87,11 @@ public class SwitchableHole extends Hole{
             System.out.print("-");
     }
 
+    /**
+     * Fájlba rajzolás.
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("SwitchabelHole.draw(FileWriter");
         if (open)
@@ -87,6 +102,11 @@ public class SwitchableHole extends Hole{
             f.write("-");
     }
 
+    /**
+     * Fájlba rajzolás mentésre.
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     @Override
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("SwitchabelHole.drawForSave(FileWriter");
@@ -96,6 +116,11 @@ public class SwitchableHole extends Hole{
             f.write("-");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics(){
         return new SwitchableHoleGraphics(this);

@@ -55,6 +55,9 @@ public class Switch extends Cell {
         hole.setOpen(false, null);
     }
 
+    /**
+     * Commandline-ra rajzolás.
+     */
     @Override
     public void draw() {
         Test.logger.w("Switch.draw()");
@@ -64,6 +67,11 @@ public class Switch extends Cell {
             System.out.print("S");
     }
 
+    /**
+     * Fájlba rajzolás
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Switch.draw(FileWriter");
         if (getHolding() != null)
@@ -72,24 +80,42 @@ public class Switch extends Cell {
             f.write("S");
     }
 
+    /**
+     * Fájlba rajzolás mentésre.
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     @Override
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Switch.drawForSave(FileWriter");
         f.write("S");
     }
 
+    /**
+     * Vissza adja a kapcsolóhoz tartozó lyukat.
+     * @return A kapcsolóhoz tartozó lyuk.
+     */
     public SwitchableHole getHole()
     {
         Test.logger.w("Switch.getHole()");
         return hole;
     }
 
+    /**
+     * Beállítja a kapcsolóhoz tartozó lyukat.
+     * @param hole A lyuk
+     */
     public void setHole(SwitchableHole hole)
     {
         Test.logger.w("Switch.setHole(SwitchableHole");
         this.hole = hole;
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics(){
         return new SwitchGraphics(this);

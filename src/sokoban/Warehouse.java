@@ -109,6 +109,12 @@ public class Warehouse {
                 System.out.println("");
         }
     }
+
+    /**
+     * Fájlba rajzolja a raktár tartalmát.
+     * @param f Kimeneti fájl.
+     * @throws IOException
+     */
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Warehouse.draw(FileWriter)");
         for (Cell c: map
@@ -119,6 +125,11 @@ public class Warehouse {
         }
     }
 
+    /**
+     * Fájlba menti a raktárat.
+     * @param f Kimeneti fájl.
+     * @throws IOException
+     */
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Warehouse.drawForSave(FileWriter)");
         for (Cell c: map
@@ -129,6 +140,9 @@ public class Warehouse {
         }
     }
 
+    /**
+     * Pálya generálása.
+     */
     public void generateMap() {
         Test.logger.w("Warehouse.generateMap()");
         int width = new Random().nextInt(15) + 7;
@@ -173,11 +187,20 @@ public class Warehouse {
         }
     }
 
+    /**
+     * Pálya generálása adott mérettel.
+     * @param dim Hányszor hányas legyen a pálya.
+     */
     public void generateMap(int dim){
         Test.logger.w("Warehouse.generateMap(int)");
         generateMap(dim, dim);
     }
 
+    /**
+     * Pálya generálása adott méretekkel.
+     * @param width Pálya szélessége.
+     * @param height Pálya magassága.
+     */
     public void generateMap(int width, int height){
         Test.logger.w("Warehouse.generateMap(int, int)");
         for (int i=0; i<height; i++) {
@@ -201,6 +224,11 @@ public class Warehouse {
         }
     }
 
+    /**
+     * Egy cellát összeköt a szomszédjaival.
+     * @param x A cella x koordinátája.
+     * @param y A cella y koordinátája.
+     */
     public void linkCell(int x, int y){
         if(x != 0){
             map.get(x + y * getMapWidth()).setNeighbour(map.get(x - 1 + y * getMapWidth()), Directions.left);
@@ -220,6 +248,10 @@ public class Warehouse {
         }
     }
 
+    /**
+     * A pálya szélessége.
+     * @return A pálya szélessége.
+     */
     public int getMapWidth() {
         Test.logger.w("Warehouse.getMapWidth()");
         int i = 0;
@@ -228,6 +260,10 @@ public class Warehouse {
         return ++i;
     }
 
+    /**
+     * A pálya magassága.
+     * @return A pálya magassága.
+     */
     public int getMapHeight(){
         Test.logger.w("Warehouse.getMapHeight()");
         int i=1;
@@ -239,26 +275,45 @@ public class Warehouse {
         return i;
     }
 
+    /**
+     * A pályát adja vissza.
+     * @return A pálya.
+     */
     public List<Cell> getMap() {
         Test.logger.w("Warehouse.getMap()");
         return map;
     }
 
+    /**
+     * A raktárban alévő dobozok.
+     * @return A dobozok.
+     */
     public List<Box> getBoxes() {
         Test.logger.w("Warehouse.getBoxes()");
         return boxes;
     }
 
+    /**
+     * A raktrában lévő játékosok.
+     * @return A játékosok.
+     */
     public List<Player> getPlayers() {
         Test.logger.w("Warehouse.getPlayers()");
         return players;
     }
 
+    /**
+     * A raktárban lévő kapcsolók.
+     * @return A kapcsolók.
+     */
     public List<Switch> getSwitches() {
         Test.logger.w("Warehouse.getSwitches()");
         return switches;
     }
 
+    /**
+     * Kiüríti a raktárat.
+     */
     public void wipe(){
         Test.logger.w("Warehouse.wipe()");
         map.clear();
@@ -266,6 +321,10 @@ public class Warehouse {
         players.clear();
     }
 
+    /**
+     * A játék végetértét teszteli.
+     * @return Véget ért-e a játék.
+     */
     public boolean endGame(){
         boolean players = true;
 

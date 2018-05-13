@@ -130,7 +130,7 @@ public class Box extends Entity implements Drawable{
     /**
      * Kirajzolja egy kimeneti fájlba a dobozt.
      * @param f A kimeneti fájl.
-     * @throws IOException Fájlkezelési hiba.
+     * @throws IOException
      */
     @Override
     public void draw(FileWriter f) throws IOException {

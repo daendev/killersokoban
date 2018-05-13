@@ -122,9 +122,9 @@ public class Player extends Entity{
     }
 
     /**
-     *
-     * @param dir
-     * @return
+     * A felhasználó tudja-e az adott irányba mozgatni a karakterét.
+     * @param dir A mozgatás iránya.
+     * @return Tudja-e mozgatni.
      */
     public boolean canInitMove(Directions dir){
         Test.logger.w("Player.canInitMove(Directions)");
@@ -162,6 +162,10 @@ public class Player extends Entity{
         getWarehouse().removeEntity(this);
     }
 
+    /**
+     * A mezőre folyadék rakása.
+     * @param sticky Milyen folyadékot rakunk le.
+     */
     public void applyFluid(Stickyness sticky){
         Test.logger.w("Player.applyFluid(Stickyness)");
         if(getPlace()!=null)
@@ -191,15 +195,29 @@ public class Player extends Entity{
         Test.logger.w("Player.stepOnGoal(Entity)");
     }
 
+    /**
+     * Commandline-ra rajzolás.
+     */
     public void draw(){
         Test.logger.w("Player.draw()");
         System.out.print("P");
     }
+
+    /**
+     * Fájlba rajzolás.
+     * @param f A kimeneti fájl.
+     * @throws IOException
+     */
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Player.draw(FileWriter)");
         f.write("P");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics() {
         return new PlayerGraphics(this);

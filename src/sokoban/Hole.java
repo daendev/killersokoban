@@ -43,7 +43,7 @@ public class Hole extends Cell {
     /**
      * Fájlba rajzolás.
      * @param f A kimeneti fájl.
-     * @throws IOException Fájlkezelési hiba.
+     * @throws IOException
      */
     @Override
     public void draw(FileWriter f) throws IOException {
@@ -63,7 +63,7 @@ public class Hole extends Cell {
     /**
      * Fájlba rajzolás mentésre.
      * @param f A kimeneti fájl.
-     * @throws IOException Fájlkezelési hiba.
+     * @throws IOException
      */
     @Override
     public void drawForSave(FileWriter f) throws IOException {
