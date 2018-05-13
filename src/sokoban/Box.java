@@ -45,6 +45,14 @@ public class Box extends Entity implements Drawable{
         return false;
     }
 
+    /**
+     * Tud-e mozogni. A játék végének tesztelésére
+     * @param dir Az irány, amibe tesztelünk.
+     * @param weight
+     * @param strength
+     * @return
+     */
+
     @Override
     public boolean canMove(Directions dir, double weight, double strength) {
         if(strength >= weight + getFriction())

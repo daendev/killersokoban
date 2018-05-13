@@ -109,6 +109,10 @@ public class Player extends Entity{
         return strenght >= weight + getFriction();
     }
 
+    public boolean canInitMove(Directions dir){
+        return getPlace().getNeighbour(dir).canMoveHere(dir, getWeight(), getStrenght());
+    }
+
     /**
      * Pontot ad a játékosnak.
      * @param amount A pontok mennyisége.
