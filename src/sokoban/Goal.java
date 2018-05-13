@@ -31,6 +31,14 @@ public class Goal extends Cell {
     }
 
     @Override
+    public boolean canMoveHere(Directions dir, double strength) {
+        if (getHolding().getOwner() == getHolding()){
+            return super.canMoveHere(dir, strength);
+        }
+        else return false;
+    }
+
+    @Override
     public void draw(){
         Test.logger.w("Goal.draw()");
         if(getHolding()!=null)
