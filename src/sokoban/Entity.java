@@ -133,7 +133,7 @@ public abstract class Entity implements Drawable {
      */
     public abstract boolean move(Directions dir, Player mOwner, double weight);
 
-    public abstract boolean canMove(Directions dir, double strength);
+    public abstract boolean canMove(Directions dir, double weight);
 
     /**
      * Az entitás célra érkezését kezeli.

@@ -56,6 +56,17 @@ public class SwitchableHole extends Hole{
     }
 
     @Override
+    public boolean canMoveHere(Directions dir, double weight) {
+        if(open) {
+            return super.canMoveHere(dir, weight);
+        } else if(getHolding() == null) {
+            return true;
+        } else {
+            return getHolding().canMove(dir, weight);
+        }
+    }
+
+    @Override
     public void draw() {
         Test.logger.w("SwitchabelHole.draw()");
         if (open)

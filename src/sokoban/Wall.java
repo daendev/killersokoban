@@ -26,6 +26,11 @@ public class Wall extends Cell{
         return false;
     }
 
+    @Override
+    public boolean canMoveHere(Directions dir, double weight) {
+        Test.logger.w("Wall.canMoveHere(Directions, double");
+        return false;
+    }
 
     @Override
     public void draw(FileWriter f) throws IOException {

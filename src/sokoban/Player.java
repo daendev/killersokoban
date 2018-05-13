@@ -1,6 +1,5 @@
 package sokoban;
 
-import graphics.GraphicsCollection;
 import graphics.mapelements.ObjectGraphics;
 import graphics.mapelements.PlayerGraphics;
 import test.Test;
@@ -106,8 +105,8 @@ public class Player extends Entity{
     }
 
     @Override
-    public boolean canMove(Directions dir, double strength) {
-        return strength > getWeight();
+    public boolean canMove(Directions dir, double weight) {
+        return weight > getWeight();
     }
 
     /**
