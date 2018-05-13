@@ -56,9 +56,9 @@ public class SwitchableHole extends Hole{
     }
 
     @Override
-    public boolean canMoveHere(Directions dir, double weight) {
+    public boolean canMoveHere(Directions dir, double weight, double strength) {
         if(open) {
-            return super.canMoveHere(dir, weight);
+            return super.canMoveHere(dir, weight, strength);
         } else if(getHolding() == null) {
             return true;
         } else {

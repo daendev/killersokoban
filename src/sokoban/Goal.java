@@ -1,5 +1,4 @@
 package sokoban;
-import graphics.Drawable;
 import graphics.mapelements.GoalGraphics;
 import graphics.mapelements.ObjectGraphics;
 import test.Test;
@@ -31,9 +30,9 @@ public class Goal extends Cell {
     }
 
     @Override
-    public boolean canMoveHere(Directions dir, double strength) {
+    public boolean canMoveHere(Directions dir, double weight, double strength) {
         if (getHolding().getOwner() == getHolding()){
-            return super.canMoveHere(dir, strength);
+            return super.canMoveHere(dir, weight, weight);
         }
         else return false;
     }

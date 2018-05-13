@@ -1,7 +1,5 @@
 package sokoban;
 
-import graphics.Drawable;
-import graphics.mapelements.GoalGraphics;
 import graphics.mapelements.HoleGraphics;
 import graphics.mapelements.ObjectGraphics;
 import test.Test;
@@ -30,7 +28,7 @@ public class Hole extends Cell {
     }
 
     @Override
-    public boolean canMoveHere(Directions dir, double strength) {
+    public boolean canMoveHere(Directions dir, double weight, double strength) {
         return true;
     }
 

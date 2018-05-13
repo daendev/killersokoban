@@ -27,7 +27,7 @@ public class Wall extends Cell{
     }
 
     @Override
-    public boolean canMoveHere(Directions dir, double weight) {
+    public boolean canMoveHere(Directions dir, double weight, double strength) {
         Test.logger.w("Wall.canMoveHere(Directions, double");
         return false;
     }

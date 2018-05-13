@@ -152,7 +152,7 @@ public class Cell implements Drawable{
         return false;
     }
 
-    public boolean canMoveHere(Directions dir, double weight){
+    public boolean canMoveHere(Directions dir, double weight, double strength){
         if(holding == null)
             return true;
         else

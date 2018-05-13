@@ -105,7 +105,7 @@ public class Player extends Entity{
     }
 
     @Override
-    public boolean canMove(Directions dir, double weight) {
+    public boolean canMove(Directions dir, double weight, double strenght) {
         return weight > getWeight();
     }
 
