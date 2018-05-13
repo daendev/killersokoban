@@ -99,17 +99,35 @@ public class Player extends Entity{
         } else return false;
     }
 
+    /**
+     * A játékos mozgatása a felhasználó által.
+     * @param dir Az irány, amerre mozgat a játékos.
+     */
     public void move(Directions dir){
         Test.logger.w("Player.move(Directions)");
         move(dir,this,0);
     }
 
+    /**
+     * Tud-e mozogni.
+     * @param dir Az irány, amibe tesztelünk.
+     * @param weight A teszelési lánc teljes súlya.
+     * @param strenght
+     * @return Tud-e mozogni.
+     */
     @Override
     public boolean canMove(Directions dir, double weight, double strenght) {
+        Test.logger.w("Player.canMove(Directions, weight, strength)");
         return strenght >= weight + getFriction();
     }
 
+    /**
+     *
+     * @param dir
+     * @return
+     */
     public boolean canInitMove(Directions dir){
+        Test.logger.w("Player.canInitMove(Directions)");
         return getPlace().getNeighbour(dir).canMoveHere(dir, getWeight(), getStrenght());
     }
 

@@ -36,6 +36,7 @@ public class Hole extends Cell {
      */
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
+        Test.logger.w("Hole.canMoveHere(Directions, weight, strength");
         return true;
     }
 
@@ -50,18 +51,31 @@ public class Hole extends Cell {
         f.write("H");
     }
 
+    /**
+     * Commandline-ra rajzolás.
+     */
     @Override
     public void draw(){
         Test.logger.w("Hole.draw()");
         System.out.print("H");
     }
 
+    /**
+     * Fájlba rajzolás mentésre.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     @Override
     public void drawForSave(FileWriter f) throws IOException {
         Test.logger.w("Hole.drawForSave(FileWriter)");
         f.write("H");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics(){
         return new HoleGraphics(this);
