@@ -27,11 +27,23 @@ public class Hole extends Cell {
         return true;
     }
 
+    /**
+     * Lehet-e erre a mezőre mozogni.
+     * @param dir Az irány, amerre tesztelünk.
+     * @param weight A tesztelési lánc össz súllya.
+     * @param strength A tesztelési erő.
+     * @return Lehet-e ide mozogni. Mindig igaz, mert lyukba akármikor eshetünk.
+     */
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
         return true;
     }
 
+    /**
+     * Fájlba rajzolás.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     @Override
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Hole.draw(FileWriter)");

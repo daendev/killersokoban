@@ -48,13 +48,13 @@ public class Box extends Entity implements Drawable{
     /**
      * Tud-e mozogni. A játék végének tesztelésére
      * @param dir Az irány, amibe tesztelünk.
-     * @param weight
-     * @param strength
-     * @return
+     * @param weight A teszelési lánc teljes súlya.
+     * @param strength A tesztelési erő.
+     * @return Tud-e mozogni.
      */
-
     @Override
     public boolean canMove(Directions dir, double weight, double strength) {
+        Test.logger.w("Box.canMove(Directions, double, double");
         if(strength >= weight + getFriction())
             return getPlace().getNeighbour(dir).canMoveHere(dir, weight, strength);
         return false;
@@ -116,18 +116,31 @@ public class Box extends Entity implements Drawable{
         Test.logger.w("Box.addScore(int)");
     }
 
+    /**
+     * Kirajzola commandline-ra a dobozt.
+     */
     @Override
     public void draw() {
         Test.logger.w("Box.draw()");
         System.out.print("B");
     }
 
+    /**
+     * Kirajzolja egy kimeneti fájlba a dobozt.
+     * @param f A kimeneti fájl.
+     * @throws IOException Fájlkezelési hiba.
+     */
     @Override
     public void draw(FileWriter f) throws IOException {
         Test.logger.w("Box.draw(FileWriter)");
         f.write("B");
     }
 
+    //TODO JavaDoc
+    /**
+     *
+     * @return
+     */
     @Override
     public ObjectGraphics createGraphics() {
         return new BoxGraphics(this);
