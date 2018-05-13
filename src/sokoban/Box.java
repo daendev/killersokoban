@@ -45,6 +45,13 @@ public class Box extends Entity implements Drawable{
         return false;
     }
 
+    @Override
+    public boolean canMove(Directions dir, double strength) {
+        if(strength > getWeight())
+            return getPlace().getNeighbour(dir).canMoveHere(dir, strength);
+        return false;
+    }
+
     /**
      * A doboz célra tolódását kezeli.
      * Beállítja a tulajdonosát arra, aki betolta a célba, majd pontot ad neki.
