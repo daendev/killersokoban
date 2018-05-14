@@ -1,6 +1,7 @@
 package graphics.menusystem;
 
 import graphics.GraphicsCollection;
+import graphics.SettingsData;
 import graphics.SokobanApp;
 import graphics.mapelements.PlayerGraphics;
 import javafx.event.ActionEvent;
@@ -69,16 +70,21 @@ public class GameController {
      * Új játék inditása.
      */
     public void newGame(){
-        warehouse = new Warehouse();
-        warehouse.generateMap();
+        SettingsData settings = new SettingsData(10,10,2);
+        settings.read("settings.xml");
+        warehouse = new Warehouse(settings.getPlayerCount());
+        warehouse.generateMap(settings.getWidth(),settings.getHeight());
         initScoreboard(warehouse.getPlayers().size());
         cellSize = Math.min(canvasSize / warehouse.getMapWidth(), canvasSize /warehouse.getMapHeight());
         drawables = new GraphicsCollection(canvas);
-        PlayerGraphics.playerCount = 1;
         canvas.setMaxSize(cellSize*warehouse.getMapWidth(),cellSize*warehouse.getMapHeight());
         drawables.initFrom(warehouse);
         drawables.drawAll();
         updateScore();
+    }
+
+    public void loadGame(){
+
     }
 
     /**

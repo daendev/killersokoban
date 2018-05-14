@@ -53,6 +53,7 @@ public class Warehouse {
             players.add(new Player());
         boxes = new ArrayList<>();
         map = new ArrayList<Cell>();
+        switches = new ArrayList<>();
     }
 
     /**
@@ -204,6 +205,7 @@ public class Warehouse {
                 y = new Random().nextInt(height-2)+1;
             }
             p.setPlace(map.get(x + y*width));
+            p.setWarehouse(this);
             map.get(x + y * width).setHolding(p);
         }
 
