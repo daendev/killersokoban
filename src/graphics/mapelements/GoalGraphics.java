@@ -11,6 +11,10 @@ public class GoalGraphics extends CellGraphics {
 
     private static int value;
 
+    /**
+     * @param c A kirajzolandó Goal
+     * Kirajzolja a goalt.
+     */
     public GoalGraphics(Goal c) {
         super(c);
         value = GameController.cellSize / 8;
