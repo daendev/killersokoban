@@ -148,6 +148,7 @@ public class GameController {
         }
         drawables.drawAll();
         updateScore();
+        if(warehouse.endGame()) SokobanApp.switchScenes("main");
     }
 
     /**
