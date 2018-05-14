@@ -16,6 +16,9 @@ import sokoban.Warehouse;
 
 public class GameController {
 
+    /**
+     * Rajzfelület.
+     */
     @FXML
     private Pane canvas;
 
@@ -31,11 +34,18 @@ public class GameController {
     private static final int canvasSize = 500;
 
 
+    /**
+     * Inicializálás.
+     */
     public void initialize(){
         // load settings
 
     }
 
+    /**
+     * @param players Játékosok száma.
+     * Pontszámitó inicializáslása.
+     */
     private void initScoreboard(int players){
         scorePane.getChildren().clear();
         Label scoreLabel = new Label("Score");
@@ -52,6 +62,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Új játék inditása.
+     */
     public void newGame(){
         warehouse = new Warehouse();
         warehouse.generateMap();
@@ -65,6 +78,10 @@ public class GameController {
         updateScore();
     }
 
+    /**
+     * @param key A gombnyomás eventje.
+     * A gombnyomással történő irányitás kezelése.
+     */
     public void handleKeyPress(KeyEvent key){
         switch(key.getCode()){
             case A:
@@ -96,6 +113,9 @@ public class GameController {
         updateScore();
     }
 
+    /**
+     * Ponttábla updatelése.
+     */
     private void updateScore(){
         int i = 1;
         for(Player p : warehouse.getPlayers()){
@@ -104,11 +124,19 @@ public class GameController {
         }
     }
 
+    /**
+     * @param actionEvent Kilépés event
+     * A kilépés gomb kezelője.
+     */
     public void exitButton(ActionEvent actionEvent) {
         SokobanApp.switchScenes("main");
     }
 
 
+    /**
+     * @param actionEvent Mentés event.
+     * A mentés gomb kezelője.
+     */
     public void saveButton(ActionEvent actionEvent) {
     }
 }
