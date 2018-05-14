@@ -34,7 +34,7 @@ public class BoxGraphics extends EntityGraphics {
      */
     @Override
     public boolean ping(){
-        if(reference.getPlace() == null) return false;
+        if(reference.getPlace() == null || reference.getPlace().getHolding() == null) return false;
         if(reference.getOwner()!=reference) ((Rectangle)graphics.getChildren().get(0)).setFill(chooseColor((Player)reference.getOwner()));
         graphics.relocate(transformCoords(reference.getPlace().getX()), transformCoords(reference.getPlace().getY()));
         return true;

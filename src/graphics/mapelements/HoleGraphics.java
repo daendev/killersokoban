@@ -17,16 +17,17 @@ public class HoleGraphics extends CellGraphics {
      */
     public HoleGraphics(Hole h) {
         super(h);
+        z = 3;
         ((Rectangle)graphics.getChildren().get(0)).setFill(Color.web("616161"));
 
         // small square
-        int smallSize = (int) (0.8 * GameController.cellSize);
-        int smallPos = (int) (0.4 * GameController.cellSize);
+        int smallSize = (int) (0.6 * GameController.cellSize);
+        int smallPos = (int) (0.2 * GameController.cellSize);
         Paint smallColor = Color.web("212121");
 
         // medium square
-        int mediumSize = (int) (0.6 * GameController.cellSize);
-        int mediumPos = (int) (0.4 * GameController.cellSize);
+        int mediumSize = (int) (0.8 * GameController.cellSize);
+        int mediumPos = (int) (0.1 * GameController.cellSize);
         Paint mediumColor = Color.web("424242");
 
         Rectangle mediumRect = new Rectangle();

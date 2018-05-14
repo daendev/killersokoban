@@ -88,7 +88,10 @@ public class Warehouse {
      */
     public void removeEntity(Entity e){
         Test.logger.w("Warehouse.removeEntity(Entity)");
-        if (boxes.contains(e)) boxes.remove(e);
+        if (boxes.contains(e)) {
+            boxes.remove(e);
+            e.getPlace().setHolding(null);
+        }
         else if(players.contains(e)) e.die();
     }
 
@@ -450,8 +453,10 @@ public class Warehouse {
                 this.getMap().remove(x + y*width);
                 this.getMap().add(x + y*width, sh);
                 this.getSwitches().get(i).setHole((SwitchableHole) this.getMap().get(x + y*width));
-                this.getSwitches().get(i).getHolding().stepOnSwitch(this.getSwitches().get(i).getHole(),
-                        this.getSwitches().get(i).getHolding());
+                if(this.getSwitches().get(i).getHolding()!=null){
+                    this.getSwitches().get(i).getHolding().stepOnSwitch(this.getSwitches().get(i).getHole(),
+                            this.getSwitches().get(i).getHolding());
+                }
             }
 
             for (int i = 0; i<width; i++){

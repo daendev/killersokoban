@@ -116,6 +116,10 @@ public class SwitchableHole extends Hole{
             f.write("-");
     }
 
+    public boolean isOpen(){
+        return open;
+    }
+
     //TODO JavaDoc
     /**
      *

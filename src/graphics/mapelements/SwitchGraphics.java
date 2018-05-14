@@ -24,22 +24,22 @@ public class SwitchGraphics extends CellGraphics {
         Rectangle back = new Rectangle();
         back.setWidth(cell*0.8);
         back.setHeight(cell*0.8);
-        back.setX(cell*0.2);
-        back.setY(cell*0.2);
+        back.setX(cell*0.1);
+        back.setY(cell*0.1);
         back.setFill(Color.web("757575"));
 
         Rectangle top = new Rectangle();
-        top.setWidth(cell*0.4);
-        top.setHeight(cell*0.2);
-        top.setX(cell*0.4);
-        top.setY(cell*0.4);
+        top.setWidth(cell*0.6);
+        top.setHeight(cell*0.3);
+        top.setX(cell*0.2);
+        top.setY(cell*0.2);
         top.setFill(Color.web("CE93D8"));
 
         Rectangle bottom = new Rectangle();
-        bottom.setWidth(cell*0.4);
-        bottom.setHeight(cell*0.2);
+        bottom.setWidth(cell*0.6);
+        bottom.setHeight(cell*0.3);
         bottom.setX(cell*0.2);
-        bottom.setY(cell*0.4);
+        bottom.setY(cell*0.5);
         bottom.setFill(Color.web("AB47BC"));
 
         graphics.getChildren().addAll(back, top, bottom);
