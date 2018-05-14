@@ -19,7 +19,7 @@ public class WinScreenController {
      * @param index a nyertes játékos sorszáma.
      */
     public void setWinner(int index){
-        if(index==-1) wintext.setText("It's a draw!");
+        if(index==0) wintext.setText("It's a draw!");
         else wintext.setText("Player " + index + " wins.");
     }
 
