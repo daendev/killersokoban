@@ -117,6 +117,30 @@ public class GameController {
             case DOWN:
                 warehouse.getPlayer(1).move(Directions.bottom);
                 break;
+            case H:
+                warehouse.getPlayer(2).move(Directions.left);
+                break;
+            case K:
+                warehouse.getPlayer(2).move(Directions.right);
+                break;
+            case U:
+                warehouse.getPlayer(2).move(Directions.top);
+                break;
+            case J:
+                warehouse.getPlayer(2).move(Directions.bottom);
+                break;
+            case NUMPAD4:
+                warehouse.getPlayer(3).move(Directions.left);
+                break;
+            case NUMPAD6:
+                warehouse.getPlayer(3).move(Directions.right);
+                break;
+            case NUMPAD8:
+                warehouse.getPlayer(3).move(Directions.top);
+                break;
+            case NUMPAD5:
+                warehouse.getPlayer(3).move(Directions.bottom);
+                break;
         }
         drawables.drawAll();
         updateScore();
