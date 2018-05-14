@@ -16,30 +16,63 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * A beállitások kezelőosztálya.
+ */
 public class SettingsData {
 
+    /**
+     * Pálya szélesség
+     */
     private int width;
+
+    /**
+     * Pálya magasság
+     */
     private int height;
+
+    /**
+     * Játékosok száma
+     */
     private int playerCount;
 
+    /**
+     * @param w szélesség
+     * @param h magasság
+     * @param p játékosszám
+     * Inicializálja az osztályt a megadott értékekkel.
+     */
     public SettingsData(int w, int h, int p){
         width = w;
         height = h;
         playerCount = p;
     }
 
+    /**
+     * @return szélesség
+     */
     public int getWidth(){
         return width;
     }
 
+    /**
+     * @return magasság
+     */
     public int getHeight(){
         return height;
     }
 
+    /**
+     * @return játékosszám
+     */
     public int getPlayerCount(){
         return playerCount;
     }
 
+    /**
+     * @param filename a fájl neve ahova kiirjuk a beállitásokat
+     * Kiirja az osztály tartalmát a megadott fájlba.
+     */
     public void write(String filename){
         Document dom;
         Element e;
@@ -83,6 +116,10 @@ public class SettingsData {
         }
     }
 
+    /**
+     * @param filename a fájl ahonnan beolvassuk a beállitásokat.
+     * Beolvassa a beállitásokat a megadott fájlból.
+     */
     public void read(String filename){
         Document dom;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -105,6 +142,13 @@ public class SettingsData {
         }
     }
 
+    /**
+     * @param def Alapérték.
+     * @param doc A dokumentum ahonnan betöltjük
+     * @param tag A beállitás tag-je.
+     * @return A beolvasott érték.
+     * Beolvassa a megadott értéket a megadott helyról és visszatér vele.
+     */
     private String getTextValue(String def, Element doc, String tag) {
         String value = def;
         NodeList nl;
