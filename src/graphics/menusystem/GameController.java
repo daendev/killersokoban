@@ -189,9 +189,7 @@ public class GameController {
     }
 
     public void ending(){
-        Player winner = warehouse.getPlayer(0);
-        // winner = warehouse.getWinner();
-        int winnerIndex = warehouse.getPlayers().indexOf(winner) + 1;
+        int winnerIndex = warehouse.getWinner() + 1;
         SokobanApp.win(winnerIndex);
     }
 }
