@@ -3,6 +3,8 @@ package graphics;
 import com.sun.scenario.Settings;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class SettingsData {
 
@@ -67,7 +70,6 @@ public class SettingsData {
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
                 tr.setOutputProperty(OutputKeys.METHOD, "xml");
                 tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-                tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
                 tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
                 tr.transform(new DOMSource(dom), new StreamResult(new FileOutputStream(filename)));
@@ -79,6 +81,38 @@ public class SettingsData {
         } catch (ParserConfigurationException e1) {
             e1.printStackTrace();
         }
+    }
+
+    public void read(String filename){
+        Document dom;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            dom = db.parse(filename);
+            Element doc = dom.getDocumentElement();
+            String w = getTextValue("10", doc, "width");
+            String h = getTextValue("10", doc, "height");
+            String p = getTextValue("2", doc, "players");
+            width = Integer.parseInt(w);
+            height = Integer.parseInt(h);
+            playerCount = Integer.parseInt(p);
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getTextValue(String def, Element doc, String tag) {
+        String value = def;
+        NodeList nl;
+        nl = doc.getElementsByTagName(tag);
+        if (nl.getLength() > 0 && nl.item(0).hasChildNodes()) {
+            value = nl.item(0).getFirstChild().getNodeValue();
+        }
+        return value;
     }
 
 }

@@ -18,6 +18,14 @@ public class SettingsMenuController {
     @FXML
     private TextField players;
 
+    public void initialize(){
+        SettingsData settings = new SettingsData(10,10,10);
+        settings.read("settings.xml");
+        width.setText(Integer.toString(settings.getWidth()));
+        height.setText(Integer.toString(settings.getHeight()));
+        players.setText(Integer.toString(settings.getPlayerCount()));
+    }
+
     public void backButton(ActionEvent actionEvent) {
         SokobanApp.switchScenes("main");
     }
