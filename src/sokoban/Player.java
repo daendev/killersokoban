@@ -128,7 +128,9 @@ public class Player extends Entity{
      */
     public boolean canInitMove(Directions dir){
         Test.logger.w("Player.canInitMove(Directions)");
-        return getPlace().getNeighbour(dir).canMoveHere(dir, getWeight(), getStrenght());
+        if(getPlace() != null)
+            return getPlace().getNeighbour(dir).canMoveHere(dir, getWeight(), getStrenght());
+        return false;
     }
 
     /**
