@@ -2,6 +2,8 @@ package graphics.mapelements;
 
 import graphics.menusystem.GameController;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import sokoban.Cell;
 
@@ -27,6 +29,8 @@ public class CellGraphics extends ObjectGraphics {
         r.setHeight(GameController.cellSize);
         r.setFill(Color.web("E0E0E0"));
         graphics.getChildren().add(r);
+        if(reference.getSticky()<1) drawSticky(Color.web("212121"));
+        if(reference.getSticky()>1) drawSticky(Color.web("FFFF00"));
     }
 
     /**
@@ -36,6 +40,27 @@ public class CellGraphics extends ObjectGraphics {
     public boolean ping(){
         graphics.relocate(transformCoords(reference.getX()), transformCoords(reference.getY()));
         return true;
+    }
+
+    /**
+     * Ragacsot rajzol a pályára.
+     * @param color a ragacs színe.
+     */
+    private void drawSticky(Paint color){
+        int cell = GameController.cellSize;
+        Circle c1 = new Circle();
+        c1.setRadius(cell*0.3);
+        c1.setFill(color);
+        c1.relocate(cell*0.4,cell*0.4);
+        Circle c2 = new Circle();
+        c2.setRadius(cell*0.3);
+        c2.setFill(color);
+        c2.relocate(cell*0.6,cell*0.5);
+        Circle c3 = new Circle();
+        c3.setRadius(cell*0.3);
+        c3.setFill(color);
+        c3.relocate(cell*0.4,cell*0.6);
+        graphics.getChildren().addAll(c1,c2,c3);
     }
 
 }

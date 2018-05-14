@@ -15,6 +15,8 @@ import sokoban.Directions;
 import sokoban.Player;
 import sokoban.Warehouse;
 
+import java.util.ArrayList;
+
 /**
  * A játék kezelőosztálya.
  */
@@ -148,7 +150,10 @@ public class GameController {
         }
         drawables.drawAll();
         updateScore();
-        if(warehouse.endGame()) SokobanApp.switchScenes("main");
+        if(warehouse.endGame()) {
+            SokobanApp.switchScenes("main");
+            ending();
+        }
     }
 
     /**
@@ -177,5 +182,10 @@ public class GameController {
      */
     public void saveButton(ActionEvent actionEvent) {
         warehouse.save("game.txt");
+    }
+
+    private void ending(){
+        // get winner
+        // display splash screen
     }
 }
