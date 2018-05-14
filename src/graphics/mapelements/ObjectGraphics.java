@@ -9,22 +9,12 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
 
     protected int z;
 
-    int x, y;
-
     public Group getGraphics(){
         return graphics;
     }
 
     protected int transformCoords(int x){
         return x* GameController.cellSize;
-    }
-
-    public int getX(){
-        return x;
-    }
-
-    public int getY(){
-        return y;
     }
 
     public int getZ(){
