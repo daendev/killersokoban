@@ -27,8 +27,8 @@ public class BoxGraphics extends EntityGraphics {
     }
 
     /**
-     * @return pályán van e, vagy nem
-     * Ellenőrzi hogy a pályán van e az entity.
+     * @return pályán van e az adott elem, vagy már nem
+     * Updateli a grafikát.
      */
     @Override
     public boolean ping(){

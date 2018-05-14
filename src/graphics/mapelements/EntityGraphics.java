@@ -23,6 +23,10 @@ public abstract class EntityGraphics extends ObjectGraphics {
     }
 
 
+    /**
+     * @return pályán van e az adott elem, vagy már nem
+     * Updateli a grafikát.
+     */
     public boolean ping(){
         if(reference.getPlace() == null) return false;
         graphics.relocate(transformCoords(reference.getPlace().getX()), transformCoords(reference.getPlace().getY()));

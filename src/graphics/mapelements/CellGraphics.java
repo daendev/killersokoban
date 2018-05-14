@@ -30,7 +30,8 @@ public class CellGraphics extends ObjectGraphics {
     }
 
     /**
-     * @return
+     * @return pályán van e az adott elem, vagy már nem
+     * Updateli a grafikát.
      */
     public boolean ping(){
         graphics.relocate(transformCoords(reference.getX()), transformCoords(reference.getY()));
