@@ -3,9 +3,12 @@ package sokoban;
 
 import test.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -366,5 +369,105 @@ public class Warehouse {
         }
 
         return true;
+    }
+
+    public void load(String fileName){
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            List<String> read = Arrays.asList(bufferedReader.readLine().split(" "));
+            int width = Integer.parseInt(read.get(0));
+            int height = Integer.parseInt(read.get(1));
+            int switchNum = 0;
+           this.wipe();
+            for (int i = 0; i < height; i++) {
+                String row = bufferedReader.readLine();
+                for (int j=0; j<row.length(); j++){
+                    switch (row.charAt(j)){
+                        case 'W':
+                            this.getMap().add(new Wall());
+                            break;
+                        case '-':
+                            this.getMap().add(new Cell());
+                            break;
+                        case 'B':
+                            this.getMap().add(new Cell());
+                            break;
+                        case 'S':
+                            this.getSwitches().add(new Switch(new SwitchableHole()));
+                            this.getMap().add(this.getSwitches().get(switchNum++));
+                            break;
+                        case 'H':
+                            this.getMap().add(new Hole());
+                            break;
+                        case 'G':
+                            this.getMap().add(new Goal());
+                            break;
+                        case 'P':
+                            this.getMap().add(new Cell());
+                            break;
+                    }
+
+                }
+            }
+
+
+            int playerNum = Integer.parseInt(bufferedReader.readLine());
+            for (int i=0; i<playerNum; i++) {
+                read = Arrays.asList(bufferedReader.readLine().split(" "));
+                int x = Integer.parseInt(read.get(0));
+                int y = Integer.parseInt(read.get(1));
+                this.getPlayers().add(new Player());
+                this.getPlayers().get(i).setWarehouse(this);
+                this.getPlayers().get(i).setPlace(this.getMap().get(x + y*width));
+                this.getMap().get(x + y*width).setHolding(this.getPlayers().get(i));
+            }
+
+            int boxNum = Integer.parseInt(bufferedReader.readLine());
+            for (int i = 0; i < boxNum; i++) {
+                read = Arrays.asList(bufferedReader.readLine().split(" "));
+                int x = Integer.parseInt(read.get(0));
+                int y = Integer.parseInt(read.get(1));
+                this.getBoxes().add(new Box());
+                this.getBoxes().get(i).setWarehouse(this);
+                this.getBoxes().get(i).setPlace(this.getMap().get(x + y*width));
+                this.getMap().get(x + y*width).setHolding(this.getBoxes().get(i));
+            }
+
+            for (int i = 0; i < switchNum; i++) {
+                read = Arrays.asList(bufferedReader.readLine().split(" "));
+                int x = Integer.parseInt(read.get(0));
+                int y = Integer.parseInt(read.get(1));
+                this.getSwitches().get(i).setWarehouse(this);
+                SwitchableHole sh = new SwitchableHole();
+                if (this.getMap().get(x + y*width).getHolding() != null) {
+                    sh.setHolding(this.getMap().get(x + y * width).getHolding());
+                    sh.getHolding().setPlace(sh);
+                }
+                this.getMap().remove(x + y*width);
+                this.getMap().add(x + y*width, sh);
+                this.getSwitches().get(i).setHole((SwitchableHole) this.getMap().get(x + y*width));
+            }
+
+            for (int i = 0; i<width; i++){
+                for(int j = 0; j<height; j++){
+                    this.getMap().get(i + j * width).setWarehouse(this);
+                    if(j!=0)
+                        this.getMap().get(i + j * width).setNeighbour(this.getMap().get(i + (j-1) * width), Directions.top);
+                    if(j!=height-1)
+                        this.getMap().get(i + j * width).setNeighbour(this.getMap().get(i + (j+1) * width), Directions.bottom);
+                    if(i!=0)
+                        this.getMap().get(i + j * width).setNeighbour(this.getMap().get(i - 1 + j * width), Directions.left);
+                    if(i!=width-1)
+                        this.getMap().get(i + j * width).setNeighbour(this.getMap().get(i +1 + j * width), Directions.right);
+                }
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
