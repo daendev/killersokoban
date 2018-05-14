@@ -323,9 +323,13 @@ public class Test {
     public void remove(){
         switch (command.get(1)){
             case "b":
+                w.getBoxes().get(Integer.parseInt(command.get(2))).getPlace().removeEntity();
+                w.getBoxes().get(Integer.parseInt(command.get(2))).setPlace(null);
                 w.removeEntity(w.getBoxes().get(Integer.parseInt(command.get(2))));
                 break;
             case "p":
+                w.getPlayers().get(Integer.parseInt(command.get(2))).getPlace().removeEntity();
+                w.getPlayers().get(Integer.parseInt(command.get(2))).setPlace(null);
                 w.removeEntity(w.getPlayers().get(Integer.parseInt(command.get(2))));
                 break;
             default:
