@@ -39,14 +39,6 @@ public class GameController {
 
 
     /**
-     * Inicializálás.
-     */
-    public void initialize(){
-        // load settings
-
-    }
-
-    /**
      * @param players Játékosok száma.
      * Pontszámitó inicializáslása.
      */
@@ -91,7 +83,7 @@ public class GameController {
      */
     private void initGame(){
         initScoreboard(warehouse.getPlayers().size());
-        cellSize = Math.min(canvasSize / warehouse.getMapWidth(), canvasSize /warehouse.getMapHeight());
+        cellSize = Math.min(canvasSize / warehouse.getMapWidth(), canvasSize / warehouse.getMapHeight());
         drawables = new GraphicsCollection(canvas);
         canvas.setMaxSize(cellSize*warehouse.getMapWidth(),cellSize*warehouse.getMapHeight());
         drawables.initFrom(warehouse);
@@ -183,5 +175,6 @@ public class GameController {
      * A mentés gomb kezelője.
      */
     public void saveButton(ActionEvent actionEvent) {
+        warehouse.save("game.txt");
     }
 }

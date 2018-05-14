@@ -44,9 +44,16 @@ public class SokobanApp extends Application {
     }
 
     public static void switchScenes(String s){
-        if(s.equals("new game")) gameLoader.<GameController>getController().newGame();
-        else if(s.equals("load game")) gameLoader.<GameController>getController().loadGame();
-        stage.setScene(scenes.get(s));
+        if(s.equals("newgame")) {
+            gameLoader.<GameController>getController().newGame();
+            stage.setScene(scenes.get("game"));
+        }
+        else if(s.equals("loadgame")){
+            gameLoader.<GameController>getController().loadGame();
+            stage.setScene(scenes.get("game"));
+        } else {
+            stage.setScene(scenes.get(s));
+        }
     }
 
     public static void main(String[] args){

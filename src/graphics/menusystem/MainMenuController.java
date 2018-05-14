@@ -15,7 +15,7 @@ public class MainMenuController {
      * A Start gomb megnyomásának kezelése.
      */
     public void startButton(ActionEvent actionEvent) {
-        SokobanApp.switchScenes("new game");
+        SokobanApp.switchScenes("newgame");
     }
 
     /**
@@ -39,6 +39,6 @@ public class MainMenuController {
      * A betöltés gomb megnyomásának kezelése.
      */
     public void loadButton(ActionEvent actionEvent) {
-        SokobanApp.switchScenes("load game");
+        SokobanApp.switchScenes("loadgame");
     }
 }
