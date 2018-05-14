@@ -235,6 +235,8 @@ public class Test {
                 w.getMap().remove(x + y*width);
                 w.getMap().add(x + y*width, sh);
                 w.getSwitches().get(i).setHole((SwitchableHole) w.getMap().get(x + y*width));
+                w.getSwitches().get(i).getHolding().stepOnSwitch(w.getSwitches().get(i).getHole(),
+                        w.getSwitches().get(i).getHolding());
             }
 
             for (int i = 0; i<width; i++){
@@ -366,7 +368,9 @@ public class Test {
                 SwitchableHole sh = new SwitchableHole();
                 w.getMap().add(x2 + y2 * w.getMapWidth(), sh);
                 w.linkCell(x2, y2);
-                w.getMap().add(x + y * w.getMapWidth(),new Switch(sh));
+                Switch s = new Switch(sh);
+                w.getMap().add(x + y * w.getMapWidth(),s);
+                w.getSwitches().add(s);
                 break;
             default:
                 System.out.println("Rossz argumentum!");
