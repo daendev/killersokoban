@@ -74,6 +74,22 @@ public class GameController {
         settings.read("settings.xml");
         warehouse = new Warehouse(settings.getPlayerCount());
         warehouse.generateMap(settings.getWidth(),settings.getHeight());
+        initGame();
+    }
+
+    /**
+     * Játék betöltése.
+     */
+    public void loadGame(){
+        warehouse = new Warehouse();
+        warehouse.load("game.txt");
+        initGame();
+    }
+
+    /**
+     * Játék betöltése vagy új játék elenjén elvégzendő műveletek.
+     */
+    private void initGame(){
         initScoreboard(warehouse.getPlayers().size());
         cellSize = Math.min(canvasSize / warehouse.getMapWidth(), canvasSize /warehouse.getMapHeight());
         drawables = new GraphicsCollection(canvas);
@@ -81,10 +97,6 @@ public class GameController {
         drawables.initFrom(warehouse);
         drawables.drawAll();
         updateScore();
-    }
-
-    public void loadGame(){
-
     }
 
     /**
