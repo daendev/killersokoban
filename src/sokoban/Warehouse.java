@@ -474,4 +474,32 @@ public class Warehouse {
         }
 
     }
+
+    public void save(String fileName){
+        try {
+            FileWriter file = new FileWriter(fileName);
+            file.write(this.getMapWidth() + " " + this.getMapHeight() + "\n");
+            this.drawForSave(file);
+            file.write(this.getPlayers().size() + "\n");
+            for (int i=0; i<this.getPlayers().size(); i++) {
+                file.write(this.getPlayers().get(i).getPlace().getX() + " ");
+                file.write(this.getPlayers().get(i).getPlace().getY() + "\n");
+            }
+
+            file.write(this.getBoxes().size() + "\n");
+            for (int i=0; i<this.getBoxes().size(); i++) {
+                file.write(this.getBoxes().get(i).getPlace().getX() + " ");
+                file.write(this.getBoxes().get(i).getPlace().getY() + "\n");
+            }
+
+            for (int i = 0; i < this.getSwitches().size(); i++) {
+                file.write( this.getSwitches().get(i).getHole().getX() + " ");
+                file.write( this.getSwitches().get(i).getHole().getY() + "\n");
+            }
+
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
