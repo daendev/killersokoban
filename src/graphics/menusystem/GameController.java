@@ -14,6 +14,9 @@ import sokoban.Directions;
 import sokoban.Player;
 import sokoban.Warehouse;
 
+/**
+ * A játék kezelőosztálya.
+ */
 public class GameController {
 
     /**
