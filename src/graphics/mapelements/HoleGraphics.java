@@ -6,8 +6,15 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import sokoban.Hole;
 
+/**
+ * Lyuk grafika kezelése
+ */
 public class HoleGraphics extends CellGraphics {
 
+    /**
+     * Lyuk grafika konstruktora
+     * @param h A lyuk
+     */
     public HoleGraphics(Hole h) {
         super(h);
         ((Rectangle)graphics.getChildren().get(0)).setFill(Color.web("616161"));

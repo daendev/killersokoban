@@ -4,9 +4,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import sokoban.Wall;
 
+/**
+ * Fal grafika kezelése
+ */
 public class WallGraphics extends CellGraphics {
 
-
+    /**
+     * Fal grafikai konstruktor
+     * @param c A fal
+     */
     public WallGraphics(Wall c) {
         super(c);
         z = 2;
