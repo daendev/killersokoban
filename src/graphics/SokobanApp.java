@@ -15,6 +15,11 @@ public class SokobanApp extends Application {
     private static Stage stage;
     private static FXMLLoader gameLoader, winLoader;
 
+    /**
+     * A JavaFX alkalmazás belépési pontja.
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -49,6 +54,10 @@ public class SokobanApp extends Application {
         stage.show();
     }
 
+    /**
+     * Nézetek (menük) közötti váltás.
+     * @param s a nézet (menü) neve.
+     */
     public static void switchScenes(String s){
         if(s.equals("newgame")) {
             gameLoader.<GameController>getController().newGame();
@@ -62,6 +71,10 @@ public class SokobanApp extends Application {
         }
     }
 
+    /**
+     * Játék vége menü előhívása.
+     * @param i a nyertes játékos sorszáma.
+     */
     public static void win(int i){
         winLoader.<WinScreenController>getController().setWinner(i);
         stage.setScene(scenes.get("win"));

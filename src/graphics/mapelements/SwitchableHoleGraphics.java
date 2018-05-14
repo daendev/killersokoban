@@ -10,9 +10,6 @@ import sokoban.SwitchableHole;
  */
 public class SwitchableHoleGraphics extends HoleGraphics {
 
-    Group openGraphics;
-    Group closedGraphics;
-
     /**
      * Kapcsolható lyuk grafika konstruktora
      * @param s A kapcsolható lyuk
@@ -21,6 +18,10 @@ public class SwitchableHoleGraphics extends HoleGraphics {
         super(s);
     }
 
+    /**
+     * Modell lekérdezése és grafika frissítése.
+     * @return igaz, ha az objektumot még ki kell rajzolni.
+     */
     public boolean ping(){
         if(((SwitchableHole)reference).isOpen()) {
             graphics = new HoleGraphics(new Hole()).getGraphics();

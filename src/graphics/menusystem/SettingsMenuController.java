@@ -21,6 +21,9 @@ public class SettingsMenuController {
     @FXML
     private TextField players;
 
+    /**
+     * JavaFX controller inicializálás.
+     */
     public void initialize(){
         SettingsData settings = new SettingsData(10,10,10);
         settings.read("settings.xml");

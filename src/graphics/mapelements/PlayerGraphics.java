@@ -13,11 +13,6 @@ import java.util.ArrayList;
  */
 public class PlayerGraphics extends EntityGraphics {
 
-    /**
-     * Játékos megjelenítésének mérete
-     */
-    private static int radius;
-
 
     /**
      * Játékos grafika konstruktora
@@ -26,7 +21,7 @@ public class PlayerGraphics extends EntityGraphics {
     public PlayerGraphics(Player p) {
         super(p);
         z = 1;
-        radius = GameController.cellSize / 2;
+        int radius = GameController.cellSize / 2;
         Circle c = new Circle();
         c.setRadius(radius);
         Warehouse w = reference.getWarehouse();

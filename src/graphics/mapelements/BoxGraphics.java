@@ -40,6 +40,11 @@ public class BoxGraphics extends EntityGraphics {
         return true;
     }
 
+    /**
+     * A játékos sorszámának megfelelő színt választ.
+     * @param p a játékos.
+     * @return a játékos színe.
+     */
     private Paint chooseColor(Player p){
         switch(p.getWarehouse().getPlayers().indexOf(p)){
             case 0:

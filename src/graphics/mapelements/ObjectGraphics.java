@@ -16,12 +16,8 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
     /**
      * Z koordináta
      */
-    protected int z;
+    int z;
 
-    /**
-     * Síkbeli koordináták
-     */
-    int x, y;
 
     /**
      * graphics getterje
@@ -36,31 +32,15 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
      * @param x Koordináta
      * @return Új koordináta
      */
-    protected int transformCoords(int x){
+    int transformCoords(int x){
         return x* GameController.cellSize;
-    }
-
-    /**
-     * X koordináta getterje
-     * @return X koordináta
-     */
-    public int getX(){
-        return x;
-    }
-
-    /**
-     * Y koordináta getterje
-     * @return Y koordináta
-     */
-    public int getY(){
-        return y;
     }
 
     /**
      * Z koordináta getterje
      * @return Z koordináta
      */
-    public int getZ(){
+    private int getZ(){
         return z;
     }
 
@@ -73,5 +53,9 @@ public abstract class ObjectGraphics implements Comparable<ObjectGraphics>{
         return z - o.getZ();
     }
 
+    /**
+     * Modell lekérdezése és grafika frissítése.
+     * @return igaz, ha az objektumot még ki kell rajzolni.
+     */
     public abstract boolean ping();
 }

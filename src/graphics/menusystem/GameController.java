@@ -37,9 +37,6 @@ public class GameController {
 
     private Warehouse warehouse;
 
-    @FXML
-    private VBox window;
-
     public static int cellSize;
 
     private static final int canvasSize = 500;
@@ -188,7 +185,11 @@ public class GameController {
         warehouse.save("game.txt");
     }
 
-    public void ending(){
+
+    /**
+     * A játék vége. Előhívja a nyertes menüt.
+     */
+    private void ending(){
         int winnerIndex = warehouse.getWinner() + 1;
         SokobanApp.win(winnerIndex);
     }
