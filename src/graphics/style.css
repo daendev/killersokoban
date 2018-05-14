@@ -27,7 +27,7 @@
     -fx-font-size: 30px;
 }
 
-#settings {
+#subtitle, #wintext {
     -fx-font-size: 20px;
 }
 

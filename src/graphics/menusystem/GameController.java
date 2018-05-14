@@ -7,10 +7,12 @@ import graphics.mapelements.PlayerGraphics;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import sokoban.Directions;
 import sokoban.Player;
 import sokoban.Warehouse;
@@ -34,6 +36,9 @@ public class GameController {
     private GraphicsCollection drawables;
 
     private Warehouse warehouse;
+
+    @FXML
+    private VBox window;
 
     public static int cellSize;
 
@@ -151,7 +156,6 @@ public class GameController {
         drawables.drawAll();
         updateScore();
         if(warehouse.endGame()) {
-            SokobanApp.switchScenes("main");
             ending();
         }
     }
@@ -184,8 +188,10 @@ public class GameController {
         warehouse.save("game.txt");
     }
 
-    private void ending(){
-        // get winner
-        // display splash screen
+    public void ending(){
+        Player winner = warehouse.getPlayer(0);
+        // winner = warehouse.getWinner();
+        int winnerIndex = warehouse.getPlayers().indexOf(winner) + 1;
+        SokobanApp.win(winnerIndex);
     }
 }

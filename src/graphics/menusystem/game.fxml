@@ -10,7 +10,8 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="graphics.menusystem.GameController"
       prefHeight="600.0" prefWidth="500.0"
-      alignment="TOP_CENTER">
+      alignment="TOP_CENTER"
+      fx:id="window">
 
     <AnchorPane prefHeight="100">
         <VBox AnchorPane.rightAnchor="10"

@@ -1,6 +1,7 @@
 package graphics;
 
 import graphics.menusystem.GameController;
+import graphics.menusystem.WinScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ public class SokobanApp extends Application {
 
     private static HashMap<String, Scene> scenes = new HashMap<>();
     private static Stage stage;
-    private static FXMLLoader gameLoader;
+    private static FXMLLoader gameLoader, winLoader;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -25,14 +26,19 @@ public class SokobanApp extends Application {
 
         gameLoader = new FXMLLoader(getClass().getResource("menusystem/game.fxml"));
         Scene game = new Scene(gameLoader.load());
+        winLoader = new FXMLLoader(getClass().getResource("menusystem/winscreen.fxml"));
+        Scene win = new Scene(winLoader.load());
+
 
         mainMenu.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         settingsMenu.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         game.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        win.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         scenes.put("main", mainMenu);
         scenes.put("settings", settingsMenu);
         scenes.put("game", game);
+        scenes.put("win", win);
 
         game.setOnKeyPressed(e -> {
             gameLoader.<GameController>getController().handleKeyPress(e);
@@ -54,6 +60,11 @@ public class SokobanApp extends Application {
         } else {
             stage.setScene(scenes.get(s));
         }
+    }
+
+    public static void win(int i){
+        winLoader.<WinScreenController>getController().setWinner(i);
+        stage.setScene(scenes.get("win"));
     }
 
     public static void main(String[] args){
