@@ -46,7 +46,6 @@ public class GraphicsCollection {
                 deprecated.add(g);
                 continue;
             }
-            // System.out.println("drawing shape " + g.toString() + " at " + g.getX() + "," + g.getY());
             canvas.getChildren().add(g.getGraphics());
         }
         objects.removeAll(deprecated);

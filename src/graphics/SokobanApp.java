@@ -48,10 +48,6 @@ public class SokobanApp extends Application {
         stage.setScene(scenes.get(s));
     }
 
-    public static Scene getScene(String s){
-        return scenes.get(s);
-    }
-
     public static void main(String[] args){
         launch(args);
     }
