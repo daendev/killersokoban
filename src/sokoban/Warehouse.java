@@ -507,4 +507,20 @@ public class Warehouse {
             e.printStackTrace();
         }
     }
+
+    public int getWinner(){
+        int max = players.get(0).getScore();
+        int ret = 0;
+        for(int i = 1; i< players.size(); i++){
+            if(players.get(i).getScore() >= max){
+                if(players.get(i).getScore() > max) {
+                    ret = i;
+                } else {
+                    ret = -1;
+                }
+                max = players.get(i).getScore();
+            }
+        }
+        return ret;
+    }
 }
