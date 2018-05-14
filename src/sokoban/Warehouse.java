@@ -380,7 +380,7 @@ public class Warehouse {
             int width = Integer.parseInt(read.get(0));
             int height = Integer.parseInt(read.get(1));
             int switchNum = 0;
-           this.wipe();
+            this.wipe();
             for (int i = 0; i < height; i++) {
                 String row = bufferedReader.readLine();
                 for (int j=0; j<row.length(); j++){
@@ -448,6 +448,8 @@ public class Warehouse {
                 this.getMap().remove(x + y*width);
                 this.getMap().add(x + y*width, sh);
                 this.getSwitches().get(i).setHole((SwitchableHole) this.getMap().get(x + y*width));
+                this.getSwitches().get(i).getHolding().stepOnSwitch(this.getSwitches().get(i).getHole(),
+                        this.getSwitches().get(i).getHolding());
             }
 
             for (int i = 0; i<width; i++){
