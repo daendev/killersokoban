@@ -5,11 +5,25 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import sokoban.Player;
 
+/**
+ * A játékos grafikai kezelése
+ */
 public class PlayerGraphics extends EntityGraphics {
 
+    /**
+     * Játékos megjelenítésének mérete
+     */
     private static int radius;
+
+    /**
+     * Játékos száma
+     */
     public static int playerCount = 1;
 
+    /**
+     * Játékos grafika konstruktora
+     * @param p A játékos
+     */
     public PlayerGraphics(Player p) {
         super(p);
         z = 1;
@@ -21,6 +35,10 @@ public class PlayerGraphics extends EntityGraphics {
         graphics.getChildren().add(c);
     }
 
+    /**
+     * Játékos színének megadása
+     * @return A szín ami a játékos legyen
+     */
     private String chooseColor(){
         switch(playerCount){
             case 1: return "2196F3";
