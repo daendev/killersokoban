@@ -354,16 +354,16 @@ public class Warehouse {
                 maxStrength = getPlayers().get(i).getStrenght();
         }
 
-        if (!players) return true;
+        if (players) return true;
 
         for (int i = 0; i < getBoxes().size(); i++) {
             if (    (
-                    getBoxes().get(i).canMove(Directions.right, 0, maxStrength) ||
+                    getBoxes().get(i).canMove(Directions.right, 0, maxStrength) &&
                     getBoxes().get(i).canMove(Directions.left, 0, maxStrength)
                     )
-                    &&
+                    ||
                     (
-                    getBoxes().get(i).canMove(Directions.top, 0, maxStrength) ||
+                    getBoxes().get(i).canMove(Directions.top, 0, maxStrength) &&
                     getBoxes().get(i).canMove(Directions.bottom, 0, maxStrength)
                     )
                 )
