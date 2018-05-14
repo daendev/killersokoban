@@ -39,10 +39,13 @@ public class Goal extends Cell {
     @Override
     public boolean canMoveHere(Directions dir, double weight, double strength) {
         Test.logger.w("Goal.canMoveHere(Directions, weight, strength");
-        if (getHolding()!= null && getHolding().getOwner() == getHolding()){
-            return super.canMoveHere(dir, weight, strength);
+        if(getHolding() != null) {
+            if (getHolding().getOwner() == getHolding()) {
+                return super.canMoveHere(dir, weight, strength);
+            }
+            return false;
         }
-        else return false;
+        return true;
     }
 
     /**
