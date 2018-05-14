@@ -366,7 +366,9 @@ public class Test {
                 SwitchableHole sh = new SwitchableHole();
                 w.getMap().add(x2 + y2 * w.getMapWidth(), sh);
                 w.linkCell(x2, y2);
-                w.getMap().add(x + y * w.getMapWidth(),new Switch(sh));
+                Switch s = new Switch(sh);
+                w.getMap().add(x + y * w.getMapWidth(),s);
+                w.getSwitches().add(s);
                 break;
             default:
                 System.out.println("Rossz argumentum!");
