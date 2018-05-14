@@ -148,43 +148,7 @@ public class Warehouse {
         int width = new Random().nextInt(15) + 7;
         int height = new Random().nextInt(15) + 7;
         generateMap(width, height);
-        int playerNum = new Random().nextInt(3) + 2;
-        for(int i = 0; i < playerNum; i++){
-            int x = new Random().nextInt(width-2)+1;
-            int y = new Random().nextInt(height-2)+1;
-            while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt(width-2)+1;
-                y = new Random().nextInt(height-2)+1;
-            }
-            players.add(new Player());
-            players.get(i).setPlace(map.get(x + y*width));
-            map.get(x + y * width).setHolding(players.get(i));
-        }
-
-        int boxNum = new Random().nextInt(9) + 2;
-        for(int i = 0; i < boxNum; i++){
-            int x = new Random().nextInt(width-2)+1;
-            int y = new Random().nextInt(height-2)+1;
-            while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt(width-2)+1;
-                y = new Random().nextInt(height-2)+1;
-            }
-            boxes.add(new Box());
-            boxes.get(i).setPlace(map.get(x + y*width));
-            map.get(x + y * width).setHolding(boxes.get(i));
-        }
-
-        for(int i = 0; i < boxNum; i++){
-            int x = new Random().nextInt(width-2)+1;
-            int y = new Random().nextInt(height-2)+1;
-            while(map.get(x + y * width).getHolding() != null) {
-                x = new Random().nextInt(width-2)+1;
-                y = new Random().nextInt(height-2)+1;
-            }
-            map.remove(x + y * width);
-            map.add(x + y * width, new Goal());
-            linkCell(x,y);
-        }
+        putObjects(width, height);
     }
 
     /**
@@ -221,6 +185,51 @@ public class Warehouse {
                 if(i!=width-1)
                     map.get(i + j * width).setNeighbour(map.get(i +1 + j * width), Directions.right);
             }
+        }
+        putObjects(width, height);
+    }
+
+
+    /**
+     * Elhelyez dolgokat a pályára
+     * @param width A pálya szélessége
+     * @param height A pálya magassága
+     */
+    private void putObjects(int width, int height){
+        for(Player p : players){
+            int x = new Random().nextInt(width-2)+1;
+            int y = new Random().nextInt(height-2)+1;
+            while(map.get(x + y * width).getHolding() != null) {
+                x = new Random().nextInt(width-2)+1;
+                y = new Random().nextInt(height-2)+1;
+            }
+            p.setPlace(map.get(x + y*width));
+            map.get(x + y * width).setHolding(p);
+        }
+
+        int boxNum = new Random().nextInt(9) + 2;
+        for(int i = 0; i < boxNum; i++){
+            int x = new Random().nextInt(width-2)+1;
+            int y = new Random().nextInt(height-2)+1;
+            while(map.get(x + y * width).getHolding() != null) {
+                x = new Random().nextInt(width-2)+1;
+                y = new Random().nextInt(height-2)+1;
+            }
+            boxes.add(new Box());
+            boxes.get(i).setPlace(map.get(x + y*width));
+            map.get(x + y * width).setHolding(boxes.get(i));
+        }
+
+        for(int i = 0; i < boxNum; i++){
+            int x = new Random().nextInt(width-2)+1;
+            int y = new Random().nextInt(height-2)+1;
+            while(map.get(x + y * width).getHolding() != null) {
+                x = new Random().nextInt(width-2)+1;
+                y = new Random().nextInt(height-2)+1;
+            }
+            map.remove(x + y * width);
+            map.add(x + y * width, new Goal());
+            linkCell(x,y);
         }
     }
 
