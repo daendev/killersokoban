@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="killersokoban.graphics.menusystem.SettingsMenuController"
+            prefHeight="400.0" prefWidth="600.0"
+            alignment="CENTER" spacing="20">
+
+    <Label text="Settings" fx:id="subtitle" />
+
+    <GridPane vgap="20" hgap="30" alignment="CENTER">
+        <Label text="Map Width" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="RIGHT" />
+        <Label text="Map Height" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.halignment="RIGHT" />
+        <Label text="Players" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.halignment="RIGHT" />
+        <TextField prefWidth="40" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="LEFT" fx:id="width"/>
+        <TextField prefWidth="40" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="LEFT" fx:id="height"/>
+        <TextField prefWidth="40" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.halignment="LEFT" fx:id="players"/>
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="30">
+        <Button text="Save" onAction="#saveButton" />
+        <Button text="Back" onAction="#backButton" />
+    </HBox>
+
+
+</VBox>

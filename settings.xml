@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
-    <width>10</width>
-    <height>10</height>
-    <players>5</players>
+    <width>15</width>
+    <height>15</height>
+    <players>3</players>
 </settings>
